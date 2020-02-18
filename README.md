@@ -1,2 +1,2 @@
-# Statistical_Inference_BSc
+# Statistical Inference (BSc)
 Course materials for Statistical Inference ("Inferência Estatística")
