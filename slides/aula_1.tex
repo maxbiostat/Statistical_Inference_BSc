@@ -94,11 +94,11 @@ Seja $X_i$ a variável aleatória que é $1$ se o $i$-ésimo lançamento dá car
 Considere $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$.
 \begin{pergunta}
 Quantos lançamentos devemos fazer para que 
-$$ \pr(0.4 \leq \bar{X}_n \leq 0.5) \geq 0.7\: ?$$
+$$ \pr(0.4 \leq \bar{X}_n \leq 0.6) \geq 0.7\: ?$$
 \end{pergunta}
 \textbf{Resolução:} Primeiro, faça $S_n = \sum_{i=1}^n X_i$ e deduza que $E[S_n] = np = n/2$ e $\vr(S_n) = n p(1-p) = n/4$.
 Agora:
-$$ \pr(0.4 \leq \bar{X}_n \leq 0.5) = \pr\left(\frac{4n}{10} \leq S_n  \leq \frac{6n}{10} \right).$$
+$$ \pr(0.4 \leq \bar{X}_n \leq 0.6) = \pr\left(\frac{4n}{10} \leq S_n  \leq \frac{6n}{10} \right).$$
 Subtraia $E[S_n]$ dos dois lados da desigualdade para obter
 $$ \pr\left(\frac{4n}{10} \leq S_n  \leq \frac{6n}{10} \right) = \pr \left(\left|S_n - \frac{n}{2} \right|\leq \frac{n}{10} \right) .$$
 Note que, usando a desigualdade de Chebychev, temos uma cota superior para 
@@ -106,7 +106,7 @@ $$\pr \left(\left|S_n - \frac{n}{2} \right|\geq \frac{n}{10} \right) = 1 - \pr \
 Portanto
 $$\pr \left(\left|S_n - \frac{n}{2} \right|\geq \frac{n}{10} \right) \leq \frac{100}{4n}$$ 
 e então
-$$ \pr(0.4 \leq \bar{X}_n \leq 0.5) = \pr \left(\left|S_n - \frac{n}{2} \right|\leq \frac{n}{10} \right) \geq 1 - \frac{25}{n}.$$
+$$ \pr(0.4 \leq \bar{X}_n \leq 0.6) = \pr \left(\left|S_n - \frac{n}{2} \right|\leq \frac{n}{10} \right) \geq 1 - \frac{25}{n}.$$
 Resolvendo $ 1 - 25/n = 0.7$ obtemos $n \geq 84$.
 
 \framebreak
