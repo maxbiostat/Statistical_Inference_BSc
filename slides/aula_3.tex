@@ -79,7 +79,7 @@ Neste curso veremos conceitos e exemplos destas duas escolas de pensamento.
 Suponha que uma empresa esteja interessadas em saber o quanto duram os produtos que ela produz.
 Se representamos os tempos de duração de $n$ objetos como $n$ variáveis aleatórias $\rs$ IID com distribuição exponencial com parâmetro $\theta$ de modo que
 $$f(x_i \mid \theta) = \theta \exp(-\theta x_i), x_i > 0.$$
-\textbf{Observação:} $n/\sum_{i=1}^n \xrightarrow{\text{p}} \theta$.
+\textbf{Observação:} $n/\sum_{i=1}^n X_i \xrightarrow{\text{p}} \theta$.
 
 Aqui, $\theta$ é a taxa de falha dos componentes, e é um parâmetro de interesse.
 Suponha que uma pessoa experiente na empresa diga que a taxa de falha é mais ou menos $0.5$/ano.
@@ -139,12 +139,12 @@ Continuando com o Exemplo~\ref{ex:duracao_componentes}, fica claro que
  \[f (\boldsymbol x  \mid \theta) = \prod_{i=1}^n f(x_i \mid \theta) = \theta^n\exp(-S\theta), \]
 onde $S = \sum_{i = 1}^n x_n$.
 Desta forma, temos 
-\[ f (\boldsymbol x  \mid \theta)\xi(\theta) = \theta^{n+1}\exp(-(S + 2)\theta).\]
+\[ f (\boldsymbol x  \mid \theta)\xi(\theta) = \theta^{n}\exp(-(S + 2)\theta).\]
 Para obter $g_n(\boldsymbol{x})$, computamos 
-\[ g_n(\boldsymbol{x}) = \int_0^\infty t^{n+1}\exp(-(S + 2)t) \,dt = \frac{\Gamma( n + 2) }{ (S + 2)^{n + 2}}. \]
+\[ g_n(\boldsymbol{x}) = \int_0^\infty t^{n}\exp(-(S + 2)t) \,dt = \frac{\Gamma( n + 1) }{ (S + 2)^{n + 1}}. \]
 Concluímos que 
-\[\xi(\theta \mid \boldsymbol{x}) = \frac{(S + 2)^{n + 2}}{\Gamma( n + 2)} \theta^{n+1}\exp(-(S + 2)\theta),  \]
-ou seja, $\theta \mid \boldsymbol{x} \sim \operatorname{Gama}(n + 2, \sum_{i = 1}^n x_n + 2)$.
+\[\xi(\theta \mid \boldsymbol{x}) = \frac{(S + 2)^{n + 1}}{\Gamma( n + 2)} \theta^{n+1}\exp(-(S + 2)\theta),  \]
+ou seja, $\theta \mid \boldsymbol{x} \sim \operatorname{Gama}(n + 1, \sum_{i = 1}^n x_n + 2)$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Distribuição~\textit{a posteriori}: exemplo (cont.)}
@@ -184,7 +184,7 @@ Se assumirmos que $\rs$ são condicionalmente independentes dado $\theta$, podem
  Dentro do paradigma bayesiano, a predição de novos valores da(s) variável(is) aleatória(s) é feita a partir da distribuição~\textit{a posteriori},
  \begin{equation}
   \label{eq:posterior_prediction}
-  p(x_{n+1} \mid x_1, x_2, \ldots, x_n) = \int_{\Omega} f(x_{n+1} \mid \theta)\xi(\theta \mid x_1, x_2, \ldots, x_n)\, d\theta.
+  p(X_{n+1} = x_{n+1} \mid x_1, x_2, \ldots, x_n) = \int_{\Omega} f(x_{n+1} \mid \theta)\xi(\theta \mid x_1, x_2, \ldots, x_n)\, d\theta.
  \end{equation}
 Chamamos a distribuição condicional em~(\ref{eq:posterior_prediction}) de~\textbf{distribuição preditiva~\textit{a posteriori}}.
 Em contraste, temos a~\textbf{distribuição preditiva~\textit{a priori}}:
