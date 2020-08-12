@@ -14,3 +14,9 @@ Já este [artigo](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/m
 
 - [Artigo](https://projecteuclid.org/download/pdf_1/euclid.aos/1035844977) de Peter McCullagh sobre o que é um modelo estatístico (avançado).
 - Material do [curso](https://github.com/maxbiostat/stats_modelling) de Modelagem Estatística. 
+
+**Aula 3 - Inferência bayesiana**
+
+- Esta [vignette](https://cran.r-project.org/web/packages/LaplacesDemon/vignettes/BayesianInference.pdf) oferece um panorama da inferência bayesiana, mencionando tópicos avançados que não serão discutidos neste curso.  
+- Este [artigo](http://www.cs.ru.nl/P.Lucas/teaching/CI/efron.pdf) de Bradley Effron discorre sobre porque nem todo mundo é bayesiano.
+- O blog de Larry Wasserman tem uma [discussão](https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/) mais técnica sobre as diferenças entre os paradigmas de inferência.
