@@ -72,7 +72,7 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
  Dizemos que uma afirmação é probabilística quando ela utiliza conceitos da teoria de probabilidade para falar de um objeto.
  Exemplos: 
  \begin{itemize}
-  \item $\pr( \bar{Y}_n \in (0, 1)) \leq 2^n$;
+  \item $\pr( \bar{Y}_n \in (0, 1)) \leq 2^{-n}$;
   \item $E[X \mid Y = y] = 2y + 3$;
   \item $\vr(X) = 4p^2$.
   \item $\pr(\vr(X) \leq 4p^2 ) \leq p^2$
@@ -94,15 +94,15 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
 \begin{frame}{Estatística}
 \begin{defn}
  \textbf{Estatística}.
- Suponha que temos uma coleção de variáveis aleatórias $X_1, X_2, \ldots, X_n \in \boldsymbol X \subseteq \mathbb{R}^n$ e uma função $r: \boldsymbol X \to \mathbb{R}^m$.
- Dizemos que a variável aleatória $T = r(X_1, X_2, \ldots, X_n)$ é uma~\textbf{estatística}.
+ Suponha que temos uma coleção de variáveis aleatórias $\rs \in \boldsymbol X \subseteq \mathbb{R}^n$ e uma função $r: \boldsymbol X \to \mathbb{R}^m$.
+ Dizemos que a variável aleatória $T = r(\rs)$ é uma~\textbf{estatística}.
 \end{defn}
 São exemplos de estatísticas:
 \begin{itemize}
  \item A média amostral, $\bar{X}_n$;
  \item A soma, $\sum_{i=1}^n X_i$;
- \item O mínimo, $\min(X_1, X_2, \ldots, X_n)$;
- \item $r(X_1, X_2, \ldots, X_n) = a, \: \forall X_1, X_2, \ldots, X_n, \: \, a \in \mathbb{R}$.
+ \item O mínimo, $\min(\rs)$;
+ \item $r(\rs) = a, \: \forall \rs, \: \, a \in \mathbb{R}$.
 \end{itemize}  
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
