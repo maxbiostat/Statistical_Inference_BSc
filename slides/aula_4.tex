@@ -1,0 +1,115 @@
+\section*{Prioris conjugadas}
+\begin{frame}{Prioris conjugadas}
+ \begin{itemize}
+  \item Prioris conjugadas
+  \begin{itemize}
+   \item Bernoulli;
+   \item Poisson;
+   \item Normal;
+  \end{itemize}
+\item Interpretação dos hiperparâmetros.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Caso conjugado: variáveis Bernoulli}
+\begin{theo}
+\label{thm:Bernoulli_posterior}
+ Sejam $\rs$ uma amostra aleatórias de variáveis aleatórias Bernoulli com parâmetro $p$, $ 0 < p < 1$, desconhecido.
+ Suponha que a distribuição~\textit{a priori} de $p$ é uma distribuição Beta com parâmetros $\alpha > 0$ e $\beta > 0$.
+ Seja $y = \sum_{i=1}^n X_i$. 
+ Então
+\[ \xi(p \mid \rs) = \frac{1}{\operatorname{Beta}(\alpha + y, \beta + n -y)} p^{\alpha + y- 1} \left(1-p\right)^{\beta + (n-y) - 1}.\]
+\end{theo}
+\textbf{Prova:}
+ Escrever a conjunta condicional como produto das marginais condicionais e notar que se obtem o núcleo de uma distribuição Beta.
+\end{frame}
+
+\begin{frame}{Prioris conjugadas}
+
+\begin{defn}[\textbf{Hiperparâmetros}]
+Seja $\xi(\theta \mid \phi)$ a distribuição~\textit{a priori} para o parâmetro $\theta$, indexada por $\phi \in \Phi$.
+  Dizemos que $\phi$ é (são) o(s) \textbf{hiperparâmetro(s)} da priori de $\theta$.
+ \end{defn}
+
+\begin{defn}[\textbf{Priori conjugada}]
+Suponha que $\irs$ sejam condicionalmente independentes dado $\theta$, com f.d.p./f.m.p. $f(x \mid \theta)$.
+Defina
+\[ \boldsymbol{\Psi} = \left\{ f : \Omega \to (0, \infty) ,  \int_{\Omega} f\, dx = 1  \right\}, \]
+onde $\Omega$ é o espaço de parâmetros.
+Dizemos que $\boldsymbol{\Psi}$ é uma~\textbf{família de distribuições conjugadas} para $f(x \mid \theta)$ se para toda $f \in \boldsymbol{\Psi}$ e toda realização $\boldsymbol{x}$ de $\boldsymbol X = \boldsymbol{\rs}$,
+\[ \frac{f(\boldsymbol{x} \mid \theta) f(\theta)}{\int_{\Omega} f(\boldsymbol{x} \mid \theta) f(\theta)\,d\theta} \in \boldsymbol{\Psi}. \]
+\end{defn}
+Isto é, uma família de prioris é conjugada para uma determinada verossimilhança se a posteriori está na mesma família.
+\end{frame}
+
+\begin{frame}{Variância de uma posteriori Beta e critérios de parada}
+ Se $X \sim \operatorname{Beta}(a, b)$, $\vr(X) = \frac{ab}{(a+b)^2(a + b+ 1)}$.
+ Na situação do Teorema~\ref{thm:Bernoulli_posterior}, temos
+ \begin{equation}
+  \label{eq:beta_posterior_variance}
+ V_n := \vr(p \mid \boldsymbol{x}) = \frac{(\alpha + y)(\beta + n - y)}{(\alpha + \beta + n)^2(\alpha + \beta + n + 1)}.  
+ \end{equation}
+ Podemos usar a expressão em~(\ref{eq:beta_posterior_variance}) para desenhar um experimento.
+ Por exemplo, podemos coletar dados até que $V_n \leq 0.01$ (ver exercício 2, seção 7.3 de De Groot). 
+\end{frame}
+
+\begin{frame}{Poisson e prioris Gamma}
+ \begin{theo}
+  Suponha que $\rs$ formam uma amostra aleatória com distribuição Poisson com taxa $\theta > 0$, desconhecida.
+  Suponha que a distribuição~\textit{a priori} para $\theta$ é uma distribuição Gama com parâmetros $\alpha >0$ e $\beta > 0$.
+  Então
+  \begin{equation}
+   \xi(\theta \mid \boldsymbol{x}) = \frac{ (\beta + n)^{\alpha + S} }{\Gamma(\alpha + S)} \theta^{\beta + n-1} e^{-(\alpha + S)\theta},
+  \end{equation}
+  onde $S = \sum_{i=1}^n x_i$.
+ \end{theo}
+\textbf{Prova:} Análoga ao exemplo Bernoulli.
+\end{frame}
+
+\begin{frame}{Análise conjugada da normal com variância conhecida}
+ \begin{theo}[Distribuição~\textit{a posteriori} da média de uma normal]
+  Suponha que $\rs$ formam uma amostra aleatória com distribuição normal com média desconhecida $\theta$ e variância $\sigma^2 >0$, conhecida e fixa.
+  Suponha que $\theta \sim \operatorname{Normal}(\mu_0, v_0^2)$~\textit{a priori}.
+  Então
+  \begin{equation}
+   \xi(\theta \mid \boldsymbol{x}, \sigma^2) =  \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( \frac{(\theta-\mu_1)^2}{2v_1^2} \right),
+  \end{equation}
+onde
+\begin{equation}
+\mu_1 := \frac{\sigma^2 \mu_0 + nv_0^2\bar{x}_n}{\sigma^2 + nv_0^2} \quad\text{e}\quad v_1^2 := \frac{\sigma^2v_0^2}{\sigma^2 + nv_0^2}
+\end{equation}
+\end{theo}
+\textbf{Prova:} Escrever as densidades relevantes sem as constantes de proporcionalidade, completar o quadrado (duas vezes) e notar que se obtem o núcleo de uma normal (Gaussiana).
+\end{frame}
+
+\begin{frame}{Interpretando a média~\textit{a posteriori}}
+ Podemos reescrever $\mu_1$ como
+ \begin{equation}
+  \mu_1 = \frac{\sigma^2}{\sigma^2 + nv_0^2}\mu_0 + \frac{nv_0^2}{\sigma^2 + nv_0^2}\bar{x}_n.
+ \end{equation}
+\begin{obs}[Média~\textit{a posteriori} como média ponderada]
+ No caso normal, a média~\textit{a posteriori} pode ser vista como uma~\textbf{média ponderada} entre a média~\textit{a priori} e a média amostral, sendo os pesos dados pela variância (conhecida) da distribuição dos dados e a variância da priori, $v_0^2$.
+\end{obs}
+\end{frame}
+
+\begin{frame}{O que aprendemos?}
+ \begin{itemize}
+  \item[\faLightbulbO] Prioris conjugadas;
+  \item[\faLightbulbO] Análise conjugada de
+  \begin{itemize}
+   \item Bernoulli;
+   \item Poisson;
+   \item Normal.
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seção 7.3;
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot, seção 7.3: exercícios 2, 17, 19, 21. 
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
