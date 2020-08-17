@@ -21,13 +21,13 @@ Já este [artigo](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/m
 - Este [artigo](http://www.cs.ru.nl/P.Lucas/teaching/CI/efron.pdf) de Bradley Effron discorre sobre porque nem todo mundo é bayesiano.
 - O blog de Larry Wasserman tem uma [discussão](https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/) mais técnica sobre as diferenças entre os paradigmas de inferência (avançado).
 
-**Aula 4 -- Prioris conjugadas:**
+**Aula 4 - Prioris conjugadas:**
 
 - [Artigo](https://projecteuclid.org/euclid.aos/1176344611) de Ylvisaker e Diaconis (1979) sobre a familia de prioris conjugadas para distribuições conjuntas dos dados morando na família exponencial (avançado).
 
 - Este [compêndio](https://www.johndcook.com/CompendiumOfConjugatePriors.pdf) traz um catálogo de prioris conjugadas e suas respectivas verossimilhanças.
 
-**Aula 5 -- Estimadores de Bayes:**
+**Aula 5 - Estimadores de Bayes:**
 
 - [Verbete](https://encyclopediaofmath.org/wiki/Bernstein-von_Mises_theorem) da _Encyclopedia of Mathematics_ sobre o teorema de Bernstein-von Mises e a normalidade assintótica da posteriori (avançado).
 
