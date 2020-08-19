@@ -1,0 +1,215 @@
+\section*{Estimador de máxima verossimilhança (EMV)}
+\begin{frame}{Tópicos da aula}
+ \begin{itemize}
+  \item Estimador de máxima verossimilhança (EMV);
+  \begin{itemize}
+     \item Existência e unicidade;
+     \item Invariância do EMV;
+     \item Consistência do EMV;
+  \end{itemize}
+  \item Limitações;
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Estimador de máxima verossimilhança (EMV)}
+ \begin{defn}[Estimador de máxima verossimilhança]
+ \label{def:MLE}
+  Para cada possível vetor (de observações) $\boldsymbol{x}$, seja $\delta(\boldsymbol{x}) \in \Omega$ um valor de $\theta \in \Theta$ de modo que a função de verossimilhança, $L(\theta) \propto f(\boldsymbol{x} \mid \theta)$, atinge o máximo.
+  Dizemos que $\hat{\theta} = \delta(\boldsymbol{X})$ é o~\textbf{estimador de máxima verossimilhança} de $\theta$ (Fisher, 1922)\footnote{Ronald Aylmer Fisher (1890-1962), biólogo e estatístico inglês. Para a história do desenvolvimento do EMV, ver~\href{https://projecteuclid.org/euclid.ss/1030037906}{Aldrich (1997)}.}.
+  Quando observamos $\boldsymbol{X} = \boldsymbol{x}$, dizemos que $\delta(\boldsymbol{x})$ é uma~\textit{estimativa} de $\theta$.
+  Dito de outra forma,
+   $$ \max_{\theta \in \Omega} f(X \mid \theta) = f(X\mid \hat{\theta}).$$
+ \end{defn}
+\end{frame}
+
+\begin{frame}{Mudando de paradigma}
+Na Definição~\ref{def:MLE}, vemos $\theta$ com um número real que indexa a distribuição de probabilidade conjunta dos dados.
+
+\begin{itemize}
+ \item Poderíamos trocar\footnote{Mas não vamos, pois a notação fica clara em quase todos os contextos.} $f(x \mid \theta)$ por $f(x; \theta)$;
+ \item Com o EMV, procuramos um valor de $\theta$ de modo que a probabilidade de observarmos $\boldsymbol{X} = \boldsymbol{x}$ seja máxima;
+ \item Isso não nos diz nada sobre o quão provável $\hat{\theta}$ é;
+ \item $\theta$ não é uma quantidade aleatória, portanto não admite afirmações probabilísticas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplos}
+ \begin{itemize}
+  \item Exponencial;
+  \item Bernoulli;
+  \item Normal;
+  \begin{itemize}
+   \item $\mu$ desconhecida, $\sigma^2$ conhecida;
+   \item $\mu$ conhecida, $\sigma^2$ desconhecida;
+   \item $\mu$ e $\sigma^2$ ambas desconhecidas.
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{EMVs}
+ \begin{itemize}
+  \item Exponencial: $\hat{\theta} = \bar{X}_n$;
+  \item Bernoulli $\hat{\theta} = \bar{X}_n$;
+  \item Normal;
+  \begin{itemize}
+   \item $\hat{\mu} = \bar{X}_n$;
+   \item $\hat{\sigma^2} = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2$;
+   \item $\hat{\theta} = \left\{ \hat{\mu} = \bar{X}_n,  \hat{\sigma^2} = \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X}_n)^2 \right\}$.
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{EMV para uma distribuição uniforme}
+
+\begin{exemplo}[EMV para uniforme]
+\label{ex:uniform_closed}
+ Suponha que $\rs$ perfazem uma amostra aleatória de uma distribuição uniforme no intervalo $[0, \theta]$, $\theta \in \mathbb{R}, \theta > 0$.
+ Considere a f.d.p.
+ \begin{equation}
+  \label{eq:uniform_closed}
+  f(x\mid \theta)=
+ \begin{cases}
+     \frac{1}{\theta}, 0 \leq x \leq \theta,\\
+     0,\:\text{caso contrário}.
+\end{cases}
+  \end{equation}
+A f.d.p. conjunta é
+\begin{equation}
+ \label{eq:uniform_closed_joint}
+   f_n(\boldsymbol{x} \mid \theta)=
+ \begin{cases}
+     \theta^{-n}, 0 \leq x_i \leq \theta \: (i = 1, 2, \ldots, n),\\
+     0,\:\text{caso contrário},
+\end{cases}
+\end{equation}
+e o EMV é $\hat{\theta} = \max(x_1, x_2, \ldots, x_n)$.
+\end{exemplo}
+\end{frame}
+
+\subsection*{Existência} 
+\begin{frame}{Existência do EMV}
+\begin{obs}
+A existência do EMV pode depender de detalhes irrelevantes acerca do espaço de parâmetros, $\Omega$. 
+\end{obs}
+\begin{exemplo}[Não existência do EMV]
+ Considere o Exemplo~\ref{ex:uniform_closed}, mas agora com uma f.d.p. um pouco diferente:
+ \begin{equation}
+  \label{eq:uniform_open}
+    f(x\mid \theta)=
+ \begin{cases}
+     \frac{1}{\theta}, 0 < x < \theta,\\
+     0,\:\text{caso contrário}.
+\end{cases}
+ \end{equation} 
+É fácil mostrar que, nesse caso, o EMV não existe. 
+\end{exemplo}
+\end{frame}
+
+\subsection*{Unicidade} 
+
+\begin{frame}{Unicidade do EMV}
+
+\begin{obs}[Unicidade do EMV]
+Mesmo quando existe, o EMV nem sempre é único. 
+\end{obs}
+
+\begin{exemplo}[EMV para uma uniforme num intervalo de tamanho $1$]
+ Suponha que $\rs$ perfazem amostra aleatória de uma distribuição uniforme no intervalo $[\theta, \theta + 1]$.
+A densidade conjunta é
+  \begin{equation}
+  \label{eq:uniform_thetapOne}
+    f_n(\boldsymbol{x}\mid \theta)=
+ \begin{cases}
+     1, \theta \leq x_i \leq \theta + 1, \: (i = 1, 2, \ldots, n),\\
+     0,\:\text{caso contrário}.
+\end{cases}
+ \end{equation}
+Defina $m := \min(x_1, x_2, \ldots, x_n)$ e $M := \max(x_1, x_2, \ldots, x_n)$.
+Podemos reescrever~(\ref{eq:uniform_thetapOne}) como 
+  \begin{equation}
+  \label{eq:uniform_thetapOne_b}
+    f_n(\boldsymbol{x}\mid \theta)=
+ \begin{cases}
+     1, M - 1 \leq \theta \leq m, \: (i = 1, 2, \ldots, n),\\
+     0,\:\text{caso contrário}.
+\end{cases}
+ \end{equation}
+\end{exemplo}
+\textbf{Conclusão:} $\hat{\theta}$ é qualquer valor no intervalo $[M-1, m]$.
+\end{frame}
+ 
+\subsection*{Invariância} 
+
+\begin{frame}{Invariância do EMV}
+Suponha que estamos interessados em uma transformação do parâmetro $\theta$, $\phi(\theta)$.
+Por exemplo, se $\rs$ são Bernoulli com parâmetro $p$,  podemos estar interessados na~\textit{chance} $\omega = \phi(p) = p/(1-p)$.
+\begin{theo}[Invariância do EMV]
+ Considere uma função $\phi : \Omega \to \mathbb{R}$.
+ Se $\hat{\theta}$ é um EMV para $\theta$, então $\phi(\hat{\theta})$ é um EMV para $\omega = \phi(\theta)$.
+\end{theo}
+\textbf{Prova:} Defina a~\textit{verossimilhança induzida}:
+\[ L^\ast(\omega) := \sup_{\left\{ \theta: \phi(\theta) = \omega \right\}} L(\theta), \]
+e note que o supremo desta função sobre $\Omega$ é precisamente o EMV.
+Ver Casella \& Berger, Teorema 7.2.10 (pág. 320) ou De Groot, Teorema 7.6.2 (pág 427).
+\textbf{Exemplo:} O EMV para o quadrado da média de uma normal, $\mu^2$, é $\bar{X}_n^2$.
+\end{frame}
+
+\subsection*{Consistência} 
+
+\begin{frame}{Consistência do EMV}
+Sob condições de regularidade, o EMV é consistente, isto é $\hat{\theta}_{\text{EMV}} \xrightarrow{} \theta$.
+\begin{theo}[Consistência do EMV]
+Defina $l(\theta) := \log f_n(\boldsymbol{x} \mid \theta)$ e assuma que $\rs \sim f(\theta_0)$, isto é, que $\theta_0$ é o valor verdadeiro do parâmetro.
+Denote $E_{\theta_0}[g] := \int_{\Omega} g(x, \theta) f(\boldsymbol{x} \mid \theta_0)\, dx$.
+ Suponha que 
+ \begin{itemize}
+  \item $f(x_i \mid \theta)$ tem o mesmo suporte;
+  \item $\theta_0$ é ponto interior de $\Omega$;
+  \item $l(\theta)$ é diferenciável;
+  \item $\hat{\theta}_{\text{EMV}}$ é a única solução de $l^\prime(\theta) = 0$.
+ \end{itemize}
+   Então,
+  $$\hat{\theta}_{\text{EMV}} \xrightarrow{} \theta.$$
+\end{theo}
+\textbf{Prova:} (rascunho) mostrar que, para todo $\theta \in \Omega$,
+\[ \frac{1}{n} \sum_{i=1}^n \log f(X_i \mid \theta) \xrightarrow{} E_{\theta_0}\left[ \log f(\boldsymbol{X} \mid \theta) \right], \]
+e aplicar a desigualdade de Jensen.
+\end{frame}
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+ \item[\faLightbulbO] Estimador de máxima verossimilhança (EMV);
+ 
+   ``Encontrar o valor do parâmetro que maxima a probabilidade observar os dados obtidos''
+   
+  \item[\faLightbulbO] Invariância ;
+  
+  ``O EMV é invariante a transformações dos parâmetros; se $\hat{\theta}$ é o EMV para $\theta$, $\psi(\hat{\theta})$ é o EMV para $\psi(\theta)$''
+  
+    \item[\faLightbulbO] Consistência;
+  
+  ``Sob condições brandas de regularidade, o EMV converge para valor verdadeiro à medida que $n \to \infty$''
+  
+    \item[\faLightbulbO] Limitações;
+  
+  ``O EMV não existe necessariamente, e mesmo quando existe, não precisa ser único''
+  
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seções 7.5 e 7.6;
+ \item[\faBook] $^\ast$ Casella \& Berger, seção 7.2.2.
+ \item[\faBook] $^\ast$ Schervish (1995), seção 5.1.3.
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot,
+  \begin{itemize}
+   \item Seção 7.5: exercícios  1, 4, 9 e 10;
+   \item Seção 7.6: exercícios 3, 5, 11 e 20.
+  \end{itemize}   
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
+
