@@ -34,6 +34,3 @@ Já este [artigo](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/m
 **Aula 6 - Estimador de máxima verossimilhança**
 
 - Neste [artigo](https://www.jstor.org/stable/pdf/2236315.pdf?casa_token=vEzRlL3BCkMAAAAA:YCNdxwXeHAO4Kv5NktCHa8xMBbjnYBwIR9L90nwI966gZlEhugejQnXkJrVlFM-NHYVRnyafYs3hXQ8TmxyCvDEkffhwX1GK0GvmU5wRfUYB1nEhxhXtvg), o grande [Abraham Wald](https://en.wikipedia.org/wiki/Abraham_Wald) dá um tratamento formal mas elementar da consistência do EMV sob condições brandas.
-
-- 
-
