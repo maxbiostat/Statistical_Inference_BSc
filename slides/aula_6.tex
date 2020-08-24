@@ -14,7 +14,7 @@
 \begin{frame}{Estimador de máxima verossimilhança (EMV)}
  \begin{defn}[Estimador de máxima verossimilhança]
  \label{def:MLE}
-  Para cada possível vetor (de observações) $\boldsymbol{x}$, seja $\delta(\boldsymbol{x}) \in \Omega$ um valor de $\theta \in \Theta$ de modo que a função de verossimilhança, $L(\theta) \propto f(\boldsymbol{x} \mid \theta)$, atinge o máximo.
+  Para cada possível vetor (de observações) $\boldsymbol{x}$, seja $\delta(\boldsymbol{x}) \in \Omega$ um valor de $\theta \in \Omega$ de modo que a função de verossimilhança, $L(\theta) \propto f(\boldsymbol{x} \mid \theta)$, atinge o máximo.
   Dizemos que $\hat{\theta} = \delta(\boldsymbol{X})$ é o~\textbf{estimador de máxima verossimilhança} de $\theta$ (Fisher, 1922)\footnote{Ronald Aylmer Fisher (1890-1962), biólogo e estatístico inglês. Para a história do desenvolvimento do EMV, ver~\href{https://projecteuclid.org/euclid.ss/1030037906}{Aldrich (1997)}.}.
   Quando observamos $\boldsymbol{X} = \boldsymbol{x}$, dizemos que $\delta(\boldsymbol{x})$ é uma~\textit{estimativa} de $\theta$.
   Dito de outra forma,
@@ -48,7 +48,7 @@ Na Definição~\ref{def:MLE}, vemos $\theta$ com um número real que indexa a di
 
 \begin{frame}{EMVs}
  \begin{itemize}
-  \item Exponencial: $\hat{\theta} = \bar{X}_n$;
+  \item Exponencial: $\hat{\theta} = 1/\bar{X}_n$;
   \item Bernoulli $\hat{\theta} = \bar{X}_n$;
   \item Normal;
   \begin{itemize}
@@ -192,7 +192,7 @@ e aplicar a desigualdade de Jensen.
   
     \item[\faLightbulbO] Limitações;
   
-  ``O EMV não existe necessariamente, e mesmo quando existe, não precisa ser único''
+  ``O EMV não existe necessariamente, e, mesmo quando existe, não precisa ser único''
   
   \end{itemize}
  \end{frame}
@@ -207,7 +207,7 @@ e aplicar a desigualdade de Jensen.
   \item[\faBookmark] De Groot,
   \begin{itemize}
    \item Seção 7.5: exercícios  1, 4, 9 e 10;
-   \item Seção 7.6: exercícios 3, 5, 11 e 20.
+   \item Seção 7.6: exercícios 3, 5 e 11.
   \end{itemize}   
   \end{itemize}
  \end{itemize} 
