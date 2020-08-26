@@ -1,0 +1,177 @@
+\begin{frame}{Suficiência}
+ \begin{itemize}
+  \item Estatística suficiente;
+  \item Teorema da fatorização;
+    \item Suficiência conjunta;
+  \item Suficiência mínima;
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Um exemplo motivador}
+Suponha que os tempos de falha de um modelo de lâmpada podem ser modelados como $\rs \sim \operatorname{expo}(\theta)$.
+
+Suponha que dois técnicos, Afonso e Bruna, medem cada um três lâmpadas, obtendo:
+\begin{itemize}
+ \item $\boldsymbol{x}_{\text{A}} = \{1.64, 1.37, 0.13\}$ meses;
+ \item $\boldsymbol{x}_{\text{B}} = \{0.48, 0.87, 1.79\}$ meses;
+\end{itemize}
+
+O chefe dos dois, Astolfo, suspeita que o tempo de falha seja, em média, 2 meses com desvio padrão de mais ou menos 1 mês.
+Para cada uma das amostras
+\begin{itemize}
+ \item (i) Compute o estimador de Bayes $\theta$ sob perda quadrática; 
+ \item (ii) Estime $\theta$ por máxima verossimilhança.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estatística suficiente}
+\begin{defn}
+ \label{def:sufficient_statistic}
+ Seja $\rs$ uma amostra aleatória de uma distribuição indexada pelo parâmetro $\theta$.
+ Seja $T = r(\rs)$ uma estatística.
+ Dizemos que $T$ é uma~\textbf{estatística suficiente} para $\theta$ se e somente se
+ \[ f(\rs \mid T = t, \theta) = f(\rs \mid T = t, \theta^\prime),\: \forall\, \theta, \theta^\prime \in \Omega, \]
+ isto é, se a distribuição condicional da amostra dado o valor da estatística não depende de $\theta$.
+\end{defn}
+
+No exemplo anterior, tanto $\hat{\theta}_{\text{Bayes}}$ quanto $\hat{\theta}_{\text{EMV}}$ dependem de $\rs$ apenas através de $r(\rs) = T = \sum_{i=1}^n X_i$.
+\end{frame}
+
+\begin{frame}{Uma observação importante}
+
+\begin{defn}[Aleatorização auxiliar]
+ \label{def:auxiliary_randomisation}
+ Suponha que $T$ é suficiente para $\theta$. 
+ O processo de simular $X_1^\prime, \ldots, X_n^\prime \mid T = r(\rs)$ de modo que
+ \[ f(\rs \mid \theta) = f(X_1^\prime, \ldots, X_n^\prime \mid \theta),\, \forall \theta \in \Omega, \]
+é chamado de~\textbf{aleatorização auxiliar} (em inglês,~\textit{auxiliary randomisation}).
+\end{defn}
+\begin{obs}[A busca por bons estimadores]
+\label{rmk:good_estimators_sufficient}
+ Na busca por bons estimadores, estamos justificados em restringir a busca a funções de estatísticas suficientes.
+\end{obs}
+\textbf{Justificativa:} Suponha que o estatístico A tem à sua disposição $\rs$, enquanto B tem acesso somente a $T  = r(\rs)$.
+Se $T$ é suficiente, B pode sempre fazer uma aleatorização auxiliar e gerar $X_1^\prime, \ldots, X_n^\prime$ com exatamente a mesma distribuição conjunta condicional a $\theta$.
+\end{frame}
+
+\begin{frame}{Teorema da fatorização (TF)}
+\begin{theo}
+ \label{thm:factorisation}
+Suponha que $\rs$ perfazem uma amostra aleatória com f.d.p./f.m.p $f(x \mid \theta)$, $\theta \in \Omega$.
+Uma estatística $T = r(\rs)$ é suficiente para $\theta$ se, e somente se, para todo $\boldsymbol{x} \in \mathcal{X}$ e $\theta \in \Omega$ existem $u$ e $v$ não negativas tal que
+\begin{equation*}
+ f_n(\boldsymbol{x} \mid \theta) = u(\boldsymbol{x}) v[r(\boldsymbol{x}), \theta].
+\end{equation*}
+\end{theo}
+\textbf{Prova:} (Para v.a.s discretas).
+Para a ``ida'' notar que $T$ é uma função determinística de $X$, ou seja, $\pr(T = t \mid \boldsymbol{X} = \boldsymbol{x} , \theta) = 1$ e que só precisamos considerar $\boldsymbol{x} \in \left\{ \boldsymbol{y} : r(\boldsymbol{y}) = t \right\}$.
+Para a ``volta'', mostrar que $T$ suficiente implica que $\pr(\boldsymbol{X} = \boldsymbol{x} \mid T = t, \theta)$ é função apenas de $\boldsymbol{x}$.
+Ver De Groot, Teorema 7.7.1 e Casella \& Berger, Teorema 6.2.6.
+\end{frame}
+
+\begin{frame}{O TF em ação}
+\begin{itemize}
+ \item Poisson;
+ \item $f(x\mid\theta) = \theta x^{\theta-1}$, $x \in (0, 1)$ e $\theta > 0$;
+ \item Normal;
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Suficiência conjunta}
+
+O que acontece, por exemplo, no caso Normal com $\mu$ e $\sigma^2$ desconhecidos?
+
+ \begin{defn}[Suficiência conjunta]
+  \label{def:jointly_sufficient}
+  Dizemos que  um conjunto de estatísticas $\boldsymbol{T} = \{T_1, \ldots, T_k \}$ é~\textbf{suficiente} (conjuntamente) se que a distribuição condicional conjunta de $\rs$ dado $T_1 = t_1, \ldots, T_k = t_k$ não depende de $\theta$.  
+ \end{defn}
+ \begin{obs}[TF para estatísticas suficientes conjuntas]
+  Para o caso de estatísticas suficientes conjuntas, vale um Teorema da fatorização:
+  \begin{equation*}
+ f_n(\boldsymbol{x} \mid \theta) = u(\boldsymbol{x}) v[r_1(\boldsymbol{x}), \ldots, r_k(\boldsymbol{x}), \theta].
+\end{equation*}
+ \end{obs}
+
+\end{frame}
+
+\begin{frame}{Suficiência conjunta -- exemplos}
+ \begin{itemize}
+  \item Normal;
+  \item Uniforme;
+ \end{itemize}
+
+  \begin{obs}[Transformações biunívocas de estatísticas suficientes]
+    Se $\boldsymbol{T} =  \{T_1, \ldots, T_k \}$ são estatísticas suficientes conjuntas, e $h : \mathcal{T} \to \mathbb{R}$ é um mapa inversível, então $\boldsymbol{T^\prime} = h(\boldsymbol{T})$ também são suficientes conjuntas. 
+ \end{obs}
+\end{frame}
+
+\begin{frame}{Suficiência mínima -- motivação}
+Primeiro um exemplo motivador:
+\begin{defn}[Estatísticas de ordem]
+ \label{def:order_statistics}
+Seja $\boldsymbol{X} = \rs$ uma amostra aleatória.
+Dizemos que $Y_1, Y_2, \ldots, Y_n$ são~\textbf{estatísticas de ordem} se $Y_1$ é o menor valor de $\boldsymbol{X}$, $Y_5$ é o quinto menor valor e assim por diante.
+\end{defn}
+\begin{theo}[Estatísticas de ordem são suficientes conjuntas]
+Seja $\rs$ uma amostra aleatória com f.d.p/f.m.p. $f(x\mid\theta)$.
+As estatísticas de ordem $Y_1, Y_2, \ldots, Y_n$ são suficientes conjuntas para $\theta$.
+\end{theo}
+\textbf{Prova:} Usar o fato de que a conjunta é o produto das marginais e a comutatividade da multiplicação em $\mathbb{R}$. 
+\end{frame}
+
+\begin{frame}{Suficiência mínima}
+\begin{defn}
+ \label{def:minimal_sufficiency}
+ Uma estatística $T$ é dita~\textbf{mínima suficiente} se $T$ é suficiente e é função de qualquer outra estatística suficiente.
+ Um vetor $\boldsymbol{T} =  \{T_1, \ldots, T_k \}$ é dito~\textbf{minimamente suficiente conjunto} se é função de qualquer outro vetor de estatísticas suficientes conjuntas.
+\end{defn}
+\begin{obs}[Estatísticas de ordem são minimamente suficiente conjuntas no caso Cauchy]
+ \begin{equation}
+  f_n(\boldsymbol{x} \mid \theta) = \frac{1}{\pi^n \prod_{i=1}^n\left[1 + (x_i-\theta)^2\right]}
+ \end{equation}
+\end{obs}
+\end{frame}
+
+\begin{frame}{EMV e Bayes como estatísticas minimamente suficientes}
+ \begin{theo}
+  Se a função de verossimilhança admite fatorização como no Teorema~\ref{thm:factorisation}, os  estimadores de Bayes e de máxima verossimilhança são estatísticas minimamente suficientes.
+ \end{theo}
+\textbf{Prova:}
+\begin{itemize}
+ \item EMV: notar que $f_x(\boldsymbol{x} \mid \theta) \propto v[r(\boldsymbol{x}), \theta]$;
+ \item Bayes: escrever a perda esperada~\text{a posteriori} explicitamente usando a verossimilhança na forma do TF.
+\end{itemize}
+Ver Teoremas 7.8.3 e 7.8.4 de De Groot.
+\end{frame}
+
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+  \item[\faLightbulbO] Estatística suficiente;
+    
+    ``Uma estatística $T$ é suficiente para $\theta$ se $\pr(\boldsymbol{X} = \boldsymbol{x} \mid T = x, \theta)$ não depende de $\theta$.''
+    
+   \item[\faLightbulbO] Teorema da fatorização;
+   
+   ``Se $T$ é suficiente para $\theta$, podemos escrever a verossimilhança como o produto entre uma função que não depende de $\theta$ e uma função que só depende de $\boldsymbol{X}$ através de $T$.'' 
+   
+     \item[\faLightbulbO] Os estimadores de Bayes e de máxima verossimilhança são minimamente suficientes.   
+    
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seções 7.7 e 7.8;
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
+%  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot.
+  \begin{itemize}
+   \item Seção 7.7: exercícios 4, 7, 13, 16;
+   \item Seção 7.8: exercícios 3, 8, 12, 16.
+  \end{itemize}   
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
