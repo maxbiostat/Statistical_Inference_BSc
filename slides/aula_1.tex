@@ -68,9 +68,9 @@ Ver De Groot, página 349, Teorema 6.2.2 $\qed$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{A média amostral}
-Considere uma~\textbf{amostra aleatória} $X_1, X_2, \ldots, X_n$, $n \in \mathbb{N}$ de variáveis aleatórias de uma mesma distribuição com média $E[X_i] = \mu$ e variância $\vr(X_i) = \sigma^2$.
-\begin{defn}
- \textbf{Média amostral}. A média amostral de $X_1, X_2, \ldots, X_n$ é
+Considere uma~\textbf{amostra aleatória} $\rs$, $n \in \mathbb{N}$ de variáveis aleatórias de uma mesma distribuição com média $E[X_i] = \mu$ e variância $\vr(X_i) = \sigma^2$.
+\begin{defn}[\textbf{Média amostral}]
+ A média amostral de $\rs$ é
  \begin{equation}
   \label{eq:sample_mean}
   \bar{X}_n := \frac{1}{n} \sum_{i = 1}^n X_i.
@@ -79,7 +79,7 @@ Considere uma~\textbf{amostra aleatória} $X_1, X_2, \ldots, X_n$, $n \in \mathb
 
 \begin{theo}
 \label{thm:iid_properties}
-Sejam  $X_1, X_2, \ldots, X_n$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
 Temos que (i) $E[\bar{X}_n] = \mu$ e (ii) $\vr(\bar{X}_n) = \frac{\sigma^2}{n}$.
 \end{theo}
 \textbf{Prova:} Para (i), usar a linearidade da esperança e o fato de as variáveis serem identicamente distribuídas -- note a falta de menção à independência.
@@ -145,9 +145,8 @@ Por outro lado, a desigualdade é válida para~\underline{qualquer} variável al
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Convergência}
-\begin{defn}
+\begin{defn}[\textbf{Convergência em probabilidade}]
 \label{defn:weak_convergence}
-\textbf{Convergência em probabilidade}.
 Dizemos que uma sequência de variáveis aleatórias~\textit{converge em probabilidade} para $b$ se, para todo $\epsilon > 0$, temos
 \begin{equation}
  \nonumber
@@ -159,12 +158,10 @@ Em algumas situações, chamamos a convergência em probabilidade de convergênc
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lei(s) dos Grandes Números (LGN)}
-
 A lei fraca dos grandes números é um resultado fundamental da Teoria de Probabilidade, extremamente útil em Estatística.
-\begin{theo}
+\begin{theo}[\textbf{Lei Fraca dos Grandes Números}]
 \label{thm:WLLN}
-\textbf{Lei Fraca dos Grandes Números}.
-Sejam  $X_1, X_2, \ldots, X_n$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
  Então
  $$ \bar{X}_n \xrightarrow{\text{p}} \mu.$$
 \end{theo}
@@ -179,6 +176,7 @@ $$ \lim_{n\to\infty} \pr\left( |\bar{X}_n - \mu| < \epsilon\right) = 1. \: \qed$
 $X_1, \ldots, X_n \sim \operatorname{Beta}(3, 2)$.
 $E[X] = \alpha / (\alpha + \beta) = 3/5$.
 \begin{figure}[!ht]
+\label{fig:beta_LGN}
 \begin{center}
 \includegraphics[scale=0.35]{figures/beta_3_2_LGN.pdf} 
 \end{center} 
@@ -186,18 +184,16 @@ $E[X] = \alpha / (\alpha + \beta) = 3/5$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Comentário: Lei Forte dos Grandes Números}
-\begin{defn}
+\begin{defn}[ \textbf{Convergência quase certa}]
  \label{dfn:as_convergence}
- \textbf{Convergência quase certa}.
 Dizemos que uma sequência de variáveis aleatórias $\left(Z_n\right)_{n\geq 1}$~\textit{converge quase certamente} para $b$ se
 $$\pr\left(\lim_{n\to \infty} Z_n = b\right) = 1.$$
 \end{defn}
 Esse modo de convergência é por vezes chamado de convergência forte.
 \textbf{Observação}: convergência quase certa implica convergência em probabilidade.
- \begin{theo}
+ \begin{theo}[\textbf{Lei forte dos grandes números}]
   \label{thm:SLLN}
-  \textbf{Lei forte dos grandes números}.
- Sejam  $X_1, X_2, \ldots $ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$.
+   Sejam  $X_1, X_2, \ldots $ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$.
  Então
  $$\pr\left(\lim_{n\to \infty} \bar{X}_n = \mu \right) = 1.$$
  \end{theo}
@@ -205,10 +201,9 @@ Esse modo de convergência é por vezes chamado de convergência forte.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]{Teorema(s) Central(is) do Limite}
 O Teorema Central do Limite um dos resultados mais importantes da Estatística.
-\begin{theo}
+\begin{theo}[\textbf{Teorema Central do Limite} (Lindeberg e Lévy)\footnote{Jarl Waldemar Lindeberg (1876--1932) e Paul Pierre Lévy (1886--1971).}]
  \label{thm:CLT_LindebergLevy}
-\textbf{Teorema Central do Limite} (Lindeberg e Lévy)\footnote{Jarl Waldemar Lindeberg (1876--1932) e Paul Pierre Lévy (1886--1971).}.
-Sejam  $X_1, X_2, \ldots, X_n$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
 Então, para cada $x$, temos
 $$ \lim_{n\to\infty} \pr\left( \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \leq x \right) = \Phi(x), $$
 onde 
