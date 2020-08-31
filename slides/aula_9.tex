@@ -1,0 +1,121 @@
+\section*{Erro quadrático médio e Rao-Blackwell}
+\begin{frame}{EQM e Rao-Blackwell}
+
+Como avaliar um estimador?
+
+\begin{defn}[Notação conveniente]
+Para as próximas computações, é conveniente definir
+Para $g : \mathcal{X}^n \to \mathbb{R}$, escrevemos
+\[ E_{\theta} [g] = \int_{\mathcal{X}} \cdots \int_{\mathcal{X}} g(\bx)f_n(\bx \mid \theta)\, dx_1\cdots\,dx_n = \int_{\mathcal{X}} g(\bx)f_n(\bx \mid \theta) \,d\bx. \] 
+\end{defn}
+
+Agora podemos definir o~\textbf{erro quadrático médio} (EQM) de um estimador $\delta(\bX)$:
+\begin{defn}[Erro quadrático médio]
+ \label{def:MSE}
+ \begin{equation*}
+  R(\theta, \delta) := E_{\theta} \left[\left\{\delta(\bX) - \theta\right\}^2\right].
+ \end{equation*}
+\end{defn} 
+\end{frame}
+
+\begin{frame}{Condicionando em uma estatística suficiente}
+ Seja $\bT$ uma estatística suficiente.
+ Podemos definir o seguinte estimador
+ \begin{defn}[Estimador condicionado]
+ \begin{equation*}
+ \label{def:conditioned_estimator}
+  \delta_0(\bT) := E_{\theta} \left[ \delta(\bX) \mid \bT \right].
+ \end{equation*}  
+ \end{defn}
+ Como $\bT$ é suficiente, podemos escrever, simplesmente,
+  \begin{equation*}
+  \delta_0(\bT) = E \left[ \delta(\bX) \mid \bT \right].
+ \end{equation*}  
+\end{frame}
+
+\begin{frame}{O Teorema de Rao-Blackwell}
+ Com essas definições em mãos, estamos preparados para enunciar um dos teoremas mais importantes da Estatística:
+ \begin{theo}[Teorema de Rao-Blackwell\footnote{O estatístico indo-estadunidense Calyampudi Radhakrishna Rao (1920-) e o estatístico estadunidense David Harold Blackwell (1919-2010) provaram o resultado independentemente no final dos anos 1940.}]
+  \label{thm:Rao-Blackwell}
+  Seja $\delta(\bX)$ um estimador, $\bT$ uma estatística suficiente para $\theta$ e seja $\delta_0(\bT)$ como na definição~\ref{def:conditioned_estimator}. 
+  Então vale que
+  \begin{equation*}
+   R(\theta, \delta_0) \leq R(\theta, \delta).
+  \end{equation*}
+ \end{theo}
+\end{frame}
+
+\begin{frame}{Prova do TRB}
+ Primeiro, notemos que, para qualquer função $g$ e variáveis aleatórias $X$ e $Y$, valem os seguintes fatos:
+ \begin{itemize}
+  \item $\left(E[g(X) \mid Y] \right)^2 \leq E\left[\{g(X) \mid Y\}^2\right]$ (rearranjando a expressão da variância);
+  \item $E[E[X\mid Y]] = E[X]$ (lei da esperança total).
+ \end{itemize}
+
+ Fazendo $g(X) = \left( \delta(\bX)-\theta\right)^2$, obtemos
+ \begin{equation}
+ \label{eq:RB_ineq1}
+  \left(E_{\theta}\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 \leq E_{\theta}\left[\left( \delta(\bX) - \theta \right) \mid \bT \right]
+ \end{equation}
+Note que $\left(E_{\theta}\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 = \left[\delta_0(\bT) -\theta \right]^2$.
+Agora, tomamos esperanças nos dois lados de~(\ref{eq:RB_ineq1}) para obter:
+\begin{align*}
+  R(\theta, \delta_0) &= E_{\theta}\left[ \left(\delta_0(\bT) -\theta \right)^2 \right] \leq E_{\theta}\left\{E_{\theta}\left[\left( \delta(\bX) - \theta \right) \mid \bT \right]\right\} \\
+  &= E_{\theta}\left[ \left\{\delta(\bX) -\theta \right\}^2 \right] = R(\theta, \delta). \qed
+\end{align*}
+\end{frame}
+
+\begin{frame}{Admissibilidade}
+O conceito de admissibilidade diz respeito à relação entre estimadores.
+\begin{defn}[Admissibilidade]
+ \label{def:admissibility}
+ Um estimador $\delta$ é dito~\textbf{inadmissível} se existe outro estimador $\delta_0$ tal que $R(\theta, \delta_0) \leq R(\theta, \delta)$ para todo $\theta \in \Omega$ e existe $\theta^\prime \in \Omega$ tal que $R(\theta^\prime, \delta_0) < R(\theta^\prime, \delta)$.
+ Nesse caso, dizemos que $\delta_0$~\textit{domina} $\delta$.
+ O estimador $\delta_0$ é~\textbf{admissível} se (e somente se) não há nenhum estimador que o domine.
+\end{defn}
+
+\begin{obs}[Estimadores admissíveis e o Teorema de Rao-Blackwell]
+ O Teorema de Rao-Blackwell diz que todo estimador condicionado em uma estatística suficiente é admissível.
+\end{obs}
+
+\begin{exemplo}[Estimadores no caso normal]
+\begin{itemize}
+ \item Estimando $\mu$ através da mediana amostral;
+ \item Estimando $\sqrt{\sigma^2}$.
+\end{itemize}
+\end{exemplo}
+
+\end{frame}
+
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+
+  \item[\faLightbulbO] Teorema de Rao-Blackwell;    
+  
+    ``Quando $\bT$ é uma estatística suficiente, todo estimador condicionado em $\bT$ tem menor EQM''
+    
+ \item[\faLightbulbO] Estimador admissível;
+ 
+  ``Um estimador é admissível quando domina todos os outros estimadores ''
+
+ \item[\faLightbulbO] Caso normal;
+ 
+  ``No caso normal, qualquer estimador de $\mu$ que não seja função de $\bar{X}_n$ é inadmissível.
+  O mesmo vale para qualquer estimador de $\sqrt{\sigma^2}$ que não seja função de $\sum_{i=1}^n X_i$ e $\sum_{i=1}^n X_i^2$.''
+ 
+ 
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot, seção 7.9;
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 7.3.
+ \item[\faBook] $^\ast$ Schervish (1995),  Teorema 3.20.
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot, Seção 7.9: exercícios 2, 3, 6 e 10.
+  \end{itemize}
+ \end{itemize} 
+\end{frame}

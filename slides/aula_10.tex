@@ -1,0 +1,60 @@
+\section{Viés}
+\begin{frame}{Viés}
+ Em Estatística, a palavra viés tem um significado preciso e tem a ver com a esperança da distribuição de um estimador.
+ \begin{defn}[Estimador não-viesado]
+  \label{def:biased_estimator}
+  Um estimador $\delta(\bX)$ de uma função $g(\theta)$ é dito~\textbf{não-viesado} se $E_{\theta}[\delta(\bX)] = g(\theta)$ para todo $\theta \in \Omega$.
+  Um estimador que não atende a essa condição é dito~\textit{viesado}.
+  O~\textbf{viés} de $\delta$ é definido como $B_\delta(\theta) := E_{\theta}[\delta(\bX)] - g(\theta)$.
+ \end{defn}
+ \begin{exemplo}[Tempos de falha de lâmpadas]
+ Lembremos do exemplo das lâmpadas da fábrica de Astolfo. 
+ Neste caso, não é difícil mostrar que $E[\hat{\theta}_{\text{EMV}}] = \frac{n}{n-1} \theta = 3\theta/2$.
+ Desta forma, o viés do EMV é $B_{\hat{\theta}_{\text{EMV}}}(\theta) = 3\theta/2 -\theta = \theta/2$.
+ É possível encontrar $\delta(\bX)$ não-viesado? Esse estimador é bom?
+ \end{exemplo}
+
+\end{frame}
+
+\begin{frame}{Estimadores não-viesados sempre?}
+Quando avaliamos estimadores, o erro quadrático médio e o viés são alguns~\textit{aspectos} a serem considerados, mas há um compromisso (\textit{trade-off}) entre eles, de certa forma.
+ \begin{obs}[Erro quadrático, variância e viés]
+  \label{rmk:bias_variance_mse}
+  \begin{equation*}
+   R(\theta, \delta) = \vr_\theta(\delta) + \left[B_\delta(\theta)\right]^2.
+  \end{equation*}
+ \end{obs}
+ 
+ No exemplo das lâmpadas, é possível mostrar que $\delta_2(\bX) = 1/S$ tem o menor EQM, mas tem viés $B_{\delta_2}(\theta) = \frac{n-2}{n-1}\theta = \theta/2$, assim como o EMV.
+
+\end{frame}
+
+\begin{frame}{Estimador não-viesado da variância}
+A variância amostral como a temos definido até aqui é viesada. 
+Uma pequena modificação leva a um estimador não viesado da variância.
+\begin{theo}[Estimador não-viesado da variância]
+ Seja $\bX = \{ \rs \}$ uma amostra aleatória, com $E[X_1] = m$ e $\vr(X_1) = v < \infty$.
+ Então
+ \begin{equation*}
+  \delta_1(\bX) = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \bar{X}_n \right)^2
+ \end{equation*}
+é um estimador não-viesado de $v$.
+\end{theo}
+\textbf{Prova:} usar a igualdade
+$$ \sum_{i=1}^n \left(X_i - m \right)^2 = \sum_{i=1}^n \left(X_i - \bar{X}_n \right)^2 + n\left(\bar{X}_n - m \right)^2$$
+e usar a linearidade da esperança e o fato de que temos uma amostra aleatória.
+\end{frame}
+
+\begin{frame}{Nem tudo são flores}
+
+Não-viesamento é uma característica desejável, mas nem sempre um estimador não-viesado (i) existe ou (ii) é um bom estimador.
+
+\begin{itemize}
+ \item Não existência.
+ Exemplo: $\rs \sim \operatorname{Bernoulli}(p)$, estimador para $\sqrt{p}$?
+ 
+ \item Estimador não-viesado ruim: $X\sim \operatorname{Geometrica}(p)$.
+ Quais as propriedades do estimador não viesado $\delta(X)$?
+\end{itemize}
+\end{frame}
+
