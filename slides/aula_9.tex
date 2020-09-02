@@ -48,20 +48,23 @@ Agora podemos definir o~\textbf{erro quadrático médio} (EQM) de um estimador $
 \begin{frame}{Prova do TRB}
  Primeiro, notemos que, para qualquer função $g$ e variáveis aleatórias $X$ e $Y$, valem os seguintes fatos:
  \begin{itemize}
-  \item $\left(E[g(X) \mid Y] \right)^2 \leq E\left[\{g(X) \mid Y\}^2\right]$ (rearranjando a expressão da variância);
-  \item $E[E[X\mid Y]] = E[X]$ (lei da esperança total).
+  \item $\left(E[g(X) \mid Y] \right)^2 \leq E\left[\{g(X)\}^2 \mid Y\right]$;
+  
+  Desigualdade de Cauchy-Schwarz\footnote{Em homenagem ao matemático francês Augustin-Louis Cauchy (1789-1857) e ao matemático alemão Karl Hermann Amandus Schwarz (1843-1921).}, também obtida, nesse caso, rearranjando a expressão da variância.
+  
+  \item $E\left\{E[X\mid Y]\right\} = E[X]$ (lei da esperança total).
  \end{itemize}
 
  Fazendo $g(X) = \left( \delta(\bX)-\theta\right)^2$, obtemos
  \begin{equation}
  \label{eq:RB_ineq1}
-  \left(E_{\theta}\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 \leq E_{\theta}\left[\left( \delta(\bX) - \theta \right) \mid \bT \right]
+  \left(E\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 \leq E\left[\left( \delta(\bX) - \theta \right)^2 \mid \bT \right]
  \end{equation}
-Note que $\left(E_{\theta}\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 = \left[\delta_0(\bT) -\theta \right]^2$.
+Note que $\left(E\left[\delta(\bX) \mid \bT \right] -\theta \right)^2 = \left[\delta_0(\bT) -\theta \right]^2$.
 Agora, tomamos esperanças nos dois lados de~(\ref{eq:RB_ineq1}) para obter:
 \begin{align*}
-  R(\theta, \delta_0) &= E_{\theta}\left[ \left(\delta_0(\bT) -\theta \right)^2 \right] \leq E_{\theta}\left\{E_{\theta}\left[\left( \delta(\bX) - \theta \right) \mid \bT \right]\right\} \\
-  &= E_{\theta}\left[ \left\{\delta(\bX) -\theta \right\}^2 \right] = R(\theta, \delta). \qed
+  R(\theta, \delta_0) &= E\left[ \left(\delta_0(\bT) -\theta \right)^2 \right] \leq E\left\{E\left[\left\{ \delta(\bX) - \theta \right\}^2 \mid \bT \right]\right\} \\
+  &= E\left[ \left\{\delta(\bX) -\theta \right\}^2 \right] = R(\theta, \delta). \qed
 \end{align*}
 \end{frame}
 
