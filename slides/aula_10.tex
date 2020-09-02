@@ -54,7 +54,204 @@ Não-viesamento é uma característica desejável, mas nem sempre um estimador n
  Exemplo: $\rs \sim \operatorname{Bernoulli}(p)$, estimador para $\sqrt{p}$?
  
  \item Estimador não-viesado ruim: $X\sim \operatorname{Geometrica}(p)$.
- Quais as propriedades do estimador não viesado $\delta(X)$?
+ Quais as propriedades do estimador não viesado, $\delta(X)$?
 \end{itemize}
+\end{frame}
+
+
+\section{Eficiência}
+
+\begin{frame}{Escolhendo entre desenhos amostrais}
+\begin{exemplo}[Estudando chegada de clientes]
+ Exemplo 8.8.1 em DeGroot.
+ Suponha que Palmirinha esteja interessada em estudar quantos clientes chegam à sua loja de pamonha num  determinado intervalo.
+ Para isso, ela vai modelar o fenômeno como um processo de Poisson:
+ $$ Y(\Delta_t) \sim\operatorname{Poisson}(\theta\Delta_t),$$
+ isto é, o número $Y$ de clientes num intervalo de tempo $\Delta_t$ tem distribuição Poisson com média $\theta\Delta_t$.
+ Palmirinha pode
+ \begin{itemize}
+  \item Fixar um número $n$ de clientes a serem observados e marcar o tempo, $X$ que leva para chegarem $n$ clientes ou;
+  \item Fixar um determinado intervalo de tempo, $t$, e contar o número $Y$ de clientes que chegam neste intervalo.
+ \end{itemize}
+\textbf{Pergunta:} qual desenho é melhor para estimar $\theta$?
+\end{exemplo}
+\end{frame}
+
+
+\begin{frame}{Informação de Fisher}
+Como medir a quantidade de informação (sobre um parâmetro $\theta$) contida em uma amostra aleatória?
+A (matriz de) informação de Fisher oferece a resposta.
+\begin{defn}
+ \label{def:Fisher_information}
+ Seja $X$ uma variável aleatória com f.d.p/f.m.p. $f(x\mid\theta)$, $\theta \in \Omega \subseteq \mathbb{R}$.
+ Suponha que $f(x\mid\theta)$ é duas vezes diferenciável com respeito a $\theta$.
+ Defina $\lambda(x\mid \theta) = \log f(x\mid\theta)$ e 
+ \begin{equation}
+  \lambda^\prime(x\mid \theta) = \frac{\partial \lambda(x\mid \theta)}{\partial \theta}\quad\text{e}\quad \lambda^{\prime\prime}(x\mid \theta) = \frac{\partial^2 \lambda(x\mid \theta)}{\partial \theta^2}.
+ \end{equation}
+Definimos a~\textbf{informação de Fisher} como
+\begin{equation}
+ \label{eq:Fisher_information}
+ I(\theta) = E_\theta\left[\{\lambda^{\prime\prime}(x\mid \theta)\}^2\right] \stackrel{\text{(1)}}{=} -E_\theta\left[\lambda^{\prime\prime}(x\mid \theta)\right] = \vr_\theta\left(\lambda^{\prime}(x\mid \theta) \right).
+\end{equation}
+\end{defn}
+\textbf{Prova de $\stackrel{\text{(1)}}{=}$}: diferenciar sob o sinal da integral e usar a regra da cadeia.
+\end{frame}
+
+\begin{frame}{Informação de Fisher: exemplos}
+ \begin{itemize}
+  \item Bernoulli;
+  \item Normal;
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Informação de Fisher: exemplos}
+ \begin{itemize}
+  \item Bernoulli;
+  \begin{equation*}
+   I(p) = \frac{1}{p(1-p)}.
+  \end{equation*}
+  
+  \item Normal;
+  
+  \begin{equation*}
+  I(\mu) = \frac{1}{\sigma^2}.
+  \end{equation*}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Informação de Fisher de uma amostra aleatória}
+
+\begin{theo}
+ \label{thm:Fisher_information_random_sample}
+ Seja $\bX = \{ \rs \}$ uma amostra aleatória e seja $I_n(\theta) = E_\theta \left[-\lambda_n^{\prime\prime}(\bX \mid \theta) \right]$ a informação de Fisher da amostra.
+ Então
+ \begin{equation*}
+  I_n(\theta) = nI(\theta).
+ \end{equation*} 
+\end{theo}
+\textbf{Prova:} Usar as propriedades do $\log$, da derivada e a lei de esperanças.
+Ver De Groot, Teorema 8.8.2.
+\end{frame}
+
+\begin{frame}{Voltando ao dilema de Palmirinha}
+Podemos usar a informação de Fisher para analisar os desenhos propostos por Palmirinha.
+Não é difícil derivar
+\begin{equation*}
+ I_X(\theta) = \frac{n}{\theta^2}\quad\text{e}\quad I_Y(\theta) = \frac{t}{\theta}.
+\end{equation*}
+Portanto, os desenhos são equivalentes se $n = t\theta$, o que não ajuda muito, já que $\theta$ é desconhecido.
+Por outro lado, vemos que neste caso não é possível decidir entre os desenhos baseado apenas na informação de Fisher.
+
+\textbf{Extra:} faça uma análise Bayesiana deste problema, derivando a esperança~\textit{a priori} da informação de Fisher sob os dois desenhos.
+ \end{frame}
+
+ \begin{frame}{O Teorema de Crámer-Rao}
+Outro uso importante da informação de Fisher é encontrar uma cota inferior para a variância de um estimador.
+Para isso, empregamos um dos resultados mais importantes da Estatística:
+\begin{theo}[Teorema de Crámer-Rao\footnote{Em homenagem ao estatístico indo-estadunidense Calyampudi Radhakrishna Rao (1920-) e ao matemático sueco Harald Cramér (1893--1985).}]
+ \label{thm:Cramer_Rao_theorem}
+ Seja $\bX = \{ \rs \}$ uma amostra aleatória com f.d.p./f.m.p $f(x\mid\theta)$, com as mesmas premissas da definição~\ref{def:Fisher_information}.
+ Suponha que $T = r(\bX)$ é uma estatística com variância finita.
+ Seja $m(\theta) = E_\theta(T)$ uma função diferenciável de $\theta$.
+ Então,
+ \begin{equation}
+  \label{eq:Cramer_Rao_theorem}
+  \vr_\theta(T) \geq \frac{\left[m^\prime(\theta)\right]^2}{nI(\theta)},
+ \end{equation}
+ com igualdade apenas se existem $u$ e $v$ tal que 
+ \[ T = u(\theta)\lambda_n^\prime(\bX \mid \theta) + v(\theta). \]
+\end{theo}
+\textbf{Prova:} Usar Cauchy-Schwarz e diferenciar sob o sinal da integral.
+\end{frame}
+
+\begin{frame}{Um corolário útil}
+Se $T$ é um estimador não-viesado, temos uma expressão útil para a cota de Crámer-Rao.
+\begin{obs}[Variância de uma estimador não-viesado]
+ Se $T$ é um estimador não-viesado de $\theta$, temos
+ \begin{equation*}
+  \vr_\theta(T) \geq \frac{1}{nI(\theta)}
+ \end{equation*}
+\end{obs}
+\textbf{Prova:} $T$ é não viesado $\implies$ $m(\theta) = \theta$ $\implies$ $m^\prime(\theta) = 1\: \forall\: \theta \in \Omega \qed$
+\end{frame}
+
+
+\begin{frame}{Eficiência}
+Com esse Teorema de Crámer-Rao em mãos, estamos em posição de definir um critério de otimalidade para estimadores.
+\begin{defn}[Estimador eficiente]
+ \label{def:efficient_estimator}
+ Um estimador $\delta(\bX)$ é dito~\textbf{eficiente} de (sua esperança) $m(\theta)$ se 
+ \begin{equation*}
+    \vr_\theta(\delta) = \frac{\left[m^\prime(\theta)\right]^2}{nI(\theta)}.
+ \end{equation*}
+\end{defn}
+
+\begin{exemplo}
+ Seja $\rs$ uma amostra aleatória de uma distribuição Poisson com parâmetro $\theta$.
+ Podemos mostrar que $\bar{X}_n$ é um estimador eficiente de $\theta$.
+\end{exemplo}
+\end{frame}
+
+\begin{frame}{Distribuição assintótica de um estimador eficiente}
+Podemos usar o TCL para estudar a distribuição assintótica de um estimador eficiente.
+\begin{theo}[Distribuição assintótica de um estimador eficiente]
+ Assumindo as condições de regularidade usuais, considere $\delta$ um estimador eficiente de $m(\theta)$.
+ Assuma também que $m^\prime(\theta) \neq 0\: \forall\: \theta \in \Omega$.
+ Então a distribuição assintótica de 
+ \[\frac{\sqrt{nI(\theta)}}{m^\prime(\theta)} \left[ \delta - m(\theta) \right] \]
+ é normal padrão.
+ 
+\end{theo}
+\textbf{Prova:} Ver De Groot, Teorema 8.8.4.
+Escrever $E_\theta[\delta]$ e $\vr_\theta(\delta)$ explicitamente, usar a condição $\delta = u(\theta)\lambda_n^\prime(\bX \mid \theta) + v(\theta)$, e aplicar as leis de esperanças e variâncias. 
+
+\begin{obs}[Normalidade Assintótica do EMV]
+ Supondo que o EMV possa ser derivado ao resolver a equação $\lambda_n^\prime(\bX \mid \theta) = 0$ e que $\lambda_n^{\prime\prime}(\bX \mid \theta)$ e $\lambda_n^{\prime\prime\prime}(\bX \mid \theta)$ satisfazem certas condições técnicas, $\sqrt{nI(\theta)} \left(\hat{\theta}_{\text{EMV}}-\theta\right)^2$ tem distribuição aproximadamente normal padrão.
+\end{obs}
+
+\end{frame}
+
+
+
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+  \item[\faLightbulbO] Viés;
+    
+    ``Um estimador viesado é aquele cuja esperança não coincide com a função estimada''
+    
+   \item[\faLightbulbO] Informação de Fisher;
+   
+   ``A informação de Fisher é uma quantidade derivada de uma distribuição que mede a quantidade de informação contida em uma amostra aleatória advinda desta distribuição''
+   
+    \item[\faLightbulbO] Crámer-Rao;
+    
+    ``A desigualdade de Crámer-Rao dá uma cota inferior para a variância de um estimador''    
+    
+    \item[\faLightbulbO] Distribuição assintótica de estimadores eficientes (e EMV);
+    
+    ``Sob condições de regularidade, vale um TCL para estimadores eficientes e para o EMV''    
+    
+   
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seções 8.7 e 8.8;
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 7.3.
+ \item[\faBook] $^\ast$ Schervish (1995), Teorema  5.13.
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot.
+  \begin{itemize}
+   \item Seção 8.7: exercícios 4, 6, 11 e 13;
+   \item Seção 8.8: exercícios 5, 7 e 10.
+  \end{itemize}   
+  \end{itemize}
+ \end{itemize} 
 \end{frame}
 
