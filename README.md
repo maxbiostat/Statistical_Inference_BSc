@@ -37,3 +37,7 @@ Já este [artigo](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/m
 
 - Uma demonstração da consistência da EMV pode ser encontrada na seção 4 [deste](http://www.stat.cmu.edu/~larry/=stat705/Lecture9.pdf) documento. 
 A nota contém ainda vários resultados interessantes sobre teoria assintótica.
+
+**Aula  8 - Suficiência**
+
+- A [história épica do EMV](https://www.ime.usp.br/~abe/lista/pdfW987Cm4f2K.pdf) fala sobre o tópico da aula 6 assim como o resultado de suficiência do EMV.
