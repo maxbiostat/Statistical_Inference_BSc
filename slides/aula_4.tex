@@ -59,7 +59,7 @@ Isto é, uma família de prioris é conjugada para uma determinada verossimilhan
   Suponha que a distribuição~\textit{a priori} para $\theta$ é uma distribuição Gama com parâmetros $\alpha >0$ e $\beta > 0$.
   Então
   \begin{equation}
-   \xi(\theta \mid \boldsymbol{x}) = \frac{ (\beta + n)^{\alpha + S} }{\Gamma(\alpha + S)} \theta^{\beta + n-1} e^{-(\alpha + S)\theta},
+   \xi(\theta \mid \boldsymbol{x}) = \frac{ (\beta + n)^{\alpha + S} }{\Gamma(\alpha + S)} \theta^{\alpha+S-1} e^{-(\beta+n)\theta},
   \end{equation}
   onde $S = \sum_{i=1}^n x_i$.
  \end{theo}
