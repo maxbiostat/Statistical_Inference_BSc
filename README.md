@@ -6,6 +6,7 @@ Course materials for Statistical Inference ("Inferência Estatística")
 **Miscelânea**
 
 - [Este](https://stat.uiowa.edu/sites/stat.uiowa.edu/files/cae/Lo_Expectation.pdf) artigo apresenta o resultado `E[X] = int_0^inf Pr(X > x)dx`, chamado em inglês de "tail formula for the expectation".
+- Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
 
 
 **Aula 1 - Revisão de probabilidade:**
