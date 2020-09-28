@@ -3,6 +3,11 @@ Course materials for Statistical Inference ("Inferência Estatística")
 
 ### Leituras adicionais
 
+**Miscelânea**
+
+- [Este](https://stat.uiowa.edu/sites/stat.uiowa.edu/files/cae/Lo_Expectation.pdf) artigo apresenta o resultado `E[X] = int_0^inf Pr(X > x)dx`, chamado em inglês de "tail formula for the expectation".
+
+
 **Aula 1 - Revisão de probabilidade:**
 
 - Esta [apostila](https://sites.google.com/site/probfgv/Livro_probabilidade.pdf?attredirects=0) tem material relevante para quem precisa revisar alguns conceitos. 
@@ -41,3 +46,7 @@ A nota contém ainda vários resultados interessantes sobre teoria assintótica.
 **Aula  8 - Suficiência**
 
 - A [história épica do EMV](https://www.ime.usp.br/~abe/lista/pdfW987Cm4f2K.pdf) fala sobre o tópico da aula 6 assim como o resultado de suficiência do EMV.
+
+**Aula 9 - Rao-Blackwell e admissibilidade**
+
+- O artigo referenciado na seção 8.7.6 de DeGroot e tópico da questão bônus da A12020 é [este](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/content/pdf/10.1007/BF02868569.pdf&casa_token=06U6kaM0_dkAAAAA:zGbdUZ6Zr0CBkpomi8nqnu_zL2PN907WvgfWZlTZxNx90z3L3BpVIZAbJELosJhCzPrdY-iDbOFBltpq) aqui. 
