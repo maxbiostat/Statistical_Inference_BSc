@@ -1,0 +1,98 @@
+\section{Intervalos de confiança}
+\begin{frame}{Intervalos de confiança}
+ \begin{itemize}
+  \item Intervalos de confiança;
+  \item Caso normal: média;
+  \item Intervalos de confiança unilaterais;
+  \item Estatística pivotal.  
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Intervalo de confiança para a média no caso Normal}
+ Lembremos que 
+ \begin{equation}
+ U = \frac{\sqrt{n}(\Sm-\mu)}{\sqrt{\frac{\Delta^2}{n-1}}} \sim\operatorname{T}(n-1).
+\end{equation}
+Para $c>0$, podemos computar $\pr(-c < U < c) = \gamma$:
+\begin{align*}
+ &\pr\left(-c < \frac{\sqrt{n}(\Sm-\mu)}{\sqrt{\frac{\Delta^2}{n-1}}} < c\right) = \gamma,\\
+ &\pr\left( \Sm - \frac{c\sigma^\prime}{\sqrt{n}} < \mu <  \Sm + \frac{c\sigma^\prime}{\sqrt{n}}\right) = \gamma,\\
+ &T_{n-1}(c) - T_{n-1}(-c) = 2T_{n-1}(c) - 1 = \gamma.
+\end{align*}
+Concluímos que $c = F_T^{-1}\left(\frac{1 + \gamma}{2}; n-1\right)$.
+\end{frame}
+
+\begin{frame}{Definição de intervalo de confiança}
+ O conceito de~\textbf{intervalo de confiança} é fundamental em Estatística e nas aplicações em Ciência.
+ \begin{defn}[Intervalo de confiança]
+  Seja $\bX = \{ \rs \}$ uma amostra aleatória, cada variável aleatória com p.d.f. $f(x\mid \theta)$, e considere uma função real $g(\theta)$.
+  Sejam $A(\bX)$ e $B(\bX)$ duas estatísticas de modo que valha
+  \begin{equation}
+   \label{eq:confidence_interval}
+   \pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} \geq \gamma.
+  \end{equation}
+Dizemos que $I(\bX) = (A(\bX), B(\bX))$ é um~\textbf{intervalo de confiança} de $100\gamma\%$ para $g(\theta)$.
+Se a desigualdade for uma igualdade para todo $\theta \in \Omega$, dizemos que o intervalo é~\textbf{exato}.
+ \end{defn}
+\end{frame}
+
+\begin{frame}{Revisitando o caso Normal}
+No caso do intervalo de confiança para o parâmetro de média, temos 
+$$\pr\left\{A(\bX) < g(\mu) <  B(\bX)\right\} \geq \gamma,$$
+com $g(\mu) = \mu$  e 
+\begin{align*}
+ A(\bX) &= \Sm - \frac{c\sigma^\prime}{\sqrt{n}} = \Sm - \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}},\\
+ B(\bX) &= \Sm + \frac{c\sigma^\prime}{\sqrt{n}} = \Sm + \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}}.
+\end{align*}
+\end{frame}
+
+\begin{frame}{Interpretação de um intervalo de confiança}
+ \textbf{ATENÇÃO:} a interpretação de um intervalo é crucial.
+ Muita gente confunde o que um intervalo de confiança significa!
+ \begin{obs}[Um intervalo de confiança não é uma afirmação sobre o(s) parâmetro(s)!]
+  A afirmação probabilística da forma $\pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} = \gamma$ diz respeito à distribuição conjunta das variáveis aleatórias  $A(\bX)$ e $B(\bX)$ para um valor fixo de $\theta$ -- e, portanto, de $g(\theta)$.
+ \end{obs}
+ 
+ \begin{ideia}[Intervalos de confiança são procedimentos] 
+ Como de costume na teoria ortodoxa (frequentista), o foco da construção de um intervalo confiança está em dar garantias probabilísticas~\textbf{com relação à \underline{distribuição dos dados}}.
+ Dizer que $\pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} = \gamma$ é dizer que, se eu gerasse $M$ grande amostras aleatórias $\bX^{(1)}, \bX^{(2)}, \ldots, \bX^{(M)}$ de tamanho $n$ e construisse $M$ intervalos $I(\bX^{(1)}), I(\bX^{(2)}), \ldots, I(\bX^{(M)})$, eu esperaria encontrar:
+ \begin{equation*}
+  \frac{1}{M}\sum_{i=1}^M \mathbb{I}\left(g(\theta) \in I(\bX^{(1)}) \right) \approx \gamma.
+ \end{equation*}
+\end{ideia}
+
+\end{frame}
+
+
+
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+
+  \item[\faLightbulbO] Intervalos de confiança;    
+  
+   ``Um intervalo $(A(\bX), B(\bX))$  de confiança de $100\gamma\%$ para $g(\theta)$ é tal que $\pr\left[ A(\bX) < g(\theta) <  B(\bX) \right] \geq \gamma$'';
+   
+  \item[\faLightbulbO] Um intervalo de confiança é uma afirmação probabilística sobre~\textbf{as estatísticas} $A(\bX)$ e $B(\bX)$ a partir da~\textbf{distribuição conjunta dos dados};
+     
+%    \item[\faLightbulbO] ;
+%    
+%    ``''
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seção 8.5;
+%  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
+%  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item[\faForward] Próxima aula: De Groot, seção 9.1;
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot.
+  \begin{itemize}
+   \item Seção 8.5: 1, 4 e 6.
+  \end{itemize}   
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
