@@ -34,7 +34,7 @@ Ver Teorema 8.3.1 em DeGroot (prova na pág. 476).
 \begin{frame}{Exemplo}
  Suponha que queremos determinar o tamanho de amostra, $n$, de modo que os EMVs da média $\mu$ e do desvio padrão $\sigma$ estejam ``perto'' dos seus valores verdadeiros.
  Formalmente, queremos encontrar $n$ tal que
- \[ \pr\left( \left|\hat{\mu} - \mu\right| \leq \frac{1}{5}\sigma \: \text{e} \: \left|\hat{\sigma}-\sigma\right| \leq  \frac{1}{5}\sigma \right) \geq \frac{1}{2} ,\]
+ \[ \pr\left( \left|\hat{\mu} - \mu\right| \leq \frac{1}{5}\sigma \: \text{\underline{e}} \: \left|\hat{\sigma}-\sigma\right| \leq  \frac{1}{5}\sigma \right) \geq \frac{1}{2} ,\]
  seja satisfeito.
 \end{frame}
 
@@ -50,6 +50,37 @@ Ver Teorema 8.3.1 em DeGroot (prova na pág. 476).
  \[f_X(x) = \frac{\Gamma(\frac{m + 1}{2})}{\sqrt{m\pi}\Gamma(\frac{m}{2})} \left(1 + \frac{x^2}{m}\right)^{-\frac{m+1}{2}},\: x \in (-\infty, \infty). \]
  \end{defn}
 Para $m>2$, $E[X] = 0$ (porquê?) e $\vr(X) = m/(m-2)$.
+\end{frame}
+
+\begin{frame}{Comparando a t com outras distribuições}
+\begin{figure}[!ht]
+ \begin{center}
+  \includegraphics[scale=.6]{figures/comparacao_t_Student.pdf}
+ \end{center}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Um exemplo}
+\begin{theo}
+ Considere o estimador 
+ \begin{equation*}
+  \sigma^\prime = \sqrt{\frac{\Delta^2}{n-1}},
+ \end{equation*}
+onde $\Delta^2 = \sum_{i=1}^n \left(X_i - \Sm\right)^2$.
+Então 
+\begin{equation*}
+ \frac{\sqrt{n}\left(\Sm - \mu\right)}{\sigma^\prime} \sim \operatorname{Student}(n-1).
+\end{equation*}
+\end{theo}
+\textbf{Prova:}
+Ver Teorema 8.4.2 em De Groot.
+Defina $Z = \sqrt{n}(\Sm - \mu)/\sigma$ e $Y = \Delta^2/\sigma^2$.
+Então $Z \sim\operatorname{Normal}(0,1)$ e $Y\sim\operatorname{Qui-quadrado}(n-1)$.
+Faça
+\begin{equation}
+ U = \frac{Z}{\sqrt{\frac{Y}{n-1}}} = \frac{\sqrt{n}(\Sm-\mu)}{\sqrt{\frac{\Delta^2}{n-1}}},
+\end{equation}
+e note que $U \sim \operatorname{T}(n-1)$  $\qed$
 \end{frame}
 
 \begin{frame}{O que aprendemos?}
@@ -71,6 +102,7 @@ Para $m>2$, $E[X] = 0$ (porquê?) e $\vr(X) = m/(m-2)$.
  \item[\faBook] De Groot seções 8.3 e 8.4;
 %  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item[\faForward] Próxima aula: De Groot, seção 8.5;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
   \item[\faBookmark] De Groot.
