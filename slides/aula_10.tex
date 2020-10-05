@@ -81,7 +81,7 @@ Não-viesamento é uma característica desejável, mas nem sempre um estimador n
 \begin{frame}{Informação de Fisher}
 Como medir a quantidade de informação (sobre um parâmetro $\theta$) contida em uma amostra aleatória?
 A (matriz de) informação de Fisher oferece a resposta.
-\begin{defn}
+\begin{defn}[Informação de Fisher]
  \label{def:Fisher_information}
  Seja $X$ uma variável aleatória com f.d.p/f.m.p. $f(x\mid\theta)$, $\theta \in \Omega \subseteq \mathbb{R}$.
  Suponha que $f(x\mid\theta)$ é duas vezes diferenciável com respeito a $\theta$.
@@ -92,7 +92,7 @@ A (matriz de) informação de Fisher oferece a resposta.
 Definimos a~\textbf{informação de Fisher} como
 \begin{equation}
  \label{eq:Fisher_information}
- I(\theta) = E_\theta\left[\{\lambda^{\prime\prime}(x\mid \theta)\}^2\right] \stackrel{\text{(1)}}{=} -E_\theta\left[\lambda^{\prime\prime}(x\mid \theta)\right] = \vr_\theta\left(\lambda^{\prime}(x\mid \theta) \right).
+ I(\theta) = E_\theta\left[\{\lambda^{\prime}(x\mid \theta)\}^2\right] \stackrel{\text{(1)}}{=} -E_\theta\left[\lambda^{\prime\prime}(x\mid \theta)\right] = \vr_\theta\left(\lambda^{\prime}(x\mid \theta) \right).
 \end{equation}
 \end{defn}
 \textbf{Prova de $\stackrel{\text{(1)}}{=}$}: diferenciar sob o sinal da integral e usar a regra da cadeia.
@@ -124,7 +124,7 @@ Definimos a~\textbf{informação de Fisher} como
 
 \begin{frame}{Informação de Fisher de uma amostra aleatória}
 
-\begin{theo}
+\begin{theo}[Informação de Fisher em uma amostra aleatória]
  \label{thm:Fisher_information_random_sample}
  Seja $\bX = \{ \rs \}$ uma amostra aleatória e seja $I_n(\theta) = E_\theta \left[-\lambda_n^{\prime\prime}(\bX \mid \theta) \right]$ a informação de Fisher da amostra.
  Então
