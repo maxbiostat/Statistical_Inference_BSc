@@ -16,7 +16,7 @@
 Para $c>0$, podemos computar $\pr(-c < U < c) = \gamma$:
 \begin{align*}
  &\pr\left(-c < \frac{\sqrt{n}(\Sm-\mu)}{\sqrt{\frac{\Delta^2}{n-1}}} < c\right) = \gamma,\\
- &\pr\left( \Sm - \frac{c\sigma^\prime}{\sqrt{n}} < \mu <  \Sm + \frac{c\sigma^\prime}{\sqrt{n}}\right) = \gamma,\\
+ &\pr\left( \Sm - \frac{c\hat{\sigma}^\prime}{\sqrt{n}} < \mu <  \Sm + \frac{c\hat{\sigma}^\prime}{\sqrt{n}}\right) = \gamma,\\
  &T_{n-1}(c) - T_{n-1}(-c) = 2T_{n-1}(c) - 1 = \gamma.
 \end{align*}
 Concluímos que $c = F_T^{-1}\left(\frac{1 + \gamma}{2}; n-1\right)$.
@@ -41,8 +41,8 @@ No caso do intervalo de confiança para o parâmetro de média, temos
 $$\pr\left\{A(\bX) < g(\mu) <  B(\bX)\right\} \geq \gamma,$$
 com $g(\mu) = \mu$  e 
 \begin{align*}
- A(\bX) &= \Sm - \frac{c\sigma^\prime}{\sqrt{n}} = \Sm - \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}},\\
- B(\bX) &= \Sm + \frac{c\sigma^\prime}{\sqrt{n}} = \Sm + \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}}.
+ A(\bX) &= \Sm - \frac{c\hat{\sigma}^\prime}{\sqrt{n}} = \Sm - \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}},\\
+ B(\bX) &= \Sm + \frac{c\hat{\sigma}^\prime}{\sqrt{n}} = \Sm + \frac{c\sqrt{\sum_{i=1}^n \left(X_i - \Sm\right)^2}}{\sqrt{n(n-1)}}.
 \end{align*}
 \end{frame}
 
@@ -57,13 +57,108 @@ com $g(\mu) = \mu$  e
  Como de costume na teoria ortodoxa (frequentista), o foco da construção de um intervalo confiança está em dar garantias probabilísticas~\textbf{com relação à \underline{distribuição dos dados}}.
  Dizer que $\pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} = \gamma$ é dizer que, se eu gerasse $M$ grande amostras aleatórias $\bX^{(1)}, \bX^{(2)}, \ldots, \bX^{(M)}$ de tamanho $n$ e construisse $M$ intervalos $I(\bX^{(1)}), I(\bX^{(2)}), \ldots, I(\bX^{(M)})$, eu esperaria encontrar:
  \begin{equation*}
-  \frac{1}{M}\sum_{i=1}^M \mathbb{I}\left(g(\theta) \in I(\bX^{(1)}) \right) \approx \gamma.
+  \frac{1}{M}\sum_{i=1}^M \mathbb{I}\left(g(\theta) \in I(\bX^{(i)}) \right) \approx \gamma.
  \end{equation*}
 \end{ideia}
-
 \end{frame}
 
+\begin{frame}{I see $g(\theta)$...}
 
+\begin{figure}[!ht]
+\label{fig:freq_meme}
+\begin{center}
+\includegraphics[scale=0.45]{figures/freq_meme.jpg} 
+\end{center} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Intervalos unilaterais}
+
+Em várias situações, estamos interessados em uma cota superior ou inferior para $g(\theta)$.
+\begin{defn}[Intervalo de confiança unilateral]
+  Seja $\bX = \{ \rs \}$ uma amostra aleatória, cada variável aleatória com p.d.f. $f(x\mid \theta)$, e considere uma função real $g(\theta)$.
+  Seja $A(\bX)$ uma estatística que, para todo $\theta \in \Omega$, valha
+  \begin{equation*}
+   \pr\left\{A(\bX) < g(\theta)\right\} \geq \gamma,
+  \end{equation*}
+dizemos que o intervalo aleatório $(A(\bX), \infty)$ é chamado um intervalo de confiança~\textbf{unilateral} de $100\gamma\%$ para $g(\theta)$, ou, ainda, um intervalo de confiança~\textbf{inferior} de $100\gamma\%$ para $g(\theta)$.
+O intervalo $(-\infty, B(\bX))$, com
+  \begin{equation*}
+   \pr\left\{g(\theta) < B(\bX) \right\} \geq \gamma,
+  \end{equation*}
+é definido de forma análoga, e é chamado de intervalo de confiança~\textbf{superior} de $100\gamma\%$ para $g(\theta)$.
+Se a desigualdade é uma igualdade para todo $\theta \in \Omega$, os intervalos são chamados~\underline{exatos}.
+\end{defn}
+\end{frame}
+
+\begin{frame}{Quantidade pivotal}
+ O conceito de quantidade pivotal é útil na construção de intervalos de confiança.
+ \begin{defn}[Quantidade pivotal]
+   Seja $\bX = \{ \rs \}$ uma amostra aleatória com p.d.f. $f(x\mid \theta)$.
+   Seja $V(\bX, \theta)$ uma variável aleatória cuja distribuição é~\textbf{a mesma} para todo $\theta \in \Omega$.
+   Dizemos que $V(\bX, \theta)$ é uma~\textbf{quantidade pivotal}.
+ \end{defn}
+Podemos utilizar quantidades pivotais para construir intervalos de confiança.
+Considere uma função $r(v, \bx)$ tal que
+\[ r(V(\bX, \theta), \bX) = g(\theta). \]
+\end{frame}
+
+\begin{frame}{Construindo ICs a partir de quantidades pivotais}
+ Vamos ver como usar $r(v, \bx)$ para construir um intervalo de confiança.
+ \begin{theo}[Intervalos de confiança a partir de uma quantidade pivotal]
+     Seja $\bX = \{ \rs \}$ uma amostra aleatória com p.d.f. $f(x\mid \theta)$.
+     Suponha que existe uma quantidade pivotal $V$, com c.d.f.~\underline{contínua} $G$.
+     Assuma que existe $r(v, \bx)$, estritamente crescente em $v$ para todo $\bx$.
+     Finalmente, tome $ 0 < \gamma < 1$ e $\gamma_1 < \gamma_2$ de modo que $\gamma_2 - \gamma_1 = \gamma$.
+     Então as estatísticas
+     \begin{align*}
+      A(\bX) = r\left(G^{-1}(\gamma_1), \bX \right),\\
+      B(\bX) = r\left(G^{-1}(\gamma_2), \bX \right),
+     \end{align*}
+são os limites de um intervalo de confiança de $100\gamma\%$ para $g(\theta)$.
+ \end{theo}
+\textbf{Prova:} Usar a monotonicidade de $r$ e de $G$ e notar que 
+$$\pr(A(\bX) = g(\theta)) = \pr\left(V(\bX, \theta) = G^{-1}(\gamma_1)\right) = 0,$$
+e que o mesmo vale para $B(\bX)$.
+Ver Teorema 8.5.3 em DeGroot.
+\end{frame}
+
+\begin{frame}{Exemplos}
+ \begin{itemize}
+  \item Exponencial;
+  \item Normal, $\mu$ e $\sigma^2$ desconhecidas;
+  \item Normal, $\sigma^2$ conhecida;
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplos}
+ \begin{itemize}
+  \item Exponencial: $\theta S \sim \operatorname{Gama}(n, 1)$;
+  \item Normal, $\mu$ e $\sigma^2$ desconhecidas:
+\begin{itemize}
+ \item $ \frac{\Sm - \mu}{\hat{\sigma}^\prime} \sim \operatorname{Student}(n-1)$;
+ \item $\frac{\sum_{i=1}^n \left(X_i - \Sm \right)^2}{\sigma^2}\sim \operatorname{Qui-quadrado}(n-1)$; 
+\end{itemize}
+  \item Normal, $\sigma^2$ conhecida: $\frac{\Sm - \mu}{\sqrt{\frac{\sigma^2}{n}}} \sim \operatorname{Normal}(0, 1)$;
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Limitações}
+Intervalos de confiança estão entre as ferramentas mais importantes da Estatística.
+Isso não quer dizer que não tenham limitações importantes.
+\begin{itemize}
+ \item Interpretação;
+ Uma vez observados $a(\bx)$ e $b(\bx)$, não é correto dizer que $g(\theta)$ mora em $(a, b)$ com probabilidade $\gamma$.  
+ ``Antes de observarmos o valor tomado por $\bX$, há probabilidade $\gamma$ de que o intervalo $I(\bX)$, construído a partir da amostra $\bX$, inclui $g(\theta)$.''
+ 
+ Em geral falamos de~\textbf{confiança} $\gamma$ do intervalo $I(\bX)$.
+ 
+ \item Uso da informação;
+Uma vez que observamos $I(\bx) = (a(\bx), b(\bx))$, pode haver informação extra sobre se $I(\bx)$ cobre $g(\theta)$ ou não, mas não existe maneira canônica de ajustar o nível de confiança $\gamma$ à luz desta nova informação.
+Ver exemplo 8.5.11 em DeGroot. 
+\end{itemize}
+
+\end{frame}
 
 
 \begin{frame}{O que aprendemos?}
@@ -74,24 +169,26 @@ com $g(\mu) = \mu$  e
    ``Um intervalo $(A(\bX), B(\bX))$  de confiança de $100\gamma\%$ para $g(\theta)$ é tal que $\pr\left[ A(\bX) < g(\theta) <  B(\bX) \right] \geq \gamma$'';
    
   \item[\faLightbulbO] Um intervalo de confiança é uma afirmação probabilística sobre~\textbf{as estatísticas} $A(\bX)$ e $B(\bX)$ a partir da~\textbf{distribuição conjunta dos dados};
+  
+  \item[\faLightbulbO] Quantidade pivotal
+  ``Uma quantidade pivotal é uma função $V(\bX, \theta)$ cuja distribuição não depende de $\theta$''
      
-%    \item[\faLightbulbO] ;
-%    
-%    ``''
+   \item[\faLightbulbO] Intervalos de confiança podem ser construídos a partir de quantidades pivotais;  
+  
   \end{itemize}
  \end{frame}
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
  \item[\faBook] De Groot seção 8.5;
-%  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 9.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
  \item[\faForward] Próxima aula: De Groot, seção 9.1;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
   \item[\faBookmark] De Groot.
   \begin{itemize}
-   \item Seção 8.5: 1, 4 e 6.
+   \item Seção 8.5: 1, 4, 5 e 6.
   \end{itemize}   
   \end{itemize}
  \end{itemize} 
