@@ -1,0 +1,148 @@
+\section{Testes de hipóteses}
+\begin{frame}{Testes de hipóteses}
+ \begin{itemize}
+  \item Hipótese nula e alternativa;
+  \item Hipóteses simples e compostas;
+  \item Região crítica e estatística teste;
+  \item Função poder;
+  \item Tipos de erro (I e II);
+  \item P-valor;
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Hipótese nula e alternativa}
+ No teste de hipóteses estatísticas, identificamos partições do espaço de parâmetros que codificam as hipóteses de interesse.
+ \begin{defn}[Hipótese nula e hipótese alternativa]
+  Considere o espaço de parâmetros $\Omega$ e defina $\Omega_0, \Omega_1 \subset \Omega$ de modo que $\Omega_0 \cup \Omega_1 = \Omega$ e $\Omega_0 \cap \Omega_1 = \emptyset$.
+  Definimos
+  \begin{align*}
+   H_0 &:= \theta \in \Omega_0,\\
+   H_1 &:= \theta \in \Omega_1.
+  \end{align*}
+Dizemos que $H_0$ é a~\textbf{hipótese nula} e $H_1$ é a~\textbf{hipótese alternativa}.
+
+Se $\theta \in \Omega_1$, dizemos que~\textit{rejeitamos} a hipótese nula.
+Por outro lado, se $\theta \in \Omega_0$ dizemos que~\textit{não rejeitamos} ou~\textit{falhamos em rejeitar} $H_0$.
+ \end{defn}
+\end{frame}
+
+\begin{frame}{Exemplo}
+
+Suponha que Palmirinha recebeu uma carta da Associação Nacional da Pamonha Gourmet (ANPG), dizendo que a pamonha deve ter, no mínimo, 7 mg/L de concentração de amido.
+Supondo que a concentração de amido tenha distribuição Normal com parâmetros $\mu$ (desconhecido) e $\sigma^2$ (conhecido), Palmirinha rabisca num papel:
+  \begin{align*}
+   H_0 &:= \mu \in [7, \infty),\\
+   H_1 &:= \mu \in (0, 7).
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Hipóteses simples e compostas}
+ Dependendo do tipo de partição do espaço de parâmetros, as hipóteses recebem classificações diferentes.
+ \begin{defn}[Hipótese simples e hipótese compostas]
+  Dizemos que uma hipótese $H_i$, é~\textbf{simples}, se $\Omega_i = \{ \theta_i \}$, isto é, se a partição correspondente é um ponto. 
+  Uma hipótese é dita~\textbf{composta} se não é simples.
+ \end{defn}
+ 
+ \begin{exemplo}[Hipótese simples sobre a média]
+  Suponha que estamos estudando o efeito de uma droga na redução da pressão arterial.
+  Modelamos esta redução como uma variável aleatória $X$ com esperança $E[X] =: \theta$.
+  É costumaz testar a hipótese $H_0 : \theta = 0$, que chamamos, especificamente nesse caso, de ``hipótese de efeito nulo''.
+ \end{exemplo}
+\end{frame}
+
+\begin{frame}{Hipótese unilateral e hipótese bilateral}
+ Em analogia com os intervalos de confiança, também podemos entender as hipóteses como sendo unilaterais ou bilaterais.
+ \begin{defn}[Hipótese unilateral e hipótese bilateral]
+  Uma hipótese da forma $H_0 : \theta \leq \theta_0$ ou $H_0 : \theta \geq \theta_0$ é dita~\textit{unilateral} (``\textit{one-sided}''), enquanto hipóteses da forma $H_0 : \theta \neq \theta_0$ são ditas bilaterais (``\textit{two-sided}'').
+ \end{defn}
+ 
+ \begin{obs}[Hipóteses bilaterais como consequência de $H_0$ simples]
+ Se $H_0$ é simples, a hipótese alternativa $H_1$ será, em geral, bilateral.  
+ \end{obs}
+\end{frame}
+
+\begin{frame}{Região crítica: exemplo motivador}
+ \begin{exemplo}[Teste para a média de uma Normal com variância conhecida]
+  Suponha que $\bX = \{ \rs \}$ é uma amostra aleatória de uma Normal com média $\mu$ e variância $\sigma^2$ conhecida.
+  Queremos testar a hipótese
+  \begin{align*}
+   H_0 &:= \mu = \mu_0\\
+   H_1 &:= \mu \neq \mu_0.
+  \end{align*}
+  Intuitivamente, queremos rejeitar $H_0$ se $\Sm$ está longe de $\mu_0$.
+  Para isso definimos
+  \[ S_0 := \left\{ \bx: -c \leq \Sm - \mu_0 \leq c \right\}, \]
+  de modo que $S_1 = S_0^C$. 
+  Então, seguimos o procedimento:
+      \begin{align*}
+   \bX \in S_1 &\implies \text{rejeitar}\: H_0,\\
+   \bX \in S_0 &\implies \text{não\:rejeitar}\: H_0.\\
+  \end{align*}
+ \end{exemplo}
+\end{frame}
+
+\begin{frame}{Região crítica e região de rejeição}
+ Uma maneira mais simples de expressar o procedimento acima é definir $T := \left|\Sm - \mu_0\right|$ e rejeitar $H_0$ se $T \geq c$.
+ \begin{defn}[Região crítica]
+  O conjunto 
+   \[ S_1 := \left\{ \bx:  \left|\Sm - \mu_0\right| \geq c \right\}, \]
+   é chamado de~\textbf{região crítica} do teste.
+ \end{defn}
+ 
+Analogamente, considere a estatística $T = r(\bX)$ e tome $R \subseteq \mathbb{R}$. 
+Então podemos definir
+\begin{defn}[Região de rejeição]
+Se $R \subseteq \mathbb{R}$ é tal que dizemos que ``rejeitamos $H_0$ se $T \in R$'', então $R$ é chamada uma~\textbf{região de rejeição} para a estatística $T$ e o teste associado.
+\end{defn}
+\end{frame}
+
+\begin{frame}{Dividindo o espaço amostral e o espaço de parâmetros}
+ Começamos com uma observação:
+ \begin{obs}[Correspondência entre região crítica e região de rejeição]
+ Podemos relacionar os conceitos de região crítica e região de rejeição notando queremos
+   \[ S_1 := \left\{ \bx:  r(\bx) \in R \right\}. \]
+\end{obs}
+
+\begin{ideia}[Dividindo o espaço amostral e o espaço de parâmetros]
+ Suponha que temos um modelo estatístico dado pela distribuição $f(x\mid\theta)$, com $x \in \mathcal{X}$ e $\theta \in \Omega$.
+ Desta forma, uma amostra aleatória $\bX = \{ \rs\}$ mora em $\mathcal{X}^n$.
+ Para formular uma hipótese estatística, estabelecemos uma partição do espaço de parâmetros $\Omega$ em $\Omega_0$ e $\Omega_1$ disjuntos.
+ Isto, por sua vez, induz uma partição $S_0, S_1 \in \mathcal{X}^n$.
+ Estes objetos, embora, relacionados,~\textbf{não são a mesma coisa}.
+ Por exemplo, nós observamos se $\bX \in S_0$ ou $\bX \in S_1$, mas raramente ``observamos'' se $\theta \in \Omega_0$ ou $\theta \in \Omega_1$.
+\end{ideia}
+\end{frame}
+
+% \begin{frame}{Função poder}
+%  
+% \end{frame}
+% 
+% \begin{frame}{Tipos de Erro}
+%  
+% \end{frame}
+
+% \begin{frame}{O que aprendemos?}
+% \begin{itemize}
+% 
+%   \item[\faLightbulbO] ;    
+%   
+%    ``'';
+%     
+%   \end{itemize}
+%  \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seção 9.1;
+%  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 9.2.
+%  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item[\faForward] Próxima aula: De Groot, seção 9.1 (razão de verossimilhanças);
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot.
+  \begin{itemize}
+   \item Seção 9.1: 3, 8 e 13.
+  \end{itemize}   
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
