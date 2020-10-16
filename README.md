@@ -57,4 +57,9 @@ A nota contém ainda vários resultados interessantes sobre teoria assintótica.
 - O [Teorema de Basu](https://en.wikipedia.org/wiki/Basu%27s_theorem)  tem como caso particular a independência da média e variância amostrais para o caso Normal.
 Em particular, esse resultado _caracteriza_ a distribuição Normal.
 
+**Aula 13 -- Intervalos de confiança**
+
+- [Este](https://rpsychologist.com/d3/ci/) link tem uma visualização legal de intervalos de confiança.
+Basicamente uma versão interativa da visualização que vimos em [aula](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/code/IC_normal.r).
+
 
