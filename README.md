@@ -63,3 +63,6 @@ Em particular, esse resultado _caracteriza_ a distribuição Normal.
 Basicamente uma versão interativa da visualização que vimos em [aula](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/code/IC_normal.r).
 - O [artigo](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339793/pdf/bmjcred00225-0036.pdf) de Gardner & Altman na _Statistics in Medicine_ advoga o uso de intervalos de confiança para testar hipóteses.
 
+**Aula 15 -- Razão de verossimilhança**
+
+- A prova do Teorema 9.1.4 de DeGroot, originalmente formulado por [Samuel Wilks](https://en.wikipedia.org/wiki/Samuel_S._Wilks) em 1938, pode ser encontrada [aqui](http://math.bu.edu/people/cgineste/classes/ma782/p/w1_2.pdf). 
