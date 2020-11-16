@@ -1,0 +1,149 @@
+\section{Testes de hipóteses II}
+\begin{frame}{Razões de verossimilhanças}
+ \begin{itemize}
+   \item Intervalos de confiança e testes;
+   \item Razões de verossimilhanças
+   \end{itemize}
+\end{frame}
+
+\begin{frame}{Intervalos de confiança $\equiv$ testes}
+ De posse de um intervalo de confiança, podemos testar hipóteses sobre uma função dos parâmetros, $g(\theta)$, como mostra o seguinte teorema:
+ \begin{theo}[Intervalos de confiança e testes são equivalentes]
+  Suponha que dispomos de dados $\bX = \{ \rs \}$ com f.d.p. comum $f(x \mid \theta)$, e estamos interessados em testar as hipóteses:
+  \begin{align*}
+   H_0 &: g(\theta) = g_0, \\
+   H_1&: g(\theta) \neq g_0,
+  \end{align*}
+de modo que existe um teste $\delta_{g_0}$ com nível $\alpha_0$ destas hipóteses. 
+Para cada $\bX = \bx$, defina
+\[ w(\bx) = \left\{g_0: \delta_{g_0} \text{\:não\: rejeita\:} H_0\text{\:dado\:que\:} \bX = \bx \right\}.\]
+Fazendo o nível de confiança do intervalo $\gamma = 1 -\alpha_0$, temos 
+\[ \pr\left(g(\theta_0) \in w(\bX) \mid \theta = \theta_0 \right)  \geq \gamma,\: \forall \theta_0 \in \Omega. \]
+ \end{theo}
+\textbf{Prova:} Notar que $\pr\left(\delta_{g_0} \text{\: não\: rejeita\:} H_0 \mid \theta = \theta_0\right) \geq \alpha_0 = 1-\gamma$ e concluir que $w(\bX)$ é uma região de crítica para $\delta_{g_0}$.
+Ver Teorema 9.1.1 de DeGroot.
+\end{frame}
+
+\begin{frame}{Conjunto de confiança}
+ O conjunto $w(\bX)$ definido acima pode ser entendido como um conjunto de confiança para $g(\theta)$.
+ \begin{defn}[Conjunto de confiança]
+  Se um conjunto aleatório $w(\bX)$ satisfaz 
+  \[\pr\left(g(\theta_0) \in w(\bX) \mid \theta = \theta_0 \right)  \geq \gamma, \]
+  para todo $\theta_0 \in \Omega$, então chamamos $w(\bX)$ de um~\textbf{conjunto de confiança} para $g(\theta)$.
+ \end{defn}
+ Isso nos leva ao seguinte teorema
+ \begin{theo}[Testando hipóteses a partir de conjuntos de confiança]
+  Suponha que dispomos de dados $\bX = \{ \rs \}$ com f.d.p. comum $f(x \mid \theta)$ e que $w(\bX)$ é um conjunto de confiança para uma função de interesse $g(\theta)$. 
+  Então para todo valor $g_0$  assumido por $g(\theta)$ existe um teste $\delta_{g_0}$, de nível $\alpha_0$ que rejeita $H_0: g(\theta) = g_0 $ se e somente se $g(\theta_0)  = g_0 \notin w(\bX)$.
+ \end{theo}
+ \textbf{Prova:} Trivial.
+ Ver DeGroot, Teorema 9.1.2.
+\end{frame}
+
+\begin{frame}{Exemplo}
+ Vamos aplicar os conceitos discutidos ao caso Normal com variância conhecida.
+ \begin{exemplo}[Teste para média da Normal com variância conhecida]
+  Suponha que $\bX = \{ \rs \}$ formam uma amostra aleatória de uma distribuição Normal com média $\mu$ e variância $\sigma^2$, conhecida.
+  Considere testar a hipótese
+  \begin{align*}
+   H_0 &:  \mu = \mu_0, \\
+   H_1&: \mu \neq \mu_0.
+  \end{align*}
+  Seja $\alpha_0 = 1-\gamma$. 
+  Lembre-se de que o teste de tamanho $\alpha_0$, $\delta_{\mu_0}$ é rejeitar $H_0$ se $|\Sm-\mu_0| \geq c$, $c := \Phi^{-1}\left(1-\alpha_0/2\right)\sigma\sqrt{n}$.
+  Esta última desigualdade pode ser manipulada algebricamente para obter o intervalo de confiança exato
+  $$ (A(\bX), B(\bX)) = \left( \Sm - c, \Sm + c\right), $$
+  de modo que $\pr(A(\bX) < \mu_0 < B(\bX) | \mu = \mu_0) = \gamma$.
+ \end{exemplo}
+\end{frame}
+
+\begin{frame}{Testes unicaudais e bi-caudais}
+ Da mesma forma que intervalos de confiança podem ser uni- ou bilaterais. 
+ Considere testar a hipótese
+  \begin{align*}
+   H_0 &:  g(\theta) \geq g_0, \\
+   H_1&: g(\theta) < g_0.
+  \end{align*}
+Podemos testar esta hipótese a partir de um intervalo de confiança da forma $I_l = (A(\bX), \infty)$: se $g(\theta) \notin I_l$ então rejeitamos $H_0$.  
+\end{frame}
+
+\begin{frame}{Testes de razão de verossimilhanças}
+ Considere testar 
+  \begin{align*}
+   H_0 &:  \theta \in \Omega_0, \\
+   H_1&:  \theta \in \Omega_1. 
+  \end{align*}
+Em certas situações, podemos utilizar a função de verossimilhança para quantificar a evidência em favor de $H_0$.
+\begin{defn}[Teste de razão de verossimilhanças]
+ \label{def:LRT}
+ A estatística
+ \[ \Lambda(\bx) = \frac{\sup_{\theta \in \Omega_0} f_n(\bx \mid \theta) }{\sup_{\theta \in \Omega} f_n(\bx \mid \theta)}, \]
+ é chamada uma~\textbf{estatística de razão de verossimilhanças}.
+ Um~\textbf{um teste de razão de verossimilhanças}, $\delta_k$ é um teste que rejeita $H_0$ se $\Lambda(\bx) \leq k$ para uma constante $k$.
+\end{defn}
+\end{frame}
+
+\begin{frame}{Teste de razão de verossimilhanças para a binomial}
+\begin{exemplo}[Teste de razão de verossimilhanças para uma hipótese simples]
+ Suponha que $\rs$ são uma amostra aleatória de uma distribuição Bernoulli com parâmetro $p$.
+ Assim, temos $Y = \sum_{i=1}^n X_i$ e $Y~\operatorname{Binomial}(n, p)$.
+ Considere testar a hipótese $H_0 :  p  = p_0, H_1:  p  \neq p0$.  
+ Depois de observamos $Y = y$, a função de verossimilhança é
+ \[ f(\bx \mid p) = \pr(Y = y\mid p) = \binom{n}{y} p^y (1-p)^{n-y}. \]
+ Como neste exemplo $\Omega_0 = \{p_0\}$ e $\Omega_1 = (0, 1)\setminus\{p_0\}$,
+ \begin{equation*}
+  \Lambda(\bx) = \frac{p_0^y (1-p_0)^{n-y}}{\sup_{p \in (0,1)}  p^y (1-p)^{n-y}}.
+ \end{equation*}
+O supremo no denominador é atingido no EMV, $\hat{p} = y/n$, de modo que
+ \begin{equation*}
+  \Lambda(\bx) = \left(\frac{np_0}{y}\right)^{y} \left(\frac{n(1-p_0)}{n-y}\right)^{n-y}.
+ \end{equation*}
+ Para mais detalhes, ver código no repositório do curso.
+\end{exemplo} 
+\end{frame}
+
+\begin{frame}{Um teorema útil}
+ Sob certas condições de regularidade, podemos fazer afirmações sobre a distribuição assintótica de $\log\Lambda(\bX)$.
+ \begin{theo}[Teorema de Wilks\footnote{Em homenagem a Samuel Wilks (1906-1964), matemático estadounidense.}]
+  Suponha que temos um espaço de parâmetros com $k$ coordenadas, $\theta = (\theta_1, \theta_2, \ldots, \theta_k)$ e desejamos testar a hipótese (simples) da forma
+   \begin{align*}
+   H_0 &:  \theta_j = \theta_0^{j}, \\
+   H_1 &:  \theta_j \neq \theta_0^{j}, j = 1, 2, \ldots, k. 
+  \end{align*}
+  Então, sob condições de regularidade, temos que, à medida que $n \to \infty$,
+  \begin{equation*}
+   -2\log\Lambda(\bx) \xrightarrow{\text{d}} \chi^{2} (k), 
+  \end{equation*}
+ \end{theo}
+\textbf{Prova:} Avançada, não será dada aqui.
+Ver Teorema 9.1.4 de DeGroot.
+Para a demonstração, ver Teorema 7.125 de Schervish (1995).
+\end{frame}
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+
+  \item[\faLightbulbO] Intervalos de confiança podem ser utilizados para testar hipóteses;
+  \item[\faLightbulbO] Testes podem ser bicaudais ($1-\alpha_0/2$) quando unicaudais ($(1 + \alpha_0)/2)$;
+  \item[\faLightbulbO] Razões de verossimilhanças
+  
+  ``A razão entre o supremo da função de verossimilhança tomado no espaço em que $H_0$ é verdadeira ($\Omega_0$) e o mesmo supremo tomado sobre todo o espaço de parâmetros ($\Omega$)''
+  
+  \item[\faLightbulbO] Teorema de Wilks; 
+  
+  ``À medida que o tamanho de amostra aumenta, menos duas vezes o logaritmo da razão de verossimilhanças tende em distribuição para uma Qui-quadrado com $k$ graus de liberdade''
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] De Groot seção 9.1;
+ \item[\faBook] $^\ast$ Schervish (1995), capítulos 4.5.5 e 7.5 .
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 8.2.
+ \item[\faForward] Próxima aula: De Groot, seção 9.5;
+ \item {\large\textbf{Exercícios recomendados}}
+ \begin{itemize}
+  \item[\faBookmark] De Groot, seção 9.1:  exercicios 3, 8 e 13.
+ \end{itemize}
+ \end{itemize} 
+\end{frame}
