@@ -1,0 +1,114 @@
+\section{Testes para igualdade de variâncias}
+\begin{frame}{Testes para igualdade de variâncias}
+ \begin{itemize}
+   \item A distribuição F;
+   \item Comparação de variâncias de duas normais;
+   \item Propriedades; 
+   \item P-valor;
+   \end{itemize}
+\end{frame}
+
+
+ \begin{frame}{A distribuição F}
+  Sejam $Y \sim\operatorname{Qui-quadrado}(m)$ e $W \sim\operatorname{Qui-quadrado}(n)$.
+  Então 
+  \begin{equation*}
+   X = \frac{Y/m}{W/n},
+  \end{equation*}
+tem distribuição $F$ com $m$ e $n$ graus de liberdade, com f.d.p.
+\begin{equation*}
+ f_X(x) = \frac{\Gamma\left(\frac{m + n}{2}\right)m^{m/2} n^{n/2}}{\Gamma\left(\frac{n}{2}\right)\Gamma\left(\frac{m}{2}\right)} \cdot \frac{x^{m/2}-1}{(mx + n)^(m + n)/2}, \: x > 0.
+\end{equation*}
+\begin{theo}[Propriedades da distribuição F]
+ \begin{itemize}
+  \item[i)] Se $X \sim F(m, n)$, então $\frac{1}{X} \sim F(n, m)$;
+  \item[ii)] Se $Y \sim\operatorname{Student}(n)$, então $Y^2 \sim F(1, n)$.
+ \end{itemize}
+\end{theo}
+\textbf{Prova:} Transformação de v.a.s padrão.
+Exercício para a leitora.
+ \end{frame}
+
+ \begin{frame}{Testando a igualdade de duas variâncias}
+  Suponha $X_i \sim\operatorname{Normal}(\mu_1, \sigma_1^2), i = 1, 2, \ldots, m$ e $Y_j \sim\operatorname{Normal}(\mu_2, \sigma_2^2), j = 1, 2, \ldots, n$.
+  Estamos interessados em testar
+  \begin{align*}
+   H_0 &: \sigma_1^2 \leq \sigma_2^2 , \\
+   H_1&:  \sigma_1^2 > \sigma_2^2. 
+  \end{align*}
+ Para isso, vamos computar a estatística de teste 
+ \begin{equation*}
+  V = \frac{S_X^2/(m-1)}{S_Y^2/(n-1)},
+ \end{equation*}
+ onde $S_X^2 = \sum_{i=1}^m (X_i-\bar{X}_m)^2$ e $S_Y^2 = \sum_{j=1}^n (Y_j-\bar{Y}_n)^2$.
+ 
+ \begin{defn}[O teste F]
+ \label{def:F_test}
+  O teste F de homogeneidade (igualdade de variâncias)  é o teste $\delta_c$ que rejeita $H_0$ se $V \geq c$, para uma constante positiva $c$.
+ \end{defn}
+
+ \end{frame}
+
+ \begin{frame}{Propriedades do teste F}
+  Em primeiro lugar, podemos fazer afirmações sobre a distribuição de (uma transformação de) $V$.
+  \begin{theo}[A distribuição de $V$]
+   Seja $V = \frac{S_X^2/(m-1)}{S_Y^2/(n-1)}$, então:
+   \begin{equation*}
+    \frac{\sigma_2^2}{\sigma_1^2} V \sim F(m-1, n-1).
+   \end{equation*}
+   Além disso, se $\sigma_1^2 = \sigma_2^2$, $V \sim F(m-1, n-1)$. 
+  \end{theo}
+\textbf{Prova:} Notar que $S_X^2/\sigma_1^2$ e $S_Y^2/\sigma_2^2$  tem distribuição qui-quadrado com $m-1$ e $n-1$ graus de liberdade, respectivamente.
+Ver Teorema 9.7.3 de DeGroot.
+ \end{frame}
+ 
+ \begin{frame}{P-valor}
+  Seja $G(x; m-1, n-1)$ a f.d.a. de uma distribuição $F$ com $m-1$ e $n-1$ graus de liberdade.
+  Da mesma forma, defina $G^{-1}(p; m-1, n-1)$ como a f.d.a. inversa.
+  Então, se $V = v$:
+  \begin{itemize}
+   \item Para a hipótese $H_0: \sigma_1^2 \leq \sigma_2^2$, o p-valor vale $p = 1-G(v; m-1, n-1)$;
+   \item Para a hipótese $H_0: \sigma_1^2 \geq \sigma_2^2$, o p-valor vale $p = G(v; m-1, n-1)$;
+   \item Para a hipótese bicaudal $H_0: \sigma_1^2 \neq \sigma_2^2$, o p-valor vale $p = 2\min\left\{1-G(v; m-1, n-1), G(v; m-1, n-1)\right\}$;
+  \end{itemize}
+ \end{frame}
+ 
+  \begin{frame}{Mais propriedades do teste F}
+ Analogamente ao teste t, podemos enunciar o seguinte teorema sobre o teste F.
+ \begin{theo}[Propriedades do teste F]
+ Suponha que estamos testando $H_0: \sigma_1^2 \leq \sigma_2^2$.
+ Então
+ \begin{itemize}
+ \item [i)] $\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 1 -G\left(\frac{\sigma_2^2}{\sigma_1^2}c; m-1, n-1\right)$;
+ \item [ii)] $\sigma_1^2 = \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = \alpha_0$;
+ \item [iii)] $\sigma_1^2 < \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) < \alpha_0$
+ \item [iv)] $\sigma_1^2 > \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) > \alpha_0$;
+ \item [v)] $\lim_{\sigma_1/\sigma_2 \to 0} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 0$;
+ \item [vi)] $\lim_{\sigma_1/\sigma_2 \to \infty} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 1$;
+ \item[vii)] $\delta_c$ é não-viesado e tem tamanho $\alpha_0$.
+\end{itemize}
+\end{theo}
+\textbf{Prova:} Omitida aqui. 
+Ver Teorema 9.7.4 de DeGroot.  
+ \end{frame}
+ 
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+  \item[\faLightbulbO] A distribuição F aparece quando tomamos a razão de variáveis aleatórias Qui-quadrado;    
+  \item[\faLightbulbO] Para comparação das variâncias de duas amostras a estatística teste tem distribuição $F$ com $m-1$ e $n-1$ graus de liberdade; 
+  \item O teste F, como seu primo o teste t, é não viesado e tem tamanho $\alpha_0$.
+   \end{itemize}
+ \end{frame} 
+ 
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] DeGroot seção 9.7;
+ \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 8.
+ \item[\faForward] Próxima aula: De Groot, seção 11;
+ \item {\large\textbf{Exercícios recomendados}}
+  \begin{itemize}
+   \item[\faBookmark] Derivar a função de densidade de probabilidade de uma distribuição F (Teorema 9.7.1 de DeGroot).
+   \item[\faBookmark] Derivar o teste F como um teste de razão de verossimilhanças.
+  \end{itemize}
+ \end{itemize} 
+\end{frame}
