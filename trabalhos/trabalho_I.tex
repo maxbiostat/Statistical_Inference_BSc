@@ -1,0 +1,52 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+
+
+% Title Page
+\title{Trabalho I: o método Delta.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: 19 de Agosto de 2020.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \end{itemize}
+
+
+\section*{Introdução}
+
+Algumas vezes estamos interessados em estimar funções de variáveis aleatórias, em particular funções da média amostral.
+O método Delta permite, sob certas condições, aproximar a distribuição assintótica de funções de variáveis aleatórias.
+Este resultado é extremamente útil em Estatística porque permite obter aproximações sob condições bastante gerais, muitas vezes quando estimadores explícitos não estão disponíveis em forma fechada.
+
+\section*{Questões}
+\begin{enumerate}
+ \item Enuncie e prove o método Delta;
+ \item Discuta sob quais condições o método funciona e porque;
+ \item Suponha que observamos $n$ variáveis aleatórias Bernoulli independentes e identicamente distribuídas com parâmetro $p$, denotadas por $X_1, X_2, \ldots, X_n$.
+ Suponha que estamos interessados no parâmetro $\omega = \frac{p}{1-p}$, geralmente chamado de~\textit{chance} (em inglês,~\textit{odds}).
+ É natural utilizar o estimador~\textit{plug-in} $\hat{\omega} = \frac{\hat{p}}{1-\hat{p}}$, com $\hat{p} = \frac{1}{n}\sum_{i=1}^n X_i$.
+  Utilize o método de Delta para encontrar uma aproximação para a variância de $\hat{\omega}$;
+  \item Comente a importância do método Delta.
+\end{enumerate}
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+\end{document}          
