@@ -60,7 +60,7 @@ Ver Teorema 11.1.1 em DeGroot.
 \end{itemize}
 
 Podemos então idealizar o seguinte modelo
-\begin{ideia}[Modelo linear simples]
+\begin{ideia}[Modelo linear]
  \[ Y_i = \beta_0 + \sum_{j=1}^P \beta_jx_{ij} + \epsilon_i,\: \epsilon_i \sim\operatorname{Normal}(0, \sigma^2).\]
 \end{ideia}
 \end{frame}
@@ -89,7 +89,7 @@ No modelo linear, a solução de mínimos quadrados e a de máxima verossimilhan
 \begin{theo}[EMV para os coeficientes de uma regressão linear (simples)]
  Sob as premissas já listadas, os estimadores de máxima verossimilhança para $\theta = (\beta_0, \beta_1, \sigma^2)$ são
   \begin{align*}
-  \hat{\beta_0}_{\text{EMV}} &= \bar{y} - \hat{\beta_1}\bar{x},\\
+  \hat{\beta_0}_{\text{EMV}} &= \bar{y} - \hat{\beta_1}_{\text{EMV}}\bar{x},\\
   \hat{\beta_1}_{\text{EMV}} &= \frac{\sum_{i=1}^n (y_i-\bar{y})(x_i-\bar{x})}{\sum_{i=1}^n \left(x_i - \bar{x}\right)^2},\\
   \hat{\sigma^2}_{\text{EMV}} & = \frac{1}{n} \sum_{i=1}^n \left(y_i - (  \hat{\beta_0}_{\text{EMV}} + \hat{\beta_1}_{\text{EMV}} x_i)\right)^2,  
  \end{align*}
@@ -157,7 +157,7 @@ Podemos compor nossa predição (pountual) como
 
 \begin{theo}[Erro quadrático médio da predição]
  A predição como em~(\ref{eq:lin_pred}) tem erro quadrático médio (EQM) igual a
- \[ \sigma^2 \left(1 + \frac{1}{n} + \frac{\left(x_{\text{pred}}-\bar{x}\right)^2}{s_x^2}\right). \] 
+ \[ E\left[\left(\hat{Y} - Y\right)^2\right] = \sigma^2 \left(1 + \frac{1}{n} + \frac{\left(x_{\text{pred}}-\bar{x}\right)^2}{s_x^2}\right). \] 
 \end{theo}
 \textbf{Prova:} Ver Teorema 11.2.3 de DeGroot.
 

@@ -17,7 +17,7 @@
   \end{equation*}
 tem distribuição $F$ com $m$ e $n$ graus de liberdade, com f.d.p.
 \begin{equation*}
- f_X(x) = \frac{\Gamma\left(\frac{m + n}{2}\right)m^{m/2} n^{n/2}}{\Gamma\left(\frac{n}{2}\right)\Gamma\left(\frac{m}{2}\right)} \cdot \frac{x^{m/2}-1}{(mx + n)^(m + n)/2}, \: x > 0.
+ f_X(x) = \frac{\Gamma\left(\frac{m + n}{2}\right)m^{m/2} n^{n/2}}{\Gamma\left(\frac{n}{2}\right)\Gamma\left(\frac{m}{2}\right)} \cdot \frac{x^{m/2}-1}{(mx + n)^{(m + n)/2}}, \: x > 0.
 \end{equation*}
 \begin{theo}[Propriedades da distribuição F]
  \begin{itemize}
@@ -79,12 +79,12 @@ Ver Teorema 9.7.3 de DeGroot.
  Suponha que estamos testando $H_0: \sigma_1^2 \leq \sigma_2^2$.
  Então
  \begin{itemize}
- \item [i)] $\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 1 -G\left(\frac{\sigma_2^2}{\sigma_1^2}c; m-1, n-1\right)$;
- \item [ii)] $\sigma_1^2 = \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = \alpha_0$;
- \item [iii)] $\sigma_1^2 < \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) < \alpha_0$
- \item [iv)] $\sigma_1^2 > \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) > \alpha_0$;
- \item [v)] $\lim_{\sigma_1/\sigma_2 \to 0} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 0$;
- \item [vi)] $\lim_{\sigma_1/\sigma_2 \to \infty} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 1$;
+ \item [i)] $\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2 \mid \delta_c) = 1 -G\left(\frac{\sigma_2^2}{\sigma_1^2}c; m-1, n-1\right)$;
+ \item [ii)] $\sigma_1^2 = \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2 \mid \delta_c) = \alpha_0$;
+ \item [iii)] $\sigma_1^2 < \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2 \mid \delta_c) < \alpha_0$
+ \item [iv)] $\sigma_1^2 > \sigma_2^2 \implies \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2 \mid \delta_c) > \alpha_0$;
+ \item [v)] $\lim_{\sigma_1^2/\sigma_2^2 \to 0} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2 \mid \delta_c) = 0$;
+ \item [vi)] $\lim_{\sigma_1^2/\sigma_2^2 \to \infty} \pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2 \mid \delta_c) = 1$;
  \item[vii)] $\delta_c$ é não-viesado e tem tamanho $\alpha_0$.
 \end{itemize}
 \end{theo}
