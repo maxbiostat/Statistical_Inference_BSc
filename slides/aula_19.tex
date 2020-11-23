@@ -1,0 +1,114 @@
+\section{Discussão de TSHN}
+\begin{frame}{Testes de hipótese: discussão}
+ \begin{itemize}
+ \item Como construir um teste que~\textbf{quase sempre} rejeita $H_0$;
+ \item Significância estatística~\textit{vs} significância prática;
+ \item Rapidinhas.
+ \end{itemize}
+\end{frame} 
+
+\begin{frame}{Um teste esquisito}
+
+Suponha que temos $\rs$ vindos de uma distribuição Normal com média $\theta$ e variância $1$ e queremos testar as hipóteses
+\begin{align*}
+ H_0:& \theta = 0,\\
+ H_1:& \theta = 1.
+\end{align*}
+Seguindo o exemplo 9.2.5 de DeGroot, podemos escrever
+\begin{equation*}
+ \eta(\bx) = \frac{f_1(\bx)}{f_0(\bx)},
+\end{equation*}
+e compor um teste que rejeita $H_0$ quando $\eta(\bx) > c$.
+Isto é equivalente a construir um teste de tamanho $\alpha_0$, de modo que valha
+\begin{equation*}
+ \pr(\Sm \geq c^\prime \mid \theta = 0) = \alpha_0,
+\end{equation*}
+o que nos leva a concluir que $c^\prime = \frac{1}{2} + \frac{\log(c)}{n}$ e que $c = \Phi^{-1}(1-\alpha_0)/\sqrt{n}$.
+\end{frame}
+
+\begin{frame}{Qual o problema?}
+Primeiro, vamos lembrar que, para um teste $\delta$, 
+\begin{align*}
+ \alpha(\delta)&:= \pr\left(\text{Rejeitar\:} H_0 \mid \theta = 0\right) ,\\
+ \beta(\delta)&:= \pr\left(\text{Não\, rejeitar\:} H_0 \mid \theta = 1\right).
+\end{align*}
+
+ O problema aqui é que para este teste temos
+ \begin{table}
+  \begin{tabular}{cccc}
+   n & $\alpha(\delta)$ & $\beta(\delta)$ & c \\
+   \hline
+   1 & 0.05 & 0.74 & 0.72 \\
+   25 & 0.05 & 3.97 $\times 10^{-4}$  & 2.3 $\times 10^{-4}$ \\
+   100 & 0.05 &  8 $\times 10^{-15}$ & 2.7 $\times 10^{-15}$\\
+   \hline
+  \end{tabular}
+ \end{table}
+Ou seja, quando temos $n=100$ observações, os dados podem ser trilhões de vezes mais prováveis sob $H_0$ e ainda assim vamos rejeitar a hipótese nula.
+\end{frame}
+
+\begin{frame}{Soluções}
+ Podemos pensar em duas soluções (complementares) para o problema posto.
+\begin{ideia}[Ajustando o nível de significância com o tamanho da amostra]
+ Em várias situações, por exemplo como a mostrada acima, faz sentido ajustar (diminuir) o nível de confiança do teste com o tamanho da amostra de modo a balancear os erros do tipo I e II.
+\end{ideia}
+
+\begin{ideia}[Minimizar uma combinação linear das probabilidades de erro]
+Poderíamos balancear os erros ao minimizar
+\[ a \alpha(\delta) + b \beta(\delta). \]
+Lehmann (1958)\footnote{Lehmann, Erich L. "Significance level and power." The Annals of Mathematical Statistics (1958): 1167-1176.} propôs a restrição $\beta(\delta) = c \alpha(\delta)$, que tem a vantagem de forçar que ambos os tipos de erro diminuam à medida que obtemos mais dados.
+\end{ideia}
+Ver seções 9.2 e 9.8 de DeGroot.
+\end{frame}
+
+
+\begin{frame}{Relevante?}
+ Suponha que eu estou testando uma nova droga, e o parâmetro $\theta$ mede o efeito da droga.
+ Em geral, estamos interessados em testar a hipótese
+ \begin{align*}
+ H_0: \theta \leq 0,\\
+ H_1: \theta \geq  0.
+ \end{align*}
+Quando o tamanho de amostra é muito grande, seremos capazes de detectar, com alta probabilidade (poder) se $\theta = 0.000003$ ou $\theta = 0$.
+
+Acontece que uma droga com $\theta = 0.000003$ não oferece nenhuma vantagem prática.
+Portanto, ao se realizar um teste de hipótese e rejeitar $H_0$, não podemos concluir que ``a droga funciona'', pelo menos não num sentido médico.
+
+\begin{ideia}[Significância estatística não implica relevância prática]
+ 
+\end{frame}
+
+
+\begin{frame}{Responda rápido}
+   \begin{itemize}
+    \item[a)] O que é a função poder de um teste de hipótese e o que esperamos observar em um teste não-enviesado?
+    \item[b)] Se testarmos uma hipótese um número suficiente de vezes ela eventualmente será rejeitada.
+    Explique esta afirmação e suas consequências.
+    \item[c)] O que é o p-valor de um teste?
+    \item[d)] É correto afirmar que uma hipótese nula é falsa se ela for rejeitada?
+    É correto afirmar que uma hipótese alternativa é verdadeira se a nula for rejeitada? Justifique.
+    \item[e)] Um intervalo de confiança nível de 95\% para $\theta$ é calculado a partir de $n$ observações.
+    É correto afirmar que o parâmetro verdadeiro $\theta_0$ está dentro deste intervalo com probabilidade $95\%$? Justifique.
+    \item[f)] Explique como podemos obter um conjunto de confiança a partir de um teste de hipótese.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{O que aprendemos?}
+\begin{itemize}
+  \item[\faLightbulbO] Rejeição eventual;
+  ``Se coletarmos uma quantidade suficiente de dados, podemos rejeitar qualquer hipótese nula''
+  \item[\faLightbulbO] Significância estatística $\neq$ significância prática/científica!
+   \end{itemize}
+ \end{frame} 
+ 
+\begin{frame}{Leitura recomendada}
+\begin{itemize}
+ \item[\faBook] DeGroot seções 9.2, 9.3 e 9.9;
+%  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 11.3.
+   \item {\large\textbf{Exercícios recomendados}}
+  \begin{itemize}
+   \item[\faBookmark] DeGroot, seção 9.9: exercícios 2 e 3.   
+  \end{itemize}
+  \end{itemize}
+\end{frame}
