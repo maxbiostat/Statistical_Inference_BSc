@@ -3,7 +3,7 @@ boiling.pt <- read.csv(file = "dados_ponto_fervura.csv") ## Table 11.5, DeGroot 
 head(boiling.pt)
 plot(pressao ~ pt_fervura, boiling.pt)
 
-linmod <- lm(pressao ~ pt_fervura, boiling.pt)
+linmod <- lm(pressao ~ pt_fervura, data = boiling.pt)
 
 summary(linmod)
 

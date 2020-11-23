@@ -1,6 +1,6 @@
 n <- 10
 p0 <- 1/2
-alpha0 <- 0.05
+alpha0 <- 0.2
 
 # c(p0)
 # delta_c é um teste de tamanho alpha0=0.05
@@ -30,7 +30,7 @@ poder_p <- Vectorize(poder_p)
 curve(poder_p, xlab = expression(p[0]))
 abline(h = alpha0, lty = 2)
 
-# LRT
+# LRT: razão de verossimilhanças
 
 Lambda <- function(y, log = FALSE){
   l1 <- y * (log(n*p0)-log(y))
@@ -69,5 +69,4 @@ findSet <- function(tab, level = alpha0){
     )
   )
 }
-
 findSet(tab = tabProb)
