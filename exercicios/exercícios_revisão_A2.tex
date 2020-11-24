@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+\usepackage{textcomp}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+% Title Page
+\title{Exercícios de Revisão: A2.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\section{PO-KE-MON.}
+Suponha que a Liga Internacional de Pokemon (LIP) tenha um sistema de \textit{pokescores} que podem assumir qualquer valor real. 
+Quanto maior o \textit{pokescore} de uma jogadora, mais alto no ranking mundial ela está.
+A liga se organiza em times de $n$ jogadores.
+
+Para entrar na liga, um time precisa ter um \textit{pokescore} médio superior a $\theta_0$.
+Suponha que os \textit{pokescores} são distribuídos de acordo com uma distribuição Normal com média $\theta$ e variância $\sigma^2$, conhecida.
+Queremos desenvolver um método para incluir times num torneio automaticamente, baseado nos \textit{pokescores} dos seus integrantes.
+
+\begin{itemize}
+ \item[(a)] Encontre uma quantidade pivotal para $\theta$;
+ \item[(b)] Utilizando a quantidade do item anterior, construa um intervalo de confiança de $95\%$ para $\theta$;
+ \item[(c)] A partir do intervalo encontrado, é possível testar $H_0: \theta \leq \theta_0$? Como?
+ \item[(d)] Se $\sigma^2$ fosse desconhecida, como você modificaria o teste do item anterior?
+ \item[(e)] Se aplicarmos os testes em (c) e (d) para selecionar times automaticamente, seremos injustos com alguns times, isto é, vamos deixar de incluir times que de fato se encaixam na condição de seleção.
+ Com que probabilidade isso acontece?
+ \item[(f)] Se quisermos diminuir a probabilidade do item anterior, o que podemos fazer? Que consequências isso tem?
+ \end{itemize}
+
+
+\section{Acertando a agenda.}
+
+Astolfo quer saber quanto tempo leva para produzir uma lâmpada em sua fábrica.
+Bruna, sua assistente, decide medir o tempo de fabricação (em horas) de $n$ lâmpadas aleatórias $\rs$ e acredita que a duração do processo  segue uma distribuição exponencial com parâmetro $\theta>0$, i.e., $f(x \mid \theta) = \theta\exp(-\theta x)$ para $x>0$.
+Suponha que essas medidas formam uma amostra aleatória.
+
+Cada máquina só consegue produzir uma lâmpada de cada vez, e trabalha de forma ininterrupta.
+Bruna decide verificar se consegue fabricar 48 lâmpadas por dia em cada máquina.
+
+\begin{itemize}
+ \item[(a)] Escreva a hipótese alternativa e nula para este teste como função do parâmetro da exponencial e mostre que o poder do teste de hipóteses que rejeita $H_0$ se $S_n = \sum_{i=1}^nX_i \ge c$ é uma função decrescente de $\theta$
+ \item[(b)] Encontre um valor de $c$ que faça este teste ter um tamanho $\alpha_0$ pré-definido.
+ \item[(c)] Mostre como encontrar o número mínimo de medidas para que o poder do teste em 40 minutos seja ao menos 90\%.
+ \item[(d)] Encontre uma estatística pivotal para $\theta$;
+ \item[(e)] Use a estatística encontrada no item anterior para construir um intervalo de confiança  de $\gamma$\%.
+\end{itemize}
+
+
+\section{Questões sobre modelos lineares.}
+\begin{itemize}
+ \item[(a)] Suponha que medimos a potência $X$, em cavalos de potência,  e o consumo em $Km/L$, $Y$, dos motores de $n$ veículos da última edição da Revista Quadro Rodas.
+ Proponha um teste para estudar se o coeficiente angular entre as duas variáveis é positivo;
+ \item[(b)] Se a potência do motor de um fusquinha é $x_0$ cavalos de potência, mostre como obter um intervalo de confiança para o consumo médio;
+ \item[(c)] Compare o intervalo do item anterior com o intervalo de predição para o consumo do motor do fusquinha, $y_0$;
+ \item[(d)] O modelo $E[Y] = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3$ é linear?
+ Como você ajustaria este modelo a $n$ pares de dados $(x_i, y_i)$?
+ \item[(e)]$^\ast$ Considere uma regressão linear simples.
+ Descreva uma estratégia de transformação da variável independente, $X$, de modo que $\hat{\beta_0}$ e $\hat{\beta_1}$ sejam independentes. 
+\end{itemize}
+
+\section{Pamonha é coisa séria.}
+
+Ainda no processo de validação de seu selo de Pamonha Gourmet\textregistered, Palmirinha agora tem outra preocupação: o equipamento que mede a concentração de amido na pamonha tem um erro de medição não desprezível.
+O manual do medidor de concentração de amido diz que o erro de medição é Normal com média $0$ e variância $1$.
+\begin{itemize}
+ \item[(a)] Proponha um experimento para determinar se o medidor está corretamente calibrado;
+ \item[(b)] A partir do experimento no item anterior, proponha um teste para verificar se a variância do erro de medição é diferente do especificado no manual.
+ Enuncie sua hipótese nula, alternativa e estatística de teste claramente;
+  \item[(c)] Valciclei obteve dados e realizou o teste proposto. 
+ Obteve um p-valor de $0.005$. 
+ Escreveu para Palmirinha: ``A probabilidade de o medidor estar descalibrado é de 99.5\%''.
+ Ele acertou em sua conclusão? Justifique;
+ \item[(d)] Suponha que o outro assistente de Palmirinha, Adryelson, repita o mesmo experimento utilizando outro medidor.
+ Da mesma forma que antes, proponha um teste para comparar as variâncias dos medidores de Valciclei e Adryelson.
+\end{itemize}
+ 
+\end{document}          
