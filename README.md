@@ -70,7 +70,7 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 - Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
 
 **Versões anteriores**
-- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2).
+- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2)
 
 **Agradecimentos**
 
