@@ -9,7 +9,7 @@
 \begin{frame}{Distribuição amostral de uma estatística}
  Se $\bX = \{ \rs \}$ é uma amostra aleatória, $T = r(\rs)$ é uma variável aleatória, e portanto, faz sentido falar da distribuição de $T$.
  \begin{exemplo}[Distribuição amostral de uma proporção]
-  (Exemplo 8.1.1 em De Groot)
+  (Exemplo 8.1.1 em DeGroot)
   
   Suponha que estamos interessados na proporção de pacientes que se recrudescem após tratamento com uma determinada droga.
   Para uma amostra de $n$ pacientes, podemos modelar os desfechos como variáveis aleatórias i.i.d. Bernoulli com parâmetro $\theta$ e computar $T = n^{-1}\sum_{i=1}^n X_i$ como estimativa de $\theta$.
@@ -45,6 +45,7 @@ Chamamos~(\ref{eq:sampling_distribution_binomial}) de~\textbf{distribuição amo
  \begin{defn}[Distribuição qui-quadrado]
  Dizemos que uma variável aleatória $Y$ tem distribuição~\textbf{qui-quadrado} com $m$ graus de liberdade quando
  \begin{equation}
+ \label{eq:chi_square_density}
  f_Y(y) = \frac{1}{2^{m/2}\Gamma(m/2)} y^{m/2 - 1}e^{-y/2}, \: y >0.
  \end{equation} 
  
@@ -57,11 +58,13 @@ $E[Y] = ?$, $\vr(Y) =?$
 \begin{frame}{Alguns resultados úteis}
 
 \begin{theo}[Soma de variáveis aleatórias qui-quadrado]
+\label{thm:sum_chisquare}
 Se $\rs$ são variáveis aleatórias independentes com graus de liberdade $m_i$, então $W = \sum_{i=1}^n X_i$ tem distribuição qui-quadrado com graus de liberdade $m =  \sum_{i=1}^n m_i$.
 \end{theo}
 \textbf{Prova}: Segue da soma de variáveis aleatórias Gama.
 
 \begin{theo}[Distribuição do quadrado de uma variável aleatória Normal padrão]
+\label{thm:square_of_normal}
 Se $X \sim\operatorname{Normal}(0, 1)$, $Y = X^2$ tem distribuição qui-quadrado com $m=1$. 
 \end{theo}
 \textbf{Prova}: Escrever a acumulada de $Y$, diferenciar e usar a regra da cadeia.
@@ -80,7 +83,9 @@ No caso Normal, quando $\mu$ é conhecida, temos o estimador de máxima verossim
 \[ \hat{\sigma^2} = \frac{1}{n} \sum_{i=1}^n (X_i - \mu)^2. \]
 Isso nos leva às duas próximas observações
 \begin{obs}[Uma transformação linear do EMV]
+\label{rmk:linear_transform_MLE_normal}
  \begin{equation*}
+ \label{eq:linear_transform_MLE_normal}
   \frac{n\hat{\sigma^2}}{\sigma^2} \sim \operatorname{qui-quadrado}(n).
  \end{equation*}
 \end{obs}
@@ -98,6 +103,7 @@ Isso nos leva às duas próximas observações
 
 \begin{frame}{Quem comeu o meu queijo?}
  \begin{exemplo}[Concentração de ácido no queijo]
+ \label{ex:acid_concentration_cheese}
   Suponha que estamos interessados em medir a concentração de um certo ácido em pedaços de queijo produzidos por uma fábrica.
   Ao longo dos anos, grande acúmulo de dados permitiu afirmar que a distribuição populacional da concentração é Normal com parâmetros $\mu$ e $\sigma^2$.
   Suponha que amostramos $n$ pedaços e medimos as concentrações $\rs$.
@@ -130,12 +136,13 @@ Podemos calcular $\pr(Y \leq u^2)$ para quantificar o risco de isso acontecer.
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 8.1 e 8.2;
+ \item[\faBook] DeGroot seções 8.1 e 8.2;
 %  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+  \item[\faForward] Próxima aula: DeGroot, seções 8.3 e 8.4;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 8.1: exercícios 1, 2, 3 e 9;
    \item Seção 8.2: exercícios 4, 7, 10 e 13.

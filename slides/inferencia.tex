@@ -1,0 +1,128 @@
+\documentclass[9pt]{beamer}
+\usepackage{amsmath, amssymb, amsthm, mathtools, graphicx, float, amssymb, subfigure, booktabs, enumitem}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{minted}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc} % usually not needed (loaded by default)
+\usepackage[T1]{fontenc}
+\hypersetup{colorlinks=true,citecolor=blue}
+\usepackage{tikz}
+\usepackage{fontawesome}
+\usetikzlibrary{calc,shapes}
+\usepackage[normalem]{ulem}
+\setbeamertemplate{theorems}[numbered]
+\usepackage[authoryear,round]{natbib}
+\usepackage[portuguese]{babel}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+          %titlepagelogo=logo-fiocruz,% Logo for the first page.
+          %watermark=watermark-polito,% Watermark used in every page.
+          %watermarkheight=100px,% Height of the watermark.
+          %watermarkheightmult=4,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+\usecolortheme{chameleon}          
+%%%% Box options
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+%%%% Background settings          
+% \setbeamercolor{normal text}{fg=white,bg=black!90}
+% \setbeamercolor{structure}{fg=white}
+% \setbeamercolor{alerted text}{fg=red!85!black}
+% \setbeamercolor{item projected}{use=item,fg=black,bg=item.fg!95}
+% \setbeamercolor*{palette primary}{use=structure,fg=structure.fg}
+% \setbeamercolor*{palette secondary}{use=structure,fg=structure.fg!95!black}
+% \setbeamercolor*{palette tertiary}{use=structure,fg=structure.fg!90!black}
+% \setbeamercolor*{palette quaternary}{use=structure,fg=structure.fg!95!black,bg=black!80}
+% \setbeamercolor{title}{fg=white}
+% \setbeamercolor{frametitle}{bg=white}
+% \setbeamercolor*{framesubtitle}{fg=white}
+% \setbeamercolor*{block title}{parent=structure,bg=black!95}
+% \setbeamercolor*{block body}{fg=black,bg=black!10}
+% \setbeamercolor*{block title alerted}{parent=alerted text,bg=black!95}
+% \setbeamercolor*{block title example}{parent=example text,bg=black!95}
+
+%%%% Maths crap
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newtheorem{remark}{Remark}[]
+\newtheorem{theo}{Teorema}[]
+\newtheorem{exemplo}{Exemplo}
+\newtheorem{defn}{Defini\c{c}\~ao}[]
+\newtheorem{pergunta}{Pergunta}[]
+\newtheorem{ideia}{Ideia}[]
+\newtheorem{obs}{Observa\c{c}\~ao}[]
+\newtheorem{property}{Property}[]
+%%%% Itemize settings 
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\diamond$}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+\usepackage{url}
+%%%% Hyperref stuff
+\hypersetup{
+  colorlinks  = true, %Colours links instead of ugly boxes
+  urlcolor    = cyan, %Colour for external hyperlinks
+  linkcolor   = cyan, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+%%%% To create without the 'Figure' prefix. Remove if you need'em
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+%%%%
+\author{
+\underline{Luiz Max de Carvalho}[lmax.fgv@gmail.com]\linebreak
+}
+\title{
+\Huge Inferência Estatística
+}
+\institute{
+Disciplina da graduação em Matemática Aplicada\\
+Escola de Matemática Aplicada (EMAp/FGV), Rio de Janeiro.
+}
+\date{\today}
+\logo{\includegraphics[scale=.15]{logo.jpg}}
+\begin{document}
+\include{aula_1}
+\include{aula_2}
+\include{aula_3}
+\include{aula_4}
+\include{aula_5}
+\include{aula_6}
+\include{aula_7}
+\include{aula_8}
+\include{aula_9}
+\include{aula_10}
+\include{aula_11}
+\include{aula_12}
+\include{aula_13}
+\include{aula_14}
+\include{aula_15}
+\include{aula_16}
+\include{aula_17}
+\include{aula_18}
+\include{aula_19}
+\end{document}

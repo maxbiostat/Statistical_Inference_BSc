@@ -23,6 +23,7 @@
 \begin{frame}{Um Teorema importante}
  Aqui vamos ver um caso especial do Teorema de Basu\footnote{Debabrata Basu (1924--2001) foi um importante estatístico indiano.}, que fala que os dois primeiros momentos amostrais da distribuição Normal são independentes.
  \begin{theo}[Independência da média e variância amostrais na Normal]
+ \label{thm:independence_sample_mean_variance_normal}
   Seja $\rs$ uma amostra aleatória de uma distribuição Normal com parâmetros $\mu$ e $\sigma^2$.
   Então a média amostral, $\Sm$ e a variância amostral, $\Sv$, são independentes.
   Ademais, $\Sm \sim \operatorname{Normal}\left(\mu, \frac{\sigma^2}{n}\right)$ e $\Sv \sim \operatorname{Gama}\left(\frac{n-1}{2},  \frac{n}{2\sigma^2}\right)$.
@@ -43,6 +44,7 @@ Ver Teorema 8.3.1 em DeGroot (prova na pág. 476).
  A resposta é a distribuição t de ``Student''\footnote{William Sealy Gosset (1876--1937) foi um estatístico inglês que, em 1908, publicou o resultado acima sob o pseudônimo ``Student'', ou estudante/aluno.}
  
  \begin{defn}[A distribuição t]
+ \label{def:Student_t_distribution}
   Considere duas variáveis aleatórias, $Y \sim\operatorname{Qui-quadrado}(m)$ e $Z \sim\operatorname{Normal}(0, 1)$ e defina a variável aleatória
   \[ X = \frac{Z}{\sqrt{\frac{Y}{m}}}. \]
  Dizemos que $X$  tem distribuição~\textbf{t de Student com $m$ graus de liberdade}. 
@@ -61,7 +63,8 @@ Para $m>2$, $E[X] = 0$ (porquê?) e $\vr(X) = m/(m-2)$.
 \end{frame}
 
 \begin{frame}{Um exemplo}
-\begin{theo}
+\begin{theo}[Distribuição amostral do estimador não-viesado da variância]
+\label{thm:unbiased_variance_estimator_StudentT}
  Considere o estimador 
  \begin{equation*}
   \hat{\sigma}^\prime = \sqrt{\frac{\Delta^2}{n-1}},
@@ -73,7 +76,7 @@ Então
 \end{equation*}
 \end{theo}
 \textbf{Prova:}
-Ver Teorema 8.4.2 em De Groot.
+Ver Teorema 8.4.2 em DeGroot.
 Defina $Z = \sqrt{n}(\Sm - \mu)/\sigma$ e $Y = \Delta^2/\sigma^2$.
 Então $Z \sim\operatorname{Normal}(0,1)$ e $Y\sim\operatorname{Qui-quadrado}(n-1)$.
 Faça
@@ -99,13 +102,13 @@ e note que $U \sim \operatorname{T}(n-1)$  $\qed$
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 8.3 e 8.4;
+ \item[\faBook] DeGroot seções 8.3 e 8.4;
 %  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
- \item[\faForward] Próxima aula: De Groot, seção 8.5;
+ \item[\faForward] Próxima aula: DeGroot, seção 8.5;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 8.3: exercício 8;
    \item Seção 8.4: derivar a densidade da Distribuição t de Student.

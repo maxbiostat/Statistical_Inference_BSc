@@ -26,7 +26,7 @@ Para cada uma das amostras
 \end{frame}
 
 \begin{frame}{Estatística suficiente}
-\begin{defn}
+\begin{defn}[Estatística suficiente]
  \label{def:sufficient_statistic}
  Seja $\rs$ uma amostra aleatória de uma distribuição indexada pelo parâmetro $\theta$.
  Seja $T = r(\rs)$ uma estatística.
@@ -56,7 +56,7 @@ Se $T$ é suficiente, B pode sempre fazer uma aleatorização auxiliar e gerar $
 \end{frame}
 
 \begin{frame}{Teorema da fatorização (TF)}
-\begin{theo}
+\begin{theo}[Teorema da fatorização]
  \label{thm:factorisation}
 Suponha que $\rs$ perfazem uma amostra aleatória com f.d.p./f.m.p $f(x \mid \theta)$, $\theta \in \Omega$.
 Uma estatística $T = r(\rs)$ é suficiente para $\theta$ se, e somente se, para todo $\boldsymbol{x} \in \mathcal{X}$ e $\theta \in \Omega$ existem $u$ e $v$ não negativas tal que
@@ -67,7 +67,7 @@ Uma estatística $T = r(\rs)$ é suficiente para $\theta$ se, e somente se, para
 \textbf{Prova:} (Para v.a.s discretas).
 Para a ``ida'' notar que $T$ é uma função determinística de $X$, ou seja, $\pr(T = t \mid \boldsymbol{X} = \boldsymbol{x} , \theta) = 1$ e que só precisamos considerar $\boldsymbol{x} \in \left\{ \boldsymbol{y} : r(\boldsymbol{y}) = t \right\}$.
 Para a ``volta'', mostrar que $T$ suficiente implica que $\pr(\boldsymbol{X} = \boldsymbol{x} \mid T = t, \theta)$ é função apenas de $\boldsymbol{x}$.
-Ver De Groot, Teorema 7.7.1 e Casella \& Berger, Teorema 6.2.6.
+Ver DeGroot, Teorema 7.7.1 e Casella \& Berger, Teorema 6.2.6.
 \end{frame}
 
 \begin{frame}{O TF em ação}
@@ -79,7 +79,6 @@ Ver De Groot, Teorema 7.7.1 e Casella \& Berger, Teorema 6.2.6.
 \end{frame}
 
 \begin{frame}{Suficiência conjunta}
-
 O que acontece, por exemplo, no caso Normal com $\mu$ e $\sigma^2$ desconhecidos?
 
  \begin{defn}[Suficiência conjunta]
@@ -121,7 +120,7 @@ As estatísticas de ordem $Y_1, Y_2, \ldots, Y_n$ são suficientes conjuntas par
 \end{frame}
 
 \begin{frame}{Suficiência mínima}
-\begin{defn}
+\begin{defn}[Suficiência mínima]
  \label{def:minimal_sufficiency}
  Uma estatística $T$ é dita~\textbf{mínima suficiente} se $T$ é suficiente e é função de qualquer outra estatística suficiente.
  Um vetor $\boldsymbol{T} =  \{T_1, \ldots, T_k \}$ é dito~\textbf{minimamente suficiente conjunto} se é função de qualquer outro vetor de estatísticas suficientes conjuntas.
@@ -134,7 +133,8 @@ As estatísticas de ordem $Y_1, Y_2, \ldots, Y_n$ são suficientes conjuntas par
 \end{frame}
 
 \begin{frame}{EMV e Bayes como estatísticas minimamente suficientes}
- \begin{theo}
+ \begin{theo}[EMV e Bayes são suficientes]
+ \label{thm:MLE_Bayes_sufficient}
   Se a função de verossimilhança admite fatorização como no Teorema~\ref{thm:factorisation}, os  estimadores de Bayes e de máxima verossimilhança são estatísticas minimamente suficientes.
  \end{theo}
 \textbf{Prova:}
@@ -142,7 +142,7 @@ As estatísticas de ordem $Y_1, Y_2, \ldots, Y_n$ são suficientes conjuntas par
  \item EMV: notar que $f_x(\boldsymbol{x} \mid \theta) \propto v[r(\boldsymbol{x}), \theta]$;
  \item Bayes: escrever a perda esperada~\text{a posteriori} explicitamente usando a verossimilhança na forma do TF.
 \end{itemize}
-Ver Teoremas 7.8.3 e 7.8.4 de De Groot.
+Ver Teoremas 7.8.3 e 7.8.4 de DeGroot.
 \end{frame}
 
 
@@ -163,12 +163,13 @@ Ver Teoremas 7.8.3 e 7.8.4 de De Groot.
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 7.7 e 7.8;
+ \item[\faBook] DeGroot seções 7.7 e 7.8;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 6.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item[\faForward] Próxima aula: DeGroot, seção 7.9;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 7.7: exercícios 4, 7, 13, 16;
    \item Seção 7.8: exercícios 3, 8, 12, 16.

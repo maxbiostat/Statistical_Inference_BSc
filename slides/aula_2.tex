@@ -1,5 +1,3 @@
-% DO NOT COMPILE THIS FILE DIRECTLY!
-% This is included by the other .tex files.
 \section*{Inferência Estatística}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,7 +12,8 @@
 
 Todas essas perguntas podem ser abordadas com as ferramentas que a Estatística nos fornece.
 
-\begin{ideia}
+\begin{ideia}[A gramática da Ciência]
+\label{idea:statistics_grammar_science}
 \textbf{A Estatística é a gramática da Ciência}\footnote{Título do livro de Karl Pearson (1857--1936) (\href{https://en.wikipedia.org/wiki/The_Grammar_of_Science}{``The Grammar of Science''}), publicado em 1982.}.
 O mundo é incerto; medições são imperfeitas.
 A Estatística é a linguagem que nos permite expressar e quantificar as incertezas associadas às afirmações científicas através da teoria de probabilidades\footnote{Chamada por E.T. Jaynes (1922-1998) de lógica da Ciência (\href{https://www.cambridge.org/gb/academic/subjects/physics/theoretical-physics-and-mathematical-physics/probability-theory-logic-science}{``Probability Theory: The Logic of Science''}).}.
@@ -22,8 +21,9 @@ A Estatística é a linguagem que nos permite expressar e quantificar as incerte
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Modelo estatístico: definição informal}
-\begin{defn}
-  \textbf{Modelo estatístico} (De Groot, def 7.1.1, pág. 377).  
+\begin{defn}[Modelo estatístico: informal]
+\label{def:statistical_model_informal}
+DeGroot, def 7.1.1, pág. 377
 Um modelo estatístico consiste na identificação de variáveis aleatórias de interesse (observáveis e potencialmente observáveis), na especificação de uma distribuição conjunta para as variáveis aleatórias observáveis e na identificação dos parâmetros ($\theta$) desta distribuição conjunta.
 Às vezes é conveniente assumir que os parâmetros são variáveis aleatórias também, mas para isso é preciso especificar uma distribuição conjunta para $\theta$.
 \end{defn}
@@ -31,9 +31,10 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Modelo estatístico: definição formal}
-\begin{defn}
- \textbf{Modelo estatístico} (\href{https://projecteuclid.org/download/pdf_1/euclid.aos/1035844977}{McCullagh, 2002}).
- Seja $\mathcal{X}$ um espaço amostral qualquer, $\Theta$ um conjunto não-vazio arbitrário e $\mathcal{P}(\mathcal{X})$ o conjunto de todas as distribuições de probabilidade em $\mathcal{X}$.
+\begin{defn}[Modelo estatístico: formal]
+\label{def:statistical_model_formal}
+\href{https://projecteuclid.org/download/pdf_1/euclid.aos/1035844977}{McCullagh, 2002}.
+Seja $\mathcal{X}$ um espaço amostral qualquer, $\Theta$ um conjunto não-vazio arbitrário e $\mathcal{P}(\mathcal{X})$ o conjunto de todas as distribuições de probabilidade em $\mathcal{X}$.
  Um modelo estatístico~\underline{paramétrico} é uma função $P : \Theta \to \mathcal{P}(\mathcal{X})$, que associa a cada $\theta \in \Theta$ uma distribuição de probabilidade $P_\theta$ em $\mathcal{X}$.
 \end{defn}
 \textbf{Exemplos}:
@@ -50,7 +51,7 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Exemplo: como sempre, moedas.}
  \begin{pergunta}[Esta moeda é justa?]
- \label{ex:moeda_justa}
+ \label{qst:moeda_justa}
   Suponha que uma moeda tenha sido lançada dez vezes, obtendo o seguinte resultado:
   \begin{equation*}
    KKKCKCCCKC
@@ -67,8 +68,8 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inferência Estatística}
-\begin{defn}
- \textbf{Afirmação probabilística}.
+\begin{defn}[Afirmação probabilística]
+\label{def:probabilistic_assertion}
  Dizemos que uma afirmação é probabilística quando ela utiliza conceitos da teoria de probabilidade para falar de um objeto.
  Exemplos: 
  \begin{itemize}
@@ -78,10 +79,10 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
   \item $\pr(\vr(X) \leq 4p^2 ) \leq p^2$
  \end{itemize}
 \end{defn}
-\begin{defn}
- \textbf{Inferência Estatística}.
+\begin{defn}[Inferência Estatística]
+\label{def:statistical_inference}
  Uma inferência estatística é uma~\underline{afirmação probabilística} sobre uma ou mais partes de um modelo estatístico.
- Considerando o exemplo~\ref{ex:moeda_justa}, queremos saber:
+ Considerando o exemplo~\ref{qst:moeda_justa}, queremos saber:
  \begin{itemize}
   \item Quantos lançamentos até termos $80\%$ de certeza de que a moeda é justa?
 %   \item Se $p$ é a probabilidade de obter cara num dado lançamento e $\hat{p}$ é nossa estimativa para $p$, quanto vale $E[\hat{p}]$? E $\vr(\hat{p})$?
@@ -92,8 +93,8 @@ Um modelo estatístico consiste na identificação de variáveis aleatórias de 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Estatística}
-\begin{defn}
- \textbf{Estatística}.
+\begin{defn}[Estatística]
+\label{def:statistic}
  Suponha que temos uma coleção de variáveis aleatórias $\rs \in \boldsymbol X \subseteq \mathbb{R}^n$ e uma função $r: \boldsymbol X \to \mathbb{R}^m$.
  Dizemos que a variável aleatória $T = r(\rs)$ é uma~\textbf{estatística}.
 \end{defn}
@@ -108,7 +109,7 @@ São exemplos de estatísticas:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Tipos de Inferência Estatística}
 \begin{itemize}
- \item \textbf{Predição}: prever o valor de uma variável aleatória (ainda) não observada; No exemplo~\ref{ex:moeda_justa}, qual será o valor do próximo lançamento, $X_{n+1}$;
+ \item \textbf{Predição}: prever o valor de uma variável aleatória (ainda) não observada; No exemplo~\ref{qst:moeda_justa}, qual será o valor do próximo lançamento, $X_{n+1}$;
  \item \textbf{Decisão Estatística}: Acoplamos o modelo estatístico a uma decisão a ser tomada. Devo emprestar esta moeda ao Duas-Caras? Aqui, temos a~\textit{noção} de~\textbf{risco}.;
  \item \textbf{Desenho experimental}: Quantas vezes é preciso lançar esta moeda para ter 95\% de certeza de que ela é (ou não) justa? Quantas pessoas precisam tomar uma droga para sabermos se ela funciona? Onde devemos cavar para procurar ouro/petróleo?;
 \end{itemize}
@@ -131,8 +132,9 @@ São exemplos de estatísticas:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seção 7.1;
+ \item[\faBook] DeGroot seção 7.1;
  \item[\faFilePdfO] $^\ast$ \href{https://projecteuclid.org/download/pdf_1/euclid.aos/1035844977}{McCullagh, 2002}.
+ \item[\faForward] Próxima aula: DeGroot, seção 7.2;
 \end{itemize} 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

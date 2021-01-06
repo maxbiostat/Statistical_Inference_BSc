@@ -9,6 +9,7 @@
 \begin{frame}{Intervalos de confiança $\equiv$ testes}
  De posse de um intervalo de confiança, podemos testar hipóteses sobre uma função dos parâmetros, $g(\theta)$, como mostra o seguinte teorema:
  \begin{theo}[Intervalos de confiança e testes são equivalentes]
+ \label{thm:CIs_are_tests}
   Suponha que dispomos de dados $\bX = \{ \rs \}$ com f.d.p. comum $f(x \mid \theta)$, e estamos interessados em testar as hipóteses:
   \begin{align*}
    H_0 &: g(\theta) = g_0, \\
@@ -27,12 +28,14 @@ Ver Teorema 9.1.1 de DeGroot.
 \begin{frame}{Conjunto de confiança}
  O conjunto $w(\bX)$ definido acima pode ser entendido como um conjunto de confiança para $g(\theta)$.
  \begin{defn}[Conjunto de confiança]
+ \label{def:confidence_set}
   Se um conjunto aleatório $w(\bX)$ satisfaz 
   \[\pr\left(g(\theta_0) \in w(\bX) \mid \theta = \theta_0 \right)  \geq \gamma, \]
   para todo $\theta_0 \in \Omega$, então chamamos $w(\bX)$ de um~\textbf{conjunto de confiança} para $g(\theta)$.
  \end{defn}
  Isso nos leva ao seguinte teorema
  \begin{theo}[Testando hipóteses a partir de conjuntos de confiança]
+ \label{thm:testing_hypotheses_confidence_sets}
   Suponha que dispomos de dados $\bX = \{ \rs \}$ com f.d.p. comum $f(x \mid \theta)$ e que $w(\bX)$ é um conjunto de confiança para uma função de interesse $g(\theta)$. 
   Então para todo valor $g_0$  assumido por $g(\theta)$ existe um teste $\delta_{g_0}$, de nível $\alpha_0$ que rejeita $H_0: g(\theta) = g_0 $ se e somente se $g(\theta_0)  = g_0 \notin w(\bX)$.
  \end{theo}
@@ -43,6 +46,7 @@ Ver Teorema 9.1.1 de DeGroot.
 \begin{frame}{Exemplo}
  Vamos aplicar os conceitos discutidos ao caso Normal com variância conhecida.
  \begin{exemplo}[Teste para média da Normal com variância conhecida]
+ \label{ex:test_normal_mean}
   Suponha que $\bX = \{ \rs \}$ formam uma amostra aleatória de uma distribuição Normal com média $\mu$ e variância $\sigma^2$, conhecida.
   Considere testar a hipótese
   \begin{align*}
@@ -85,6 +89,7 @@ Em certas situações, podemos utilizar a função de verossimilhança para quan
 
 \begin{frame}{Teste de razão de verossimilhanças para a binomial}
 \begin{exemplo}[Teste de razão de verossimilhanças para uma hipótese simples]
+\label{ex:LRT_simple_hypothesis}
  Suponha que $\rs$ são uma amostra aleatória de uma distribuição Bernoulli com parâmetro $p$.
  Assim, temos $Y = \sum_{i=1}^n X_i$ e $Y~\operatorname{Binomial}(n, p)$.
  Considere testar a hipótese $H_0 :  p  = p_0, H_1:  p  \neq p0$.  
@@ -105,6 +110,7 @@ O supremo no denominador é atingido no EMV, $\hat{p} = y/n$, de modo que
 \begin{frame}{Um teorema útil}
  Sob certas condições de regularidade, podemos fazer afirmações sobre a distribuição assintótica de $\log\Lambda(\bX)$.
  \begin{theo}[Teorema de Wilks\footnote{Em homenagem a Samuel Wilks (1906-1964), matemático estadounidense.}]
+ \label{thm:Wilks}
   Suponha que temos um espaço de parâmetros com $k$ coordenadas, $\theta = (\theta_1, \theta_2, \ldots, \theta_k)$ e desejamos testar a hipótese (simples) da forma
    \begin{align*}
    H_0 &:  \theta_j = \theta_0^{j}, \\
@@ -137,9 +143,9 @@ Para a demonstração, ver Teorema 7.125 de Schervish (1995).
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seção 9.1;
+ \item[\faBook] DeGroot seção 9.1;
  \item[\faBook] $^\ast$ Schervish (1995), capítulos 4.5.5 e 7.5 .
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 8.2.
- \item[\faForward] Próxima aula: De Groot, seção 9.5;
+ \item[\faForward] Próxima aula: DeGroot, seção 9.5;
  \end{itemize} 
 \end{frame}

@@ -6,11 +6,11 @@
 \end{frame}
 
 \begin{frame}{Bayes~\textit{vs} EMV}
-Argumentos asintóticos:
+Argumentos assintóticos:
   \begin{equation*}
    L(\theta) \approx \exp\left[-\frac{\left(\theta-\hat{\theta}\right)^2}{2V_n(\theta)/n} \right].
   \end{equation*}
- \begin{exemplo}[ Exemplo 7.6.11 em De Groot]
+ \begin{exemplo}[ Exemplo 7.6.11 em DeGroot]
     $\rs \sim \operatorname{Exponencial}(\theta)$, 
     \begin{itemize}
      \item   $\hat{\theta}_{\text{EMV}} = \left(\bar{X}_n\right)^{-1} \implies E[\hat{\theta}_{\text{EMV}}] = \theta$ e $\vr[\hat{\theta}_{\text{EMV}}] = \theta^2$.
@@ -32,7 +32,7 @@ Argumentos asintóticos:
 \end{frame}
 
 \begin{frame}{Inferência para uma Uniforme em $(0, \theta)$}
-\begin{exemplo}[Exemplo 7.6.14 em De Groot]
+\begin{exemplo}[Exemplo 7.6.14 em DeGroot]
 $\rs \sim \operatorname{Uniforme}(0, \theta)$.
 Definindo $Y = \max(\rs)$ temos 
 \[ g_n(y \mid \theta) = n\frac{y^{n-1}}{\theta^n}. \]
@@ -63,6 +63,7 @@ Isto nos leva a
  Nestas situações, podemos encontrar um estimador para os parâmetros que relacione os momentos empíricos com os téoricos.
  
  \begin{defn}[Método dos momentos]
+ \label{def:method_of_moments}
   Suponha que $\rs$ formam uma amostra aleatória com distribuição conjunta $f_n(\rs \mid \theta)$, $\theta \in \Omega \subseteq \mathbb{R}^k$ e que o $k$-ésimo momento existe.
   Defina $\mu_j(\theta) = E[X_1^j \mid \theta]$ e suponha que $\mu : \Omega \to  \mathbb{R}^k$ é biúnivoca, de modo que sua inversa é 
   \[ \theta = M(\mu_1(\theta), \ldots, \mu_k(\theta)).\]
@@ -92,13 +93,14 @@ $\mu_1(\theta) = \bar{x}_n$ e $\mu_2(\theta) = \frac{1}{n}\sum_{i=1}^n x_i^2$ pa
 \end{frame}
 
 \begin{frame}{Consistência do EMM}
- \begin{theo}
+ \begin{theo}[Consistência do EMM]
+ \label{thm:MME_consistency}
     Suponha que $\rs$ formam uma amostra aleatória com distribuição comjunta $f_n(\rs \mid \theta)$, $\theta \in \Omega \subseteq \mathbb{R}^k$ e que o $k$-ésimo momento existe.
     Mais uma vez, suponha que a inversa $M$ existe e é contínua.
     Então o EMM é consistente para $\theta$.
  \end{theo}
 \textbf{Prova}: Pela LGN, $m_i \xrightarrow{\text{p}}  \mu_i(\theta)$.
-Assumindo que $M$ é contínua, temos que $M(m_1, \ldots, m_k) \xrightarrow{\text{p}} M(\mu_1(\theta), \ldots, \mu_k(\theta)) = \theta$  (De Groot, Teorema 6.2.5).
+Assumindo que $M$ é contínua, temos que $M(m_1, \ldots, m_k) \xrightarrow{\text{p}} M(\mu_1(\theta), \ldots, \mu_k(\theta)) = \theta$  (DeGroot, Teorema 6.2.5).
 \end{frame}
 
 \begin{frame}{O que aprendemos?}
@@ -128,11 +130,12 @@ Assumindo que $M$ é contínua, temos que $M(m_1, \ldots, m_k) \xrightarrow{\tex
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seção 7.6;
+ \item[\faBook] DeGroot seção 7.6;
  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
+ \item[\faForward] Próxima aula: DeGroot, seções 7.7 e 7.8;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot, seção 7.6: exercícios 20, 22 e 23. 
+  \item[\faBookmark] DeGroot, seção 7.6: exercícios 20, 22 e 23. 
 %   \begin{itemize}
 %    \item Seção 7.5: exercícios  1, 4, 9 e 10;
 %    \item Seção 7.6: exercícios 3, 5, 11 e 20.

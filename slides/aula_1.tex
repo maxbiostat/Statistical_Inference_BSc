@@ -43,33 +43,37 @@ Este é um curso de 60 (sessenta) horas sobre Inferência Estatística.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Desigualdade de Markov\footnote{Em homenagem a Andrey Andreyevich Markov (1856–1922).}}
-Seja $X$ uma variável aleatória não-negativa e $t > 0$.
+\begin{theo}[Desigualdade de Markov]
+ \label{them:Markov_ineq}
+ Seja $X$ uma variável aleatória não-negativa e $t > 0$.
 Então
 \begin{equation}
  \label{eq:Markov_ineq}
  \pr(X \geq t) \leq \frac{E[X^n]}{t^n}.
 \end{equation}
+\end{theo}
 \textbf{Prova:} Assumindo que $X$ é absolutamente contínua, escrever $E[X]$ explicitamente e usar linearidade e monotonicidade da integral.
-Para $n = 1$ e $X$ discreta, ver De Groot, página 349, Teorema 6.2.1 $\qed$
+Para $n = 1$ e $X$ discreta, ver DeGroot, página 349, Teorema 6.2.1 $\qed$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Desigualdade de Chebychev\footnote{Em homenagem a Pafnuty Lvovich Chebyshev (1821--1894).}}
-Seja $Y$ uma variável aleatória com média $E[Y] =: \mu$ e variância $\vr(Y) =: \sigma^2$, ambas finitas.
+\begin{theo}[Desigualdade de Chebychev]
+ \label{thm:Chebychev_ineq}
+ Seja $Y$ uma variável aleatória com média $E[Y] =: \mu$ e variância $\vr(Y) =: \sigma^2$, ambas finitas.
 Mais uma vez, $t>0$.
 Então
 \begin{equation}
  \label{eq:Chebychev_ineq}
  \pr(|Y-\mu| \geq t) \leq \frac{\vr(Y)}{t^2}.
 \end{equation}
+\end{theo}
 \textbf{Prova:} Notar que $E[(Y-\mu)^2] = \sigma^2$ e aplicar Markov.
-Ver De Groot, página 349, Teorema 6.2.2 $\qed$
+Ver DeGroot, página 349, Teorema 6.2.2 $\qed$
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{A média amostral}
 Considere uma~\textbf{amostra aleatória} $\rs$, $n \in \mathbb{N}$ de variáveis aleatórias de uma mesma distribuição com média $E[X_i] = \mu$ e variância $\vr(X_i) = \sigma^2$.
-\begin{defn}[\textbf{Média amostral}]
+\begin{defn}[Média amostral]
  A média amostral de $\rs$ é
  \begin{equation}
   \label{eq:sample_mean}
@@ -77,22 +81,22 @@ Considere uma~\textbf{amostra aleatória} $\rs$, $n \in \mathbb{N}$ de variávei
  \end{equation}
 \end{defn}
 
-\begin{theo}
+\begin{theo}[Média e variância em uma amostra i.i.d.]
 \label{thm:iid_properties}
 Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
 Temos que (i) $E[\bar{X}_n] = \mu$ e (ii) $\vr(\bar{X}_n) = \frac{\sigma^2}{n}$.
 \end{theo}
 \textbf{Prova:} Para (i), usar a linearidade da esperança e o fato de as variáveis serem identicamente distribuídas -- note a falta de menção à independência.
 Para (ii), usar a soma das variâncias de variáveis idependentes, além do fato de serem identicamente distribuídas.
-Ver De Groot, página 350, Teorema 6.2.3.
+Ver DeGroot, página 350, Teorema 6.2.3.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[allowframebreaks,fragile]{Exemplo: determinando o tamanho de amostra}
-Vamos estudar o exemplo 6.2.3 de De Groot.
+Vamos estudar o exemplo 6.2.3 de DeGroot.
 Suponha  que uma moeda justa é lançada $n$ vezes.
 Seja $X_i$ a variável aleatória que é $1$ se o $i$-ésimo lançamento dá cara e $0$ caso contrário.
 Considere $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$.
-\begin{pergunta}
+\begin{pergunta}[Quantos lançamentos?]
 Quantos lançamentos devemos fazer para que 
 $$ \pr(0.4 \leq \bar{X}_n \leq 0.6) \geq 0.7\: ?$$
 \end{pergunta}
@@ -134,9 +138,8 @@ obtemos \verb|n = 15| e \verb|p = 0.6982422|.
 \textbf{Conclusão}: a desigualdade de Chebychev é~\underline{frouxa}, isto é, ela dá uma cota superior para a probabilidade de interesse, mas essa cota pode ser muito maior do que o valor exato.
 Por outro lado, a desigualdade é válida para~\underline{qualquer} variável aleatória cuja variância exista e seja finita.
 
-\begin{ideia}
+\begin{ideia}[Sem almoço grátis]
 \label{idea:no_free_lunch}
- \textbf{Sem almoço grátis}.
  Se uma técnica ou resultado é muito geral, isto é, se aplica a muitas situações, há grandes chances de não fornecer uma resposta muito precisa.
  O contrário também é verdadeiro: se desenvolvemos uma técnica elaborada para uma classe restrita de problemas, geralmente vamos obter respostas precisas, mas nossa técnica não será aplicável a muitos tipos de problemas.
  Em Estatística não existe almoço grátis.
@@ -145,7 +148,7 @@ Por outro lado, a desigualdade é válida para~\underline{qualquer} variável al
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Convergência}
-\begin{defn}[\textbf{Convergência em probabilidade}]
+\begin{defn}[Convergência em probabilidade]
 \label{defn:weak_convergence}
 Dizemos que uma sequência de variáveis aleatórias~\textit{converge em probabilidade} para $b$ se, para todo $\epsilon > 0$, temos
 \begin{equation}
@@ -159,7 +162,7 @@ Em algumas situações, chamamos a convergência em probabilidade de convergênc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lei(s) dos Grandes Números (LGN)}
 A lei fraca dos grandes números é um resultado fundamental da Teoria de Probabilidade, extremamente útil em Estatística.
-\begin{theo}[\textbf{Lei Fraca dos Grandes Números}]
+\begin{theo}[Lei Fraca dos Grandes Números]
 \label{thm:WLLN}
 Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
  Então
@@ -184,7 +187,7 @@ $E[X] = \alpha / (\alpha + \beta) = 3/5$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Comentário: Lei Forte dos Grandes Números}
-\begin{defn}[ \textbf{Convergência quase certa}]
+\begin{defn}[Convergência quase certa]
  \label{dfn:as_convergence}
 Dizemos que uma sequência de variáveis aleatórias $\left(Z_n\right)_{n\geq 1}$~\textit{converge quase certamente} para $b$ se
 $$\pr\left(\lim_{n\to \infty} Z_n = b\right) = 1.$$
@@ -201,7 +204,7 @@ Esse modo de convergência é por vezes chamado de convergência forte.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]{Teorema(s) Central(is) do Limite}
 O Teorema Central do Limite um dos resultados mais importantes da Estatística.
-\begin{theo}[\textbf{Teorema Central do Limite} (Lindeberg e Lévy)\footnote{Jarl Waldemar Lindeberg (1876--1932) e Paul Pierre Lévy (1886--1971).}]
+\begin{theo}[Teorema Central do Limite (Lindeberg e Lévy)\footnote{Jarl Waldemar Lindeberg (1876--1932) e Paul Pierre Lévy (1886--1971).}]
  \label{thm:CLT_LindebergLevy}
 Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
 Então, para cada $x$, temos
@@ -225,7 +228,7 @@ $$\Phi(x) := \frac{1}{\sqrt{2\pi}}\int_0^x \exp\left(-\frac{t^2}{2}\right)dt,$$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Teorema Central do Limite: aplicação}
-\begin{pergunta}
+\begin{pergunta}[Quanto vale $p$?]
 Suponha que $X_1, \ldots, X_{12}$ são variáveis aleatórias independentes com distribuição uniforme entre 0 e 1.
 Defina
 $$  p:=  \pr\left(\left| \bar{X}_n - \frac{1}{2}\right| \leq 0.1\right).$$
@@ -253,8 +256,9 @@ $$\bar{X}_n \sim \operatorname{normal}(\mu, \sigma^2/n).$$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 6.2 e 6.3;
+ \item[\faBook] DeGroot seções 6.2 e 6.3;
  \item[\faBook] $^\ast$ Casella \& Berger, seções 5.2 e 5.5;
  \item[\faGithub] $^\ast$ Nosso repositório (\url{https://github.com/maxbiostat/Statistical_Inference_BSc}).
-\end{itemize} 
+  \item[\faForward] Próxima aula: DeGroot, seção 7.1;
+  \end{itemize} 
 \end{frame}

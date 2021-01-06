@@ -88,7 +88,8 @@ e o EMV é $\hat{\theta} = \max(x_1, x_2, \ldots, x_n)$.
 
 \subsection*{Existência} 
 \begin{frame}{Existência do EMV}
-\begin{obs}
+\begin{obs}[Existência do EMV]
+\label{rmk:existence_MLE}
 A existência do EMV pode depender de detalhes irrelevantes acerca do espaço de parâmetros, $\Omega$. 
 \end{obs}
 \begin{exemplo}[Não existência do EMV]
@@ -106,10 +107,9 @@ A existência do EMV pode depender de detalhes irrelevantes acerca do espaço de
 \end{frame}
 
 \subsection*{Unicidade} 
-
 \begin{frame}{Unicidade do EMV}
-
 \begin{obs}[Unicidade do EMV]
+\label{rmk:unicity_MLE}
 Mesmo quando existe, o EMV nem sempre é único. 
 \end{obs}
 
@@ -139,18 +139,18 @@ Podemos reescrever~(\ref{eq:uniform_thetapOne}) como
 \end{frame}
  
 \subsection*{Invariância} 
-
 \begin{frame}{Invariância do EMV}
 Suponha que estamos interessados em uma transformação do parâmetro $\theta$, $\phi(\theta)$.
 Por exemplo, se $\rs$ são Bernoulli com parâmetro $p$,  podemos estar interessados na~\textit{chance} $\omega = \phi(p) = p/(1-p)$.
 \begin{theo}[Invariância do EMV]
+\label{thm:invariance_MLE}
  Considere uma função $\phi : \Omega \to \mathbb{R}$.
  Se $\hat{\theta}$ é um EMV para $\theta$, então $\phi(\hat{\theta})$ é um EMV para $\omega = \phi(\theta)$.
 \end{theo}
 \textbf{Prova:} Defina a~\textit{verossimilhança induzida}:
 \[ L^\ast(\omega) := \sup_{\left\{ \theta: \phi(\theta) = \omega \right\}} L(\theta), \]
 e note que o supremo desta função sobre $\Omega$ é precisamente o EMV.
-Ver Casella \& Berger, Teorema 7.2.10 (pág. 320) ou De Groot, Teorema 7.6.2 (pág 427).
+Ver Casella \& Berger, Teorema 7.2.10 (pág. 320) ou DeGroot, Teorema 7.6.2 (pág 427).
 \textbf{Exemplo:} O EMV para o quadrado da média de uma normal, $\mu^2$, é $\bar{X}_n^2$.
 \end{frame}
 
@@ -159,6 +159,7 @@ Ver Casella \& Berger, Teorema 7.2.10 (pág. 320) ou De Groot, Teorema 7.6.2 (p�
 \begin{frame}{Consistência do EMV}
 Sob condições de regularidade, o EMV é consistente, isto é $\hat{\theta}_{\text{EMV}} \xrightarrow{} \theta$.
 \begin{theo}[Consistência do EMV]
+\label{thm:consistency_MLE}
 Defina $l(\theta) := \log f_n(\boldsymbol{x} \mid \theta)$ e assuma que $\rs \sim f(\theta_0)$, isto é, que $\theta_0$ é o valor verdadeiro do parâmetro.
 Denote $E_{\theta_0}[g] := \int_{\Omega} g(x, \theta) f(\boldsymbol{x} \mid \theta_0)\, dx$.
  Suponha que 
@@ -199,12 +200,13 @@ e aplicar a desigualdade de Jensen.
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 7.5 e 7.6;
+ \item[\faBook] DeGroot seções 7.5 e 7.6;
  \item[\faBook] $^\ast$ Casella \& Berger, seção 7.2.2.
  \item[\faBook] $^\ast$ Schervish (1995), seção 5.1.3.
+   \item[\faForward] Próxima aula: DeGroot, seção 7.6 (pág. 432 em diante);
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot,
+  \item[\faBookmark] DeGroot,
   \begin{itemize}
    \item Seção 7.5: exercícios  1, 4, 9 e 10;
    \item Seção 7.6: exercícios 3, 5 e 11.

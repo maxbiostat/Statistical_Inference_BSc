@@ -33,6 +33,7 @@ Quando avaliamos estimadores, o erro quadrático médio e o viés são alguns~\t
 A variância amostral como a temos definido até aqui é viesada. 
 Uma pequena modificação leva a um estimador não viesado da variância.
 \begin{theo}[Estimador não-viesado da variância]
+\label{thm:variance_estimator}
  Seja $\bX = \{ \rs \}$ uma amostra aleatória, com $E[X_1] = m$ e $\vr(X_1) = v < \infty$.
  Então
  \begin{equation*}
@@ -63,6 +64,7 @@ Não-viesamento é uma característica desejável, mas nem sempre um estimador n
 
 \begin{frame}{Escolhendo entre desenhos amostrais}
 \begin{exemplo}[Estudando chegada de clientes]
+\label{ex:choosing_exp_designs}
  Exemplo 8.8.1 em DeGroot.
  Suponha que Palmirinha esteja interessada em estudar quantos clientes chegam à sua loja de pamonha num  determinado intervalo.
  Para isso, ela vai modelar o fenômeno como um processo de Poisson:
@@ -133,13 +135,14 @@ Definimos a~\textbf{informação de Fisher} como
  \end{equation*} 
 \end{theo}
 \textbf{Prova:} Usar as propriedades do $\log$, da derivada e a lei de esperanças.
-Ver De Groot, Teorema 8.8.2.
+Ver DeGroot, Teorema 8.8.2.
 \end{frame}
 
 \begin{frame}{Voltando ao dilema de Palmirinha}
 Podemos usar a informação de Fisher para analisar os desenhos propostos por Palmirinha.
 Não é difícil derivar
 \begin{equation*}
+\label{eq:poisson_process_informationMatrix}
  I_X(\theta) = \frac{n}{\theta^2}\quad\text{e}\quad I_Y(\theta) = \frac{t}{\theta}.
 \end{equation*}
 Portanto, os desenhos são equivalentes se $n = t\theta$, o que não ajuda muito, já que $\theta$ é desconhecido.
@@ -148,10 +151,10 @@ Por outro lado, vemos que neste caso não é possível decidir entre os desenhos
 \textbf{Extra:} faça uma análise Bayesiana deste problema, derivando a esperança~\textit{a priori} da informação de Fisher sob os dois desenhos.
  \end{frame}
 
- \begin{frame}{O Teorema de Crámer-Rao}
+ \begin{frame}{O Teorema de Cramér-Rao}
 Outro uso importante da informação de Fisher é encontrar uma cota inferior para a variância de um estimador.
 Para isso, empregamos um dos resultados mais importantes da Estatística:
-\begin{theo}[Teorema de Crámer-Rao\footnote{Em homenagem ao estatístico indo-estadunidense Calyampudi Radhakrishna Rao (1920-) e ao matemático sueco Harald Cramér (1893--1985).}]
+\begin{theo}[Teorema de Cramér-Rao\footnote{Em homenagem ao estatístico indo-estadunidense Calyampudi Radhakrishna Rao (1920-) e ao matemático sueco Harald Cramér (1893--1985).}]
  \label{thm:Cramer_Rao_theorem}
  Seja $\bX = \{ \rs \}$ uma amostra aleatória com f.d.p./f.m.p $f(x\mid\theta)$, com as mesmas premissas da definição~\ref{def:Fisher_information}.
  Suponha que $T = r(\bX)$ é uma estatística com variância finita.
@@ -168,8 +171,9 @@ Para isso, empregamos um dos resultados mais importantes da Estatística:
 \end{frame}
 
 \begin{frame}{Um corolário útil}
-Se $T$ é um estimador não-viesado, temos uma expressão útil para a cota de Crámer-Rao.
+Se $T$ é um estimador não-viesado, temos uma expressão útil para a cota de Cramér-Rao.
 \begin{obs}[Variância de uma estimador não-viesado]
+\label{rmk:variance_unbiased_estimator}
  Se $T$ é um estimador não-viesado de $\theta$, temos
  \begin{equation*}
   \vr_\theta(T) \geq \frac{1}{nI(\theta)}
@@ -180,7 +184,7 @@ Se $T$ é um estimador não-viesado, temos uma expressão útil para a cota de C
 
 
 \begin{frame}{Eficiência}
-Com esse Teorema de Crámer-Rao em mãos, estamos em posição de definir um critério de otimalidade para estimadores.
+Com esse Teorema de Cramér-Rao em mãos, estamos em posição de definir um critério de otimalidade para estimadores.
 \begin{defn}[Estimador eficiente]
  \label{def:efficient_estimator}
  Um estimador $\delta(\bX)$ é dito~\textbf{eficiente} de (sua esperança) $m(\theta)$ se 
@@ -190,6 +194,7 @@ Com esse Teorema de Crámer-Rao em mãos, estamos em posição de definir um cri
 \end{defn}
 
 \begin{exemplo}
+\label{ex:poisson_efficient_estimator}
  Seja $\rs$ uma amostra aleatória de uma distribuição Poisson com parâmetro $\theta$.
  Podemos mostrar que $\bar{X}_n$ é um estimador eficiente de $\theta$.
 \end{exemplo}
@@ -198,20 +203,20 @@ Com esse Teorema de Crámer-Rao em mãos, estamos em posição de definir um cri
 \begin{frame}{Distribuição assintótica de um estimador eficiente}
 Podemos usar o TCL para estudar a distribuição assintótica de um estimador eficiente.
 \begin{theo}[Distribuição assintótica de um estimador eficiente]
+\label{thm:asymptotic_distribution_efficient_estimator}
  Assumindo as condições de regularidade usuais, considere $\delta$ um estimador eficiente de $m(\theta)$.
  Assuma também que $m^\prime(\theta) \neq 0\: \forall\: \theta \in \Omega$.
  Então a distribuição assintótica de 
  \[\frac{\sqrt{nI(\theta)}}{m^\prime(\theta)} \left[ \delta - m(\theta) \right] \]
- é normal padrão.
- 
+ é normal padrão. 
 \end{theo}
-\textbf{Prova:} Ver De Groot, Teorema 8.8.4.
+\textbf{Prova:} Ver DeGroot, Teorema 8.8.4.
 Escrever $E_\theta[\delta]$ e $\vr_\theta(\delta)$ explicitamente, usar a condição $\delta = u(\theta)\lambda_n^\prime(\bX \mid \theta) + v(\theta)$, e aplicar as leis de esperanças e variâncias. 
 
 \begin{obs}[Normalidade Assintótica do EMV]
+\label{rmk:asymptotic_normality_MLE}
  Supondo que o EMV possa ser derivado ao resolver a equação $\lambda_n^\prime(\bX \mid \theta) = 0$ e que $\lambda_n^{\prime\prime}(\bX \mid \theta)$ e $\lambda_n^{\prime\prime\prime}(\bX \mid \theta)$ satisfazem certas condições técnicas, $\sqrt{nI(\theta)} \left(\hat{\theta}_{\text{EMV}}-\theta\right)^2$ tem distribuição aproximadamente normal padrão.
 \end{obs}
-
 \end{frame}
 
 
@@ -227,26 +232,26 @@ Escrever $E_\theta[\delta]$ e $\vr_\theta(\delta)$ explicitamente, usar a condi�
    
    ``A informação de Fisher é uma quantidade derivada de uma distribuição que mede a quantidade de informação contida em uma amostra aleatória advinda desta distribuição''
    
-    \item[\faLightbulbO] Crámer-Rao;
+    \item[\faLightbulbO] Cramér-Rao;
     
-    ``A desigualdade de Crámer-Rao dá uma cota inferior para a variância de um estimador''    
+    ``A desigualdade de Cramér-Rao dá uma cota inferior para a variância de um estimador''    
     
     \item[\faLightbulbO] Distribuição assintótica de estimadores eficientes (e EMV);
     
-    ``Sob condições de regularidade, vale um TCL para estimadores eficientes e para o EMV''    
-    
+    ``Sob condições de regularidade, vale um TCL para estimadores eficientes e para o EMV''       
    
   \end{itemize}
  \end{frame}
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 8.7 e 8.8;
+ \item[\faBook] DeGroot seções 8.7 e 8.8;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 7.3.
  \item[\faBook] $^\ast$ Schervish (1995), Teorema  5.13.
+ \item[\faForward] Próxima aula: DeGroot, seções 8.1 e 8.2;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 8.7: exercícios 4, 6, 11 e 13;
    \item Seção 8.8: exercícios 5, 7 e 10.

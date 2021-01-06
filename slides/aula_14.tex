@@ -13,6 +13,7 @@
 \begin{frame}{Hipótese nula e alternativa}
  No teste de hipóteses estatísticas, identificamos partições do espaço de parâmetros que codificam as hipóteses de interesse.
  \begin{defn}[Hipótese nula e hipótese alternativa]
+ \label{def:hypotheses}
   Considere o espaço de parâmetros $\Omega$ e defina $\Omega_0, \Omega_1 \subset \Omega$ de modo que $\Omega_0 \cup \Omega_1 = \Omega$ e $\Omega_0 \cap \Omega_1 = \emptyset$.
   Definimos
   \begin{align*}
@@ -27,7 +28,6 @@ Por outro lado, se $\theta \in \Omega_0$ dizemos que~\textit{não rejeitamos} ou
 \end{frame}
 
 \begin{frame}{Exemplo}
-
 Suponha que Palmirinha recebeu uma carta da Associação Nacional da Pamonha Gourmet (ANPG), dizendo que a pamonha deve ter, no mínimo, 7 mg/L de concentração de amido.
 Supondo que a concentração de amido tenha distribuição Normal com parâmetros $\mu$ (desconhecido) e $\sigma^2$ (conhecido), Palmirinha rabisca num papel:
   \begin{align*}
@@ -39,6 +39,7 @@ Supondo que a concentração de amido tenha distribuição Normal com parâmetro
 \begin{frame}{Hipóteses simples e compostas}
  Dependendo do tipo de partição do espaço de parâmetros, as hipóteses recebem classificações diferentes.
  \begin{defn}[Hipótese simples e hipótese compostas]
+ \label{def:hypotheses_typesI}
   Dizemos que uma hipótese $H_i$, é~\textbf{simples}, se $\Omega_i = \{ \theta_i \}$, isto é, se a partição correspondente é um ponto. 
   Uma hipótese é dita~\textbf{composta} se não é simples.
  \end{defn}
@@ -53,6 +54,7 @@ Supondo que a concentração de amido tenha distribuição Normal com parâmetro
 \begin{frame}{Hipótese unilateral e hipótese bilateral}
  Em analogia com os intervalos de confiança, também podemos entender as hipóteses como sendo unilaterais ou bilaterais.
  \begin{defn}[Hipótese unilateral e hipótese bilateral]
+  \label{def:hypotheses_typesII}
   Uma hipótese da forma $H_0 : \theta \leq \theta_0$ ou $H_0 : \theta \geq \theta_0$ é dita~\textit{unilateral} (``\textit{one-sided}''), enquanto hipóteses da forma $H_0 : \theta \neq \theta_0$ são ditas bilaterais (``\textit{two-sided}'').
  \end{defn}
  
@@ -63,6 +65,7 @@ Supondo que a concentração de amido tenha distribuição Normal com parâmetro
 
 \begin{frame}{Região crítica: exemplo motivador}
  \begin{exemplo}[Teste para a média de uma Normal com variância conhecida]
+  \label{ex:test_normal_mean_knownVar}
   Suponha que $\bX = \{ \rs \}$ é uma amostra aleatória de uma Normal com média $\mu$ e variância $\sigma^2$ conhecida.
   Queremos testar a hipótese
   \begin{align*}
@@ -84,6 +87,7 @@ Supondo que a concentração de amido tenha distribuição Normal com parâmetro
 \begin{frame}{Região crítica e região de rejeição}
  Uma maneira mais simples de expressar o procedimento acima é definir $T := \left|\Sm - \mu_0\right|$ e rejeitar $H_0$ se $T \geq c$.
  \begin{defn}[Região crítica]
+ \label{def:critical_region}
   O conjunto 
    \[ S_1 := \left\{ \bx:  \left|\Sm - \mu_0\right| \geq c \right\}, \]
    é chamado de~\textbf{região crítica} do teste.
@@ -92,6 +96,7 @@ Supondo que a concentração de amido tenha distribuição Normal com parâmetro
 Analogamente, considere a estatística $T = r(\bX)$ e tome $R \subseteq \mathbb{R}$. 
 Então podemos definir
 \begin{defn}[Região de rejeição]
+\label{def:rejection_region}
 Se $R \subseteq \mathbb{R}$ é tal que dizemos que ``rejeitamos $H_0$ se $T \in R$'', então $R$ é chamada uma~\textbf{região de rejeição} para a estatística $T$ e o teste associado.
 \end{defn}
 \end{frame}
@@ -104,6 +109,7 @@ Se $R \subseteq \mathbb{R}$ é tal que dizemos que ``rejeitamos $H_0$ se $T \in 
 \end{obs}
 
 \begin{ideia}[Dividindo o espaço amostral e o espaço de parâmetros]
+\label{idea:splitting_sample_space_parameter_spaces}
  Suponha que temos um modelo estatístico dado pela distribuição $f(x\mid\theta)$, com $x \in \mathcal{X}$ e $\theta \in \Omega$.
  Desta forma, uma amostra aleatória $\bX = \{ \rs\}$ mora em $\mathcal{X}^n$.
  Para formular uma hipótese estatística, estabelecemos uma partição do espaço de parâmetros $\Omega$ em $\Omega_0$ e $\Omega_1$ disjuntos.
@@ -117,6 +123,7 @@ Se $R \subseteq \mathbb{R}$ é tal que dizemos que ``rejeitamos $H_0$ se $T \in 
  Nossa capacidade de rejeitar $H_0$ depende do valor de $\theta \in \Omega$.
  Esta dependência é capturada pela função poder.
  \begin{defn}[Função poder]
+ \label{def:power_function}
   Seja $\delta$ um procedimento de aceitação/rejeição como visto anteriormente.
   A~\textbf{função poder} é definida como 
   \begin{equation}
@@ -130,6 +137,7 @@ Idealmente, queremos $\pi(\theta \mid \delta) = 1$ para $\theta \in \Omega_1$ (p
 \begin{frame}{A função poder de um teste para a média da Normal}
  Considere a situação em que $\rs$ vêm de uma Normal com média $\mu$, desconhecida, e variância $\sigma^2$, conhecida.
  \begin{exemplo}[Função poder no teste para média da Normal ($\sigma^2$ conhecida)]
+ \label{ex:power_function_normal_mean_test}
   Lembrando que $T = |\Sm - \mu_0|$, e tomando $\delta$ como o procedimento descrito acima, escrevemos
   \begin{align*}
    \pi(\mu \mid \delta) &= \pr(T \in R \mid \mu),\\
@@ -151,6 +159,7 @@ Idealmente, queremos $\pi(\theta \mid \delta) = 1$ para $\theta \in \Omega_1$ (p
  Quando testamos uma hipótese, nunca estamos livres de cometer um erro.
  É conveniente classificar os possíveis erros em duas categorias.
  \begin{defn}[Tipos de erros]
+ \label{def:error_types}
  \begin{center}
   \begin{tabular}{cc}
    Nome & Erro cometido\\
@@ -180,6 +189,7 @@ Isto nos leva a concluir que
 
  Em geral, precisamos encontrar um equilíbrio entre os tipos de erros.
  \begin{ideia}[Encontrando um balanço entre erro tipo I e tipo II]
+ \label{idea:balancing_typeI_and_typeII}
   Tome $0 < \alpha_0 < 1$.
   Nós construímos o procedimento $\delta^\ast$ de modo que
   \begin{equation}
@@ -193,6 +203,7 @@ Isto nos leva a concluir que
  
 \begin{frame}{Tamanho de um teste}
  \begin{defn}[Tamanho/nível de um teste]
+ \label{def:size_test}
  Dizemos que um teste, $\delta$, tem~\textbf{tamanho} ou~\textbf{nível de significância} $\alpha(\delta)$, com 
  \begin{equation*}
   \alpha(\delta) := \sup_{\theta \in \Omega_0} \pi(\theta \mid \delta).
@@ -208,6 +219,7 @@ Um teste que atende à condição anterior (\ref{eq:test_maxsize}) tem que taman
 
 \begin{frame}{Um exemplo}
  \begin{exemplo}[Teste para o parâmetro de uma uniforme]
+ \label{ex:test_uniform_parameter}
   Suponha que $\rs$ tem distribuição Uniforme em $[0, \theta]$, com $\theta$ desconhecido, e que aventamos as seguintes hipóteses:
   \begin{align*}
    H_0:&\: 3 \leq \theta \leq 4, \\
@@ -301,14 +313,14 @@ Conhencendo estatística e probabilidade, você decide (i) observar o jogo à di
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seção 9.1;
- \item[\faBook] $^\ast$ De Groot seções 9.2 e 9.3.
+ \item[\faBook] DeGroot seção 9.1;
+ \item[\faBook] $^\ast$ DeGroot seções 9.2 e 9.3.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
 %  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 9.2.
- \item[\faForward] Próxima aula: De Groot, seção 9.1 (razão de verossimilhanças);
+ \item[\faForward] Próxima aula: DeGroot, seção 9.1 (razão de verossimilhanças);
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 9.1: 3, 8 e 13.
    \item $^\ast$ Seção 9.1: 19 e 21.

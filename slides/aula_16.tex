@@ -16,6 +16,7 @@
 \begin{frame}{Teste não-viesado}
  Em analogia com o conceito de estimador não-viesado, podemos também classificar testes de hipótese em viesados ou não-viesados.
  \begin{defn}[Teste não viesado]
+ \label{def:unbiased_tests}
   Suponha que desejamos testar a hipótese
   \begin{align*}
    H_0 &: \theta \in \Omega_0, \\
@@ -29,11 +30,11 @@
 \end{frame}
 
 \begin{frame}{Teste t: motivação}
-
  Suponha que estamos interessados em testar hipóteses sobre a média ($\mu$) de uma distribuição Normal quando a variância ($\sigma^2$) é desconhecida.
  Sabemos que é possível encontrar uma quantidade pivotal $(\Sm-\mu)/\hat{\sigma}^\prime$ tal que é possível construir um intervalo de confiança para $\mu$ da forma $\Sm - c\hat{\sigma}^\prime/\sqrt{n}, \Sm + c\hat{\sigma}^\prime/\sqrt{n}$, onde $c = T^{-1}(\gamma; n-1)$ é a f.d.a. inversa de uma distribuição t de Student com $n-1$ graus de liberdade.
  
  \begin{pergunta}[Como falar sobre $\mu$ quando ambas $\mu$ e $\sigma^2$ são desconhecidas?]
+ \label{qst:unknown_mean_and_variance}
   Suponha que Palmirinha esteja interessada em testar a hipótese de que a média da concentração de amido na sua pamonha seja maior que $\mu_0 = 7 mg/L$, ou seja,
     \begin{align*}
    H_0 &: \mu \geq \mu_0, \\
@@ -60,6 +61,7 @@ A partir daí, pode construir um teste $\delta_c$ que rejeita $H_0$ se $U \leq c
 
 \begin{frame}{Caracterizando o teste t}
 \begin{defn}[Teste t]
+\label{def:Student_t_test}
 Um teste $\delta_c$ que rejeita $H_0$ se $U\geq c$ (equiv. $U \leq c$), com $c = T^{-1}(1-\alpha_0; n-1)$ é chamado um teste t (unicaudal) de tamanho $\alpha_0$.
 \end{defn}
 \begin{theo}[Propriedades do teste t]
@@ -80,6 +82,7 @@ Então
 \begin{frame}{P-valor para o teste t}
  Lembre-se de que o p-valor é a probabilidade,~\textbf{sob $H_0$}, de observarmos uma estatística tão ou mais extrema do que a que foi observada.
  \begin{theo}[P-valor para um teste t unicaudal]
+ \label{thm:pvalue_one_tailed}
  Suponha que observarmos $U = u$ e seja $T(\cdot; n-1)$ a f.d.a. de uma distribuição t de Student com $n-1$ graus de liberdade.
  Para a hipótese
 \begin{align*}
@@ -167,7 +170,6 @@ Em ambos os casos, podemos fazer o teste ``rejeite $H_0$ se $|U|\geq T^{-1}(1-\a
 \end{frame}
 
 \begin{frame}{O Teste t como um TRV (LRT)}
-
 Podemos também entender o teste t como um teste de razão de verossimilhanças.
 Em particular, temos para um teste t unicaudal, 
 \begin{align*}
@@ -196,12 +198,12 @@ o que estabelece que o teste t é um teste de razão de verossimilhanças.
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seções 9.5 e 9.6;
+ \item[\faBook] DeGroot seções 9.5 e 9.6;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 8.
- \item[\faForward] Próxima aula: De Groot, seção 9.7;
+ \item[\faForward] Próxima aula: DeGroot, seção 9.7;
  \item {\large\textbf{Exercícios recomendados}}
   \begin{itemize}
-   \item[\faBookmark] De Groot Seção 9.5: exercício 8.
+   \item[\faBookmark] DeGroot Seção 9.5: exercício 8.
   \end{itemize}
  \end{itemize} 
 \end{frame}

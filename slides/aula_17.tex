@@ -20,6 +20,7 @@ tem distribuição $F$ com $m$ e $n$ graus de liberdade, com f.d.p.
  f_X(x) = \frac{\Gamma\left(\frac{m + n}{2}\right)m^{m/2} n^{n/2}}{\Gamma\left(\frac{n}{2}\right)\Gamma\left(\frac{m}{2}\right)} \cdot \frac{x^{m/2}-1}{(mx + n)^{(m + n)/2}}, \: x > 0.
 \end{equation*}
 \begin{theo}[Propriedades da distribuição F]
+\label{thm:F_distribution_properties}
  \begin{itemize}
   \item[i)] Se $X \sim F(m, n)$, então $\frac{1}{X} \sim F(n, m)$;
   \item[ii)] Se $Y \sim\operatorname{Student}(n)$, então $Y^2 \sim F(1, n)$.
@@ -52,6 +53,7 @@ Exercício para a leitora.
  \begin{frame}{Propriedades do teste F}
   Em primeiro lugar, podemos fazer afirmações sobre a distribuição de (uma transformação de) $V$.
   \begin{theo}[A distribuição de $V$]
+  \label{thm:V_distribution}
    Seja $V = \frac{S_X^2/(m-1)}{S_Y^2/(n-1)}$, então:
    \begin{equation*}
     \frac{\sigma_2^2}{\sigma_1^2} V \sim F(m-1, n-1).
@@ -76,6 +78,7 @@ Ver Teorema 9.7.3 de DeGroot.
   \begin{frame}{Mais propriedades do teste F}
  Analogamente ao teste t, podemos enunciar o seguinte teorema sobre o teste F.
  \begin{theo}[Propriedades do teste F]
+ \label{thm:F_test_properties}
  Suponha que estamos testando $H_0: \sigma_1^2 \leq \sigma_2^2$.
  Então
  \begin{itemize}
@@ -104,7 +107,7 @@ Ver Teorema 9.7.4 de DeGroot.
 \begin{itemize}
  \item[\faBook] DeGroot seção 9.7;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 8.
- \item[\faForward] Próxima aula: De Groot, seção 11;
+ \item[\faForward] Próxima aula: DeGroot, seção 11;
  \item {\large\textbf{Exercícios recomendados}}
   \begin{itemize}
    \item[\faBookmark] Derivar a função de densidade de probabilidade de uma distribuição F (Teorema 9.7.1 de DeGroot).

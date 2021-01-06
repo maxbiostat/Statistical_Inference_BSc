@@ -11,6 +11,7 @@
 \begin{frame}{Intervalo de confiança para a média no caso Normal}
  Lembremos que 
  \begin{equation}
+ \label{eq:confidence_interval_normal_mean}
  U = \frac{\sqrt{n}(\Sm-\mu)}{\sqrt{\frac{\Delta^2}{n-1}}} \sim\operatorname{T}(n-1).
 \end{equation}
 Para $c>0$, podemos computar $\pr(-c < U < c) = \gamma$:
@@ -25,6 +26,7 @@ Concluímos que $c = F_T^{-1}\left(\frac{1 + \gamma}{2}; n-1\right)$.
 \begin{frame}{Definição de intervalo de confiança}
  O conceito de~\textbf{intervalo de confiança} é fundamental em Estatística e nas aplicações em Ciência.
  \begin{defn}[Intervalo de confiança]
+ \label{def:confidence_interval}
   Seja $\bX = \{ \rs \}$ uma amostra aleatória, cada variável aleatória com p.d.f. $f(x\mid \theta)$, e considere uma função real $g(\theta)$.
   Sejam $A(\bX)$ e $B(\bX)$ duas estatísticas de modo que valha
   \begin{equation}
@@ -50,10 +52,12 @@ com $g(\mu) = \mu$  e
  \textbf{ATENÇÃO:} a interpretação de um intervalo é crucial.
  Muita gente confunde o que um intervalo de confiança significa!
  \begin{obs}[Um intervalo de confiança não é uma afirmação sobre o(s) parâmetro(s)!]
+ \label{rmk:confidence_intervals_not_about_parameters}
   A afirmação probabilística da forma $\pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} = \gamma$ diz respeito à distribuição conjunta das variáveis aleatórias  $A(\bX)$ e $B(\bX)$ para um valor fixo de $\theta$ -- e, portanto, de $g(\theta)$.
  \end{obs}
  
- \begin{ideia}[Intervalos de confiança são procedimentos] 
+ \begin{ideia}[Intervalos de confiança são procedimentos]
+ \label{idea:confidence_intervals_are_procedures} 
  Como de costume na teoria ortodoxa (frequentista), o foco da construção de um intervalo confiança está em dar garantias probabilísticas~\textbf{com relação à \underline{distribuição dos dados}}.
  Dizer que $\pr\left\{A(\bX) < g(\theta) <  B(\bX)\right\} = \gamma$ é dizer que, se eu gerasse $M$ grande amostras aleatórias $\bX^{(1)}, \bX^{(2)}, \ldots, \bX^{(M)}$ de tamanho $n$ e construisse $M$ intervalos $I(\bX^{(1)}), I(\bX^{(2)}), \ldots, I(\bX^{(M)})$, eu esperaria encontrar:
  \begin{equation*}
@@ -76,6 +80,7 @@ com $g(\mu) = \mu$  e
 
 Em várias situações, estamos interessados em uma cota superior ou inferior para $g(\theta)$.
 \begin{defn}[Intervalo de confiança unilateral]
+\label{def:oneSided_CIs}
   Seja $\bX = \{ \rs \}$ uma amostra aleatória, cada variável aleatória com p.d.f. $f(x\mid \theta)$, e considere uma função real $g(\theta)$.
   Seja $A(\bX)$ uma estatística que, para todo $\theta \in \Omega$, valha
   \begin{equation*}
@@ -94,6 +99,7 @@ Se a desigualdade é uma igualdade para todo $\theta \in \Omega$, os intervalos 
 \begin{frame}{Quantidade pivotal}
  O conceito de quantidade pivotal é útil na construção de intervalos de confiança.
  \begin{defn}[Quantidade pivotal]
+ \label{def:pivotal_quantity}
    Seja $\bX = \{ \rs \}$ uma amostra aleatória com p.d.f. $f(x\mid \theta)$.
    Seja $V(\bX, \theta)$ uma variável aleatória cuja distribuição é~\textbf{a mesma} para todo $\theta \in \Omega$.
    Dizemos que $V(\bX, \theta)$ é uma~\textbf{quantidade pivotal}.
@@ -106,6 +112,7 @@ Considere uma função $r(v, \bx)$ tal que
 \begin{frame}{Construindo ICs a partir de quantidades pivotais}
  Vamos ver como usar $r(v, \bx)$ para construir um intervalo de confiança.
  \begin{theo}[Intervalos de confiança a partir de uma quantidade pivotal]
+ \label{thm:CIs_from_pivotal}
      Seja $\bX = \{ \rs \}$ uma amostra aleatória com p.d.f. $f(x\mid \theta)$.
      Suponha que existe uma quantidade pivotal $V$, com c.d.f.~\underline{contínua} $G$.
      Assuma que existe $r(v, \bx)$, estritamente crescente em $v$ para todo $\bx$.
@@ -180,13 +187,13 @@ Ver exemplo 8.5.11 em DeGroot.
 
 \begin{frame}{Leitura recomendada}
 \begin{itemize}
- \item[\faBook] De Groot seção 8.5;
+ \item[\faBook] DeGroot seção 8.5;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 9.2.
 %  \item[\faBook] $^\ast$ Schervish (1995), capítulo 7.
- \item[\faForward] Próxima aula: De Groot, seção 9.1;
+ \item[\faForward] Próxima aula: DeGroot, seção 9.1;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
-  \item[\faBookmark] De Groot.
+  \item[\faBookmark] DeGroot.
   \begin{itemize}
    \item Seção 8.5: 1, 4, 5 e 6.
   \end{itemize}   
