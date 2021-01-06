@@ -1,6 +1,8 @@
 # Statistical Inference (BSc)
 Course materials for Statistical Inference ("Inferência Estatística")
 
+Notas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf)
+
 ### Leituras adicionais
 
 **Miscelânea**
