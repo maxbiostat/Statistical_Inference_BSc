@@ -1,15 +1,9 @@
 # Statistical Inference (BSc)
 Course materials for Statistical Inference ("Inferência Estatística")
 
-Notas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf)
+Notas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
 
 ### Leituras adicionais
-
-**Miscelânea**
-
-- [Este](https://stat.uiowa.edu/sites/stat.uiowa.edu/files/cae/Lo_Expectation.pdf) artigo apresenta o resultado `E[X] = int_0^inf Pr(X > x)dx`, chamado em inglês de "tail formula for the expectation".
-- Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
-
 
 **Aula 1 - Revisão de probabilidade:**
 
@@ -68,3 +62,9 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 **Aula 15 - Razão de verossimilhança**
 
 - A prova do Teorema 9.1.4 de DeGroot, originalmente formulado por [Samuel Wilks](https://en.wikipedia.org/wiki/Samuel_S._Wilks) neste [paper](https://projecteuclid.org/euclid.aoms/1177732360) de 1938, pode ser encontrada [aqui](http://math.bu.edu/people/cgineste/classes/ma782/p/w1_2.pdf). 
+
+
+**Miscelânea**
+
+- [Este](https://stat.uiowa.edu/sites/stat.uiowa.edu/files/cae/Lo_Expectation.pdf) artigo apresenta o resultado `E[X] = int_0^inf Pr(X > x)dx`, chamado em inglês de "tail formula for the expectation".
+- Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
