@@ -70,4 +70,5 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 - Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
 
 **Agradecimentos**
+
 @IgorMichels, @lucasmoschen e @reneroliveira ajudaram a consertar typos e esclarecer alguns argumentos. 
