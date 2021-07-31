@@ -1,0 +1,150 @@
+\documentclass[a4paper,12pt, notitlepage]{paper}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+\usepackage{textcomp}
+
+
+\newtheorem{theo}{Teorema}
+\newtheorem{defn}{Definição}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+% Title Page
+\title{Exercícios de Revisão: Teoria de probabilidade.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\section{Desigualdades probabilísticas}
+
+As desigualdades probabilísticas são ferramentas de grande utilidade na prática estatística.
+São úteis, por exemplo, na demonstração de teoremas de convergência que veremos mais à frente no curso.
+
+\begin{itemize}
+ \item[(a)]
+ \begin{theo}[Desigualdade de Markov]
+ \label{thm:Markov_ineq}
+ Seja $X$ uma variável aleatória contínua não-negativa e $t > 0$.
+Então
+\begin{equation}
+ \label{eq:Markov_ineq}
+ \pr(X \geq t) \leq \frac{E[X^n]}{t^n}.
+\end{equation}
+\end{theo}
+Demonstre o Teorema~\ref{thm:Markov_ineq}.
+\textit{Dica}: use a linearidade e a monotonicidade da integral.
+ \item[(b)]
+ \begin{theo}[Desigualdade de Chebychev]
+ \label{thm:Chebychev_ineq}
+ Seja $Y$ uma variável aleatória com média $E[Y] =: \mu$ e variância $\vr(Y) =: \sigma^2$, ambas finitas.
+Mais uma vez, $t>0$.
+Então
+\begin{equation}
+ \label{eq:Chebychev_ineq}
+ \pr(|Y-\mu| \geq t) \leq \frac{\vr(Y)}{t^2}.
+\end{equation}
+\end{theo}
+Demonstre o Teorema~\ref{thm:Chebychev_ineq}.
+ \end{itemize}
+ 
+\section{Distribuições da média e variância amostrais.}
+
+Considere uma~\textbf{amostra aleatória} $\rs$, $n \in \mathbb{N}$ de variáveis aleatórias de uma mesma distribuição com média $E[X_i] = \mu$ e variância $\vr(X_i) = \sigma^2$.
+
+\begin{defn}[Média amostral]
+ A média amostral de $\rs$ é
+ \begin{equation}
+  \label{eq:sample_mean}
+  \bar{X}_n := \frac{1}{n} \sum_{i = 1}^n X_i.
+ \end{equation}
+\end{defn}
+
+\begin{itemize}
+ \item[(a)] Demonstre o seguinte resultado:
+ \begin{theo}[Média e variância em uma amostra i.i.d.]
+\label{thm:iid_properties}
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+Temos que (i) $E[\bar{X}_n] = \mu$ e (ii) $\vr(\bar{X}_n) = \frac{\sigma^2}{n}$.
+\end{theo}
+ \item[(b)] Comente sobre como as premissas de identidade de distribuição e independência são utilizadas em sua demonstração do item anterior.
+\end{itemize} 
+
+\section{Lei (fraca) dos grandes números e Teorema central do limite}
+
+As leis dos grandes números são resultados fundamentais da teoria de probabilidade, nos permitindo fazer afirmações sobre o comportamento de processos estocásticos à medida que o número de observações aumenta.
+Da mesma forma, os teoremas centrais do limite\footnote{Sim, existem vários.} tratam da distribuição~\textbf{assintótica}\footnote{Isto é, à medida que o número de observações $n \to \infty$.} de certas variáveis aleatórias.
+
+Primeiro, uma definição.
+\begin{defn}[Convergência em probabilidade]
+\label{defn:weak_convergence}
+Dizemos que uma sequência de variáveis aleatórias~\textit{converge em probabilidade} para $b$ se, para todo $\epsilon > 0$, temos
+\begin{equation}
+ \nonumber
+ \lim_{n\to\infty} \pr\left(|Z_n-b| < \epsilon \right) = 1.
+\end{equation}
+Neste caso, escrevemos $Z_n \xrightarrow{\text{p}} b$.
+\end{defn}
+
+ \begin{itemize}
+ \item[(a)] Mostre que o seguinte teorema vale:
+ \begin{theo}[Lei Fraca dos Grandes Números]
+\label{thm:WLLN}
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+ Então
+ $$ \bar{X}_n \xrightarrow{\text{p}} \mu.$$
+\end{theo}
+ \item[(b)] \begin{theo}[Teorema Central do Limite (Lindeberg e Lévy)]
+ \label{thm:CLT_LindebergLevy}
+Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
+Então, para cada $x$, temos
+$$ \lim_{n\to\infty} \pr\left( \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \leq x \right) = \Phi(x), $$
+onde 
+$$\Phi(x) := \frac{1}{\sqrt{2\pi}}\int_0^x \exp\left(-\frac{t^2}{2}\right)dt,$$
+é a função de distribuição (cumulativa) normal padrão.
+\end{theo}
+Mostre que o Teorema~\ref{thm:CLT_LindebergLevy} vale.
+\textit{Dica}: Ver Casella \& Berger (2002), página 237.
+\end{itemize}
+
+\section{Aplicações.}
+
+Para fixar o conteúdo, agora veremos algumas aplicações dos conceitos trabalhados e dos resultados demonstrados.
+
+\begin{itemize}
+ \item[(a)] Suponha  que uma moeda \underline{justa} é lançada $n$ vezes.
+Seja $X_i$ a variável aleatória que é $1$ se o $i$-ésimo lançamento dá cara e $0$ caso contrário.
+Quantos lançamentos devemos fazer para que 
+$$ \pr(0.4 \leq \bar{X}_n \leq 0.6) \geq 0.7\: ?$$
+Responda à pergunta utilizando (i) a desigualdade de Chebychev e (ii) probabilidades binomiais, obtidas atráves de uma tabela ou programa de computador.
+ \item[(b)] Compare os resultados do item anterior e discuta se a aproximação por Chebychev é boa. 
+ Que consequências práticas (em termos de custo de amostragem, por exemplo) haveria em usar o resultado aproximado? 
+ O que isso diz sobre a desigualdade de Chebychev?
+ \item[(c)] Suponha que $X_1, \ldots, X_{12}$ são variáveis aleatórias independentes com distribuição uniforme em $(0, 1)$.
+Defina
+$$  p:=  \pr\left(\left| \bar{X}_n - \frac{1}{2}\right| \leq 0.1\right).$$
+Determine quanto vale $p$ utilizando: (i) o teorema central do limite (TCL) e (ii) a expressão exata.
+ \item[(d)] Compare os resultados obtidos no item anterior e discuta se a aproximação utilizando o TCL é boa.
+\end{itemize}
+ 
+\end{document}          
