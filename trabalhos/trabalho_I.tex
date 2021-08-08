@@ -14,7 +14,7 @@
 \begin{document}
 \maketitle
 
-\textbf{Data de Entrega: 19 de Agosto de 2020.}
+\textbf{Data de Entrega: 23 de Agosto de 2021.}
 
 \section*{Orientações}
 \begin{itemize}
@@ -36,15 +36,38 @@ Este resultado é extremamente útil em Estatística porque permite obter aproxi
 \begin{enumerate}
  \item Enuncie e prove o método Delta;
  \item Discuta sob quais condições o método funciona e porque;
- \item Suponha que observamos $n$ variáveis aleatórias Bernoulli independentes e identicamente distribuídas com parâmetro $p$, denotadas por $X_1, X_2, \ldots, X_n$.
- Suponha que estamos interessados no parâmetro $\omega = \frac{p}{1-p}$, geralmente chamado de~\textit{chance} (em inglês,~\textit{odds}).
- É natural utilizar o estimador~\textit{plug-in} $\hat{\omega} = \frac{\hat{p}}{1-\hat{p}}$, com $\hat{p} = \frac{1}{n}\sum_{i=1}^n X_i$.
-  Utilize o método de Delta para encontrar uma aproximação para a variância de $\hat{\omega}$;
-  \item Comente a importância do método Delta.
+ \item \textbf{Definição 1: transformações estabilizadoras da variância}.
+ Suponha que $E[X_i] = \mu$ é o parâmetro de interesse. 
+ O Teorema central do limite diz que
+ \begin{equation}
+  \sqrt{n}\left(\bar{X}_n - \mu \right) \xrightarrow{d} \textrm{Normal}\left(0, \sigma^2(\mu)\right),
+ \end{equation}
+ou seja, a variância da distribuição limite é função de $\mu$.
+Idealmente, gostaríamos\footnote{Por razões que ficarão claras mais à frente no curso.
+Se sua curiosidade não puder esperar, pesquise ``estatística ancilar'' ou ``ancillar statistics''.} que essa distribuição não dependesse de $\mu$.
+Podemos utilizar o método Delta para resolver esse problema.
+Em particular, você demonstrou acima que
+\begin{equation}
+ \sqrt{n}\left(g(\bar{X}_n) - g(\mu) \right) \xrightarrow{d} \textrm{Normal}\left(0, \sigma^2(\mu)g^\prime(\mu)^2\right).
+\end{equation}
+O que desejamos então é escolher $g$ de modo que $g^\prime(\mu)\sigma(\mu) = a$ para todo $\mu$.
+Dizemos que $g$ é uma~\textbf{transformação estabilizadora da variância}.
+
+\textbf{Aplicação:} Sejam $X_1, X_2, \ldots, X_n$ uma amostra i.i.d. de uma distribuição normal com média $\mu = 0$ e variância $\sigma^2$.
+Defina $Z_i = X_i^2$ e $\tau^2 = \operatorname{Var}(Z_i)$.
+\begin{itemize}
+ \item[(i)] Mostre que $\tau^2 = 2\sigma^4$.
+ \item[(ii)] É possível mostrar que 
+ \begin{equation}
+ \sqrt{n}\left(\bar{Z}_n - \sigma^2 \right) \xrightarrow{d} \textrm{Normal}\left(0, 2\sigma^4\right).
+\end{equation}
+Proponha uma transformação estabilizadora da variância para este problema.
+\textit{Dica}: Encontre $g$ tal que 
+ \begin{equation*}
+ \sqrt{n}\left(g(\bar{Z}_n) - g(\sigma^2) \right) \xrightarrow{d} \textrm{Normal}\left(0, 2\right).
+\end{equation*}
+\end{itemize}
 \end{enumerate}
-
-
-
 
 \bibliographystyle{apalike}
 \bibliography{refs}
