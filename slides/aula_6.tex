@@ -161,7 +161,7 @@ Sob condições de regularidade, o EMV é consistente, isto é $\hat{\theta}_{\t
 \begin{theo}[Consistência do EMV]
 \label{thm:consistency_MLE}
 Defina $l(\theta) := \log f_n(\boldsymbol{x} \mid \theta)$ e assuma que $\rs \sim f(\theta_0)$, isto é, que $\theta_0$ é o valor verdadeiro do parâmetro.
-Denote $E_{\theta_0}[g] := \int_{\Omega} g(x, \theta) f(\boldsymbol{x} \mid \theta_0)\, dx$.
+Denote $E_{\theta_0}[g] := \int_{\mathcal{X}} g(x, \theta_0) f(\boldsymbol{x} \mid \theta_0)\, dx$.
  Suponha que 
  \begin{itemize}
   \item $f(x_i \mid \theta)$ tem o mesmo suporte;
@@ -185,7 +185,7 @@ e aplicar a desigualdade de Jensen.
    
   \item[\faLightbulbO] Invariância ;
   
-  ``O EMV é invariante a transformações dos parâmetros; se $\hat{\theta}$ é o EMV para $\theta$, $\psi(\hat{\theta})$ é o EMV para $\psi(\theta)$''
+  ``O EMV é invariante a transformações dos parâmetros; se $\hat{\theta}$ é o EMV para $\theta$, $\phi(\hat{\theta})$ é o EMV para $\phi(\theta)$''
   
     \item[\faLightbulbO] Consistência;
   
