@@ -7,7 +7,8 @@ theta <- pi^2/6
 n <- 2
 M <- 10000
 ####
-data.sets <- matrix(runif(n = n*M, min = theta, max = 2*theta), ncol = n, nrow = M)
+data.sets <- matrix(runif(n = n*M, min = theta, max = 2*theta),
+                    ncol = n, nrow = M)
 
 W1 <- apply(data.sets, 1, mle)
 hist(W1, probability = TRUE)
