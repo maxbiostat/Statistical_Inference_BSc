@@ -6,7 +6,7 @@ Como avaliar um estimador?
 \begin{defn}[Notação conveniente]
 Para as próximas computações, é conveniente definir
 Para $g : \mathcal{X}^n \to \mathbb{R}$, escrevemos
-\[ E_{\theta} [g] = \int_{\mathcal{X}} \cdots \int_{\mathcal{X}} g(\bx)f_n(\bx \mid \theta)\, dx_1\cdots\,dx_n = \int_{\mathcal{X}} g(\bx)f_n(\bx \mid \theta) \,d\bx. \] 
+\[ E_{\theta} [g] = \int_{\mathcal{X}} \cdots \int_{\mathcal{X}} g(\bx)f_n(\bx \mid \theta)\, dx_1\cdots\,dx_n = \int_{\mathcal{X}^n} g(\bx)f_n(\bx \mid \theta) \,d\bx. \] 
 \end{defn}
 
 Agora podemos definir o~\textbf{erro quadrático médio} (EQM) de um estimador $\delta(\bX)$:
@@ -116,7 +116,7 @@ O conceito de admissibilidade diz respeito à relação entre estimadores.
  \item[\faBook] DeGroot, seção 7.9;
  \item[\faBook] $^\ast$ Casella \& Berger (2002), seção 7.3.
  \item[\faBook] $^\ast$ Schervish (1995),  Teorema 3.20.
- \item[\faForward] Próxima aula: DeGroot, seções 7.7 e 7.8;
+ \item[\faForward] Próxima aula: DeGroot, seções 8.7 e 8.8;
  \item {\large\textbf{Exercícios recomendados}}
  \begin{itemize}
   \item[\faBookmark] DeGroot, Seção 7.9: exercícios 2, 3, 6 e 10.
