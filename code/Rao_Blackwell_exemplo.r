@@ -1,8 +1,7 @@
 ### X1, ..., Xn ~ exponencial(lambda)
-
 ## Estimadores
 delta <- function(samp) samp[1]
-delta0 <- function(samp){
+delta0 <- function(samp){ ## estimador melhorado por Rao-Blackwell
   s <- sum(samp)
   x1 <- samp[1]
   n <- length(samp)
@@ -15,8 +14,8 @@ delta0 <- function(samp){
 
 ## Simulando dados
 Nsim <- 1000
-N <- 20
-lambda <- .3
+N <- 500
+lambda <- 3
 
 amostras <- matrix(rexp(n = Nsim*N, rate = lambda),
                    ncol = N, nrow = Nsim)
@@ -42,3 +41,6 @@ mean((D0s-lambda)^2)
 
 mean(Ds)
 mean(D0s)
+
+var(Ds)
+var(D0s)
