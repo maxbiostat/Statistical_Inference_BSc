@@ -77,4 +77,4 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 
 **Agradecimentos**
 
-@IgorMichels, @lucasmoschen e @reneroliveira ajudaram a consertar typos e esclarecer alguns argumentos. 
+@IgorMichels, @lucasmoschen, @reneroliveira, @Caioflp ajudaram a consertar typos e esclarecer alguns argumentos. 
