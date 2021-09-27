@@ -22,7 +22,7 @@
 \newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
 \newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
 \newcommand{\bfZ}{\mathbf{Z}}
-\newcommand{\defeq}{\vcentcolon =}
+% \newcommand{\defeq}{\vcentcolon =}
 
 
 % Title Page
@@ -186,26 +186,24 @@ S = f(T) =\frac{\log \left( \frac{g[T, \eta(A_1)]h(\eta(A_1))}{g[T, \eta(A_2)]h(
 $$
 e, com isso, mostramos que $S = f(T(\boldsymbol{Z}))$ para toda estatística suficiente $T$, como queríamos.
 \\
-Outra forma de mostrar que \( S \) é suficiente mínima é mostrar que \( S \) é uma função bijetiva do EMV \( \hat{ p } \) de \( p \defeq \eta ( A ) \).
-Isso implica em \( \hat{ p } \) ser suficiente, o que, pelo Teorema 7.8.3 de DeGroot, significa que \( \hat{ p } \) é suficiente mínimo e, assim, \( S \) também será suficiente mínima, por ser uma função bijetiva de uma estatística suficiente mínima.
-
-Sendo assim, vamos encontrar \( \hat{ p } \).
-Maximizar \( f_{ n } ( \bfZ \mid p ) \) é equivalente a maximizar
+Outra forma de mostrar que $S$ é suficiente mínima é mostrar que $S$ é uma função bijetiva do EMV $\hat{ p }$ de $p : = \eta ( A )$.
+Isso implica em $\hat{ p }$ ser suficiente, o que, pelo Teorema 7.8.3 de DeGroot (Observação 10 dos slides), significa que $\hat{ p }$ é suficiente mínimo e, assim, $S$ também será suficiente mínima, por ser uma função bijetiva de uma estatística suficiente mínima.
+Sendo assim, vamos encontrar $\hat{ p }$.
+Maximizar $f_{ n } ( \boldsymbol{Z} \mid p )$ é equivalente a maximizar
 \begin{equation*}
-    G ( p ) \defeq \log f_{ n } ( \bfZ \mid p ) = S \log p + ( n - S ) \log ( 1 - p )
-.\end{equation*}
+    G ( p ) : = \log f_{ n } ( \boldsymbol{Z} \mid p ) = S \log p + ( n - S ) \log ( 1 - p ).
+\end{equation*}
 Derivando, obtemos
 \begin{equation*}
-    G' ( p ) = \frac{ S }{ p } + \frac{ S - n }{ 1 - p }
+    G^\prime ( p ) = \frac{ S }{ p } + \frac{ S - n }{ 1 - p }
 \end{equation*}
 e
 \begin{equation*}
-    G'' ( p ) = - \frac{ S }{ p^2 } + \frac{ S - n }{ ( 1 - p )^2 }
-.\end{equation*}
-Como \( S \leq n \), temos \( G'' ( p ) \leq 0 \) para todo \( p \).
-Portanto, \( \hat{ p } \) é a solução de \( G' ( p ) = 0 \), a qual, sem muito esforço, podemos identificar como sendo \( S/n \).
-Dessa forma, temos \( S = n \hat{ p } \) e está mostrada a suficiência mínima de \( S \).
-
+    G^{\prime\prime} ( p ) = - \frac{ S }{ p^2 } + \frac{ S - n }{ ( 1 - p )^2 }.
+    \end{equation*}
+Como $S \leq n$, temos $G^{\prime\prime}(p) \leq 0$ para todo $p$.
+Portanto, $\hat{ p }$ é a solução de $G^\prime(p) = 0$, que podemos, sem muito esforço, identificar como sendo $S/n$.
+Dessa forma, temos $S = n \hat{ p }$ e está mostrada a suficiência mínima de $S$.
 Agora, vamos trabalhar em c).
 Escrever $Z_1, \ldots Z_n \sim \operatorname{Bernoulli}(\eta(A))$ implica
 $$
