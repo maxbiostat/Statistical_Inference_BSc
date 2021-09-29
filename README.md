@@ -72,6 +72,8 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 - Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
 - [Este](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4960505/) artigo foi a inspiração das questões 4 e 5 da [A1 2021](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/A12021.pdf). 
 
+- [Neste](https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/) post, Larry Wasserman explica que você não precisa assumir que todas as amostras vêm da mesma distribuição para ter a cobertura correta do intervalo de confiança.
+
 **Versões anteriores**
 - [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2)
 
