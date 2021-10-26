@@ -1,0 +1,118 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+
+
+% Title Page
+\title{Trabalho III: o comportamento assintótico de estimadores eficientes.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: 20 de Outubro de 2021.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \item Este trabalho é \underline{longo}.
+ Sugiro fortemente começar a fazer assim que possível.
+ \end{itemize}
+
+
+\section*{Introdução}
+
+Como aprendemos até agora, existem vários critérios de otimalidade para a construção e avaliação de estimadores.
+Um conceito fundamental é o de variância mínima, ou eficiência, uma propriedade de estimadores não-viesados.
+
+Na vida real, no entanto, mesmo um estimador viesado ou ineficiente pode ser útil.
+Um dos aspectos que buscamos estudar é o comportamento~\textit{assintótico} de estimadores, isto é, o que acontece quando o tamanho de amostra, $n$, tende ao infinito.
+No que se segue, vamos estudar alguns resultados interessantes sobre o comportamento assintótico de estimadores e, utilizando simulações, investigar o seu comportamento empírico.
+
+\section*{Questões}
+
+\subsection*{Parte I: lidando com estimadores eficientes}
+\begin{enumerate}
+ \item Considere um modelo estatístico paramétrico $f(x \mid \theta)$ com $f$ duas vezes diferenciável com respeito a $\theta$ e suporte independente de $\theta$.
+ Seja $\boldsymbol{X}$ uma amostra aleatória de tamanho $n$ e $\delta(\boldsymbol{X})$ um estimador~\textbf{eficiente} de $g(\theta)$.
+ Defina $E[\delta(\boldsymbol{X})] = m(\theta)$ de modo que $m^\prime(\theta) := \frac{d}{d\theta}m(\theta) \neq 0$ para todo $\theta \in \Omega$.
+ Mostre que a distribuição de 
+ $$
+ \frac{\sqrt{nI(\theta)}}{m^\prime(\theta)}\left[\delta(\boldsymbol{X})-m(\theta)\right],
+ $$
+ é normal padrão, onde $I(\theta)$ é a informação de Fisher.
+ 
+ \textit{Dica}: Lembre-se do método Delta.
+ \item Seja $\boldsymbol{X}$ uma amostra aleatória de tamanho $n$ de uma distribuição Poisson com taxa $\mu$. 
+ Mostre que o EMV para $\mu$ é eficiente.
+ \item Tomando $\mu_0 = 0.5$, simule $100.000$ conjuntos de dados de $n=10$ observações com distribuição $\operatorname{Poisson}(\mu_0)$.
+ Para cada simulação $\boldsymbol{X}^{(m)}$, $m = 1, 2,\ldots, 10^{5}$, compute o EMV, $\hat{\mu}^{(m)}$.
+ Agora, compute a fração de simulações para as quais $\hat{\mu}^{(m)} \leq 0.55$.
+ Esta é uma estimativa da função de distribuição empírica\footnote{ECDF, na sigla em inglês.} de $\hat{\mu}$, $\hat{F}(0.55)$.
+ Compare $\hat{F}(0.55)$ com a aproximação assintótica derivada no item 1.
+ Repita o experimento para $n=30$ e $n=100$.
+ Para ajudar, aqui vai uma tabela a ser preenchida (utilize 3 dígitos de significância):
+\begin{table}[!ht]
+\begin{center}
+ \begin{tabular}{ccc}
+\hline
+Tamanho de amostra ($n$) & CDF empírica & Aproximação normal \\ \hline
+10 & 0.xxx & 0.xxx \\
+30 & 0.xxx & 0.xxx \\
+100 & 0.xxx & 0.xxx
+\end{tabular}
+\end{center}
+\end{table}
+%  \item \textit{Dica}: Vale lembrar que se $g$ é inversível e diferenciável, então
+%  $$I(g(\theta)) = I(\theta)\left|\frac{d}{d\theta}g^{-1}(\theta)\right|.$$
+\item Discuta o quão boa a aproximação normal é, e se a qualidade melhora à medida que $n$ cresce.
+\end{enumerate}
+
+\subsection*{Parte II: condições menos que ideais}
+
+Agora vamos lidar com uma situação onde o estimador em questão não é eficiente.
+O EMV, por exemplo, nem sempre é eficiente, mas podemos enunciar um resultado parecido com o da seção anterior. 
+Sob condições de regularidade, temos que
+ $$
+ \sqrt{nI(\theta)}\left[\delta_{\text{EMV}}-\theta\right],
+ $$
+tem distribuição normal padrão,  isto é, que o EMV é~\textit{assintoticamente} eficiente.
+
+\begin{enumerate}\addtocounter{enumi}{4}
+ \item Tome $\boldsymbol{X}$ uma amostra aleatória de tamanho $n$ de uma distribuição exponencial com taxa $\theta$.
+ Mostre que o EMV para $\theta$ é viesado e ineficiente.
+ \item Mostre que
+ $$
+ \delta_{\text{EMV}}(\boldsymbol{X}) \sim \operatorname{Gama-inversa}(n, n\theta).
+ $$
+ \item Nesta situação, portanto, sabemos a função de distribuição do EMV exatamente.
+ Vamos compará-la com a sua aproximação normal.
+ Tomando $\theta = 2$, e $\delta^\ast = 3$, considere $\operatorname{Pr}(\delta(\boldsymbol{X}) \leq \delta^\ast)$ e preencha a tabela a seguir:
+ \begin{table}[!ht]
+\begin{center}
+ \begin{tabular}{ccc}
+\hline
+Tamanho de amostra ($n$) & CDF exata & Aproximação normal \\ \hline
+10 & 0.xxx & 0.xxx \\
+30 & 0.xxx & 0.xxx \\
+100 & 0.xxx & 0.xxx
+\end{tabular}
+\end{center}
+\end{table}
+
+ \textit{Dica}: Se não quiser utilizar pacotes especializados para computar a CDF exata, não precisa. 
+ Basta lembrar que se $X \sim \operatorname{Gama}(\alpha, \beta)$, então $Y = 1/X$ tem distribuição $\operatorname{Gama-inversa}(\alpha, \beta)$, de modo que você consegue deduzir $\operatorname{Pr}(Y \leq y)$ a partir da função de distribuição de $X$, que está disponível em quase todos os pacotes estatísticos modernos. 
+\end{enumerate}
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+\end{document}          

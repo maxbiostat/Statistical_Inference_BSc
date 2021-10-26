@@ -1,0 +1,193 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[portuguese]{babel}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+% Title Page
+\title{Primeira avaliação (A1)}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+\date{20 de Setembro de 2021}
+
+\begin{document}
+\maketitle
+
+% \textbf{Data de Entrega: 19 de Agosto de 2020.}
+
+\begin{center}
+\fbox{\fbox{\parbox{1.0\textwidth}{\textsf{
+    \begin{itemize}
+        \item Por favor, entregue um único arquivo PDF;
+        \item O tempo para realização da prova é de 4 (quatro) horas, mais vinte minutos para upload do documento para o e-class;
+        \item Responda todas as questões sucintamente;
+        \item Marque a resposta final claramente com um quadrado, círculo, ou figura geométrica de sua preferência;
+        \item A prova vale 80 pontos; a pontuação restante é contada como bônus.
+        \item Apenas tente resolver a questão bônus quando tiver resolvido todo o resto.
+    \end{itemize}}
+}}}
+\end{center}
+
+\section*{Dicas}
+\begin{itemize}
+ \item Se $X$ tem distribuição exponencial com parâmetro $\lambda > 0$, então, para $x>0$ as funções de densidade de probabilidade e densidade acumulada são, respectivamente,
+ \begin{align*}
+ f_X(x) &= \lambda \exp\left(-\lambda x\right),\\
+ F_X(x) &= 1 - \exp(-\lambda x).
+ \end{align*}
+ \item Se $X$ tem distribuição Gama com parâmetros $\alpha >0$ e $\beta >0$ e f.d.p.,
+ $$
+ f_X(x) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} \exp(-\beta x),
+ $$
+ para $x>0$, então $W = 1/X$ tem distribuição Gama-inversa, com f.d.p.
+ $$
+ f_W(w) = \frac{\beta^\alpha}{\Gamma(\alpha)} w^{-(\alpha + 1)} \exp(-\beta/w),
+ $$
+ para $w>0$.
+ Ademais, $E[W] = \beta/(\alpha - 1)$ e $\vr(W) = \beta^2/[(\alpha-1)^2(\alpha-2)]$.
+\item Se $X_i \sim \operatorname{Gama}(\alpha_i, \beta)$, com $\alpha_i >0$  para todo $i$ e $\beta>0$, então $Y = \sum_{i=1}^n X_i$ tem distribuição Gama com parâmetros $\alpha_y = \sum_{i=1}^n \alpha_i$ e $\beta_y = \beta$.
+\item Se $X \sim \operatorname{Gama}(\alpha, \beta)$, $Y = cX$ tem distribuição $\operatorname{Gama}(\alpha, \beta/c)$ para $c>0$.
+\end{itemize}
+ 
+\newpage
+
+\section*{1. Circling the square.}
+
+Um círculo $C_r$  de raio $r$ é inscrito em uma folha de papel quadrada com lado $b$.
+Suponha que desejamos estimar a área $A$ deste círculo.
+Para tanto, vamos amostrar vetores aleatórios de uma distribuição uniforme definida sobre a folha de papel e, para estimar a área da circunferência, contar a proporção de vetores caindo dentro e fora de $C_r$ e multiplicar esta proporção pela área total da folha de papel.
+
+\begin{enumerate}[label=\alph*)]
+ \item (2,5 pontos) Mostre que se $X$ e $Y$ são variáveis aleatórias i.i.d. com distribuição $\operatorname{Uniforme}(0,b)$, então $(X,Y)$ possui função de densidade de probabilidade constante sobre $(0, b)\times (0,b)$;
+ 
+ \item (7,5 pontos) Você deixa cair grãos de milho sobre a folha e conta quantos deles cairam dentro do círculo e fora do círculo (porém na folha).
+    Vamos supor que este mecanismo gera observações i.i.d. uniforme sobre $(0,b)^2$.
+    Represente os grãos que caíram sobre a folha através de $(X_1,Y_1),...,(X_n,Y_n)$ e  defina $Z_i = \mathbb{I}((X_i,Y_i)\in C_r)$, $i=1,...,n$ como uma variável indicadora que recebe valor $1$ se o grão está dentro da circunferência.
+    Suponha que depois de medir $\boldsymbol{Z}$ você joga fora $\boldsymbol{X}$ e $\boldsymbol{Y}$, isto é, guarda o milho no pote de novo para fazer pipoca mais tarde.
+    Construa um modelo estatístico parametrizado pela área, $A$, da circunferência que reflete este experimento.
+    Encontre uma estatística suficiente mínima para o parâmetro deste modelo.
+    
+    \textit{Dica:} desenhe um diagrama e considere as áreas envolvidas (evite \underline{avaliar} integrais!);
+    
+ \item (5 pontos) Considere $\delta_1(\boldsymbol{Z}) = b^2\bar{Z}_n$.
+ Este é um estimador não enviesado da área do círculo?
+ \item (5 pontos) Calcule o erro quadrático médio $R(A, \delta_1)$ de $\delta_1$ e discuta como ele se comporta em relação à quantidade de interesse.
+ O que acontece com $R(A, \delta_1)$ quando $A$ cresce?
+\end{enumerate}
+
+\newpage
+\section*{2. The shinning.}
+
+Suponha que você é a pessoa responsável pelo controle estatístico de qualidade na fábrica de lâmpadas \textit{LuminaEu}.
+Seu chefe, Astolfo, lhe envia uma planilha com os valores $\rs$ dos tempos de falha de $n$ lâmpadas (em dias).
+Você lê no manual da empresa que um modelo exponencial i.i.d. com parâmetro $\theta$ é apropriado para análise.
+
+\begin{enumerate}[label=\alph*)]
+ \item (5 pontos) Mostre que o estimador de momentos para $\theta$ coincide com o EMV neste caso;
+ \item (10 pontos) Discuta se o estimador do item anterior é eficiente para amostras finitas.
+ O que acontece assintoticamente?
+ \item (5 pontos) Conhecendo Astolfo, no entanto, você sabe que ele não saberá interpretar quaisquer estimativas diretas da taxa $\theta$, então decide considerar a probabilidade de excedência\footnote{Em inglês, \textit{exceedance probability}.} $\alpha := \pr(X_1 > c)$ para um certo $c > 0$.
+ Encontre um estimador de máxima verossimilhança para $\alpha$;
+\end{enumerate}
+
+\section*{3. Cool and normal!}
+
+Suponha que você é a pessoa responsável por analisar a concentração de ácido em pedaços de queijo vindos da famosa fábrica de frios francesa \textit{J'skeci}.
+Assumindo uma distribuição normal para as concentrações em $n$ medições independentes de $n$ pedaços distintos, você precisa descobrir a média $\mu$ e a variância $v$ desta distribuição.
+
+\begin{enumerate}[label=\alph*)]
+ \item (5 pontos) Considere a priori imprópria
+ \begin{equation}
+ \label{eq:improp_prior}
+ \xi(\mu, v) \propto 1/v
+ \end{equation}
+ Mostre que a posteriori $\xi(\mu, v \mid \boldsymbol{x})$ é própria;
+ 
+ \textit{Dica:} Procure com atenção o núcleo de distribuições conhecidas.
+ \item (7,5 pontos) Exiba o estimador de Bayes sob perda quadrática para $v$ e o estimador de Bayes sob perda absoluta para $\mu$ e discuta se esses estimadores são viesados;
+ \item (5 pontos) Encontre uma priori  conjugada para $(\mu, v)$;
+ \item (2,5 pontos) Mostre que a priori em (\ref{eq:improp_prior}) pode ser vista como um limite particular (dos hiperparâmetros) da priori conjugada do item anterior.
+\end{enumerate}
+
+\newpage
+\section*{4. Get your ducks in a row.}
+
+Pato Donald, Huguinho, Zezinho e Luisinho estão estudando Inferência Estatística para trabalhar no \textit{hedge fund} do Tio Patinhas.
+O problema em questão é a estimação do parâmetro $\theta$ de uma distribuição uniforme em $(\theta/2, 3\theta/2)$ a partir de uma amostra aleatória $\rs$.
+Cada um propôs um estimador diferente para $\theta$ e seu trabalho é ajudar o Tio Patinhas a ordenar esses estimadores em ordem de qualidade.
+
+Sejam $M := \max\left(\rs \right)$ e $m := \min\left(\rs\right)$.
+
+Os estimadores escolhidos foram
+\begin{enumerate}
+% \delta_{\text{}}(\bX)
+ \item $\delta_{\text{D}}(\bX) = X_1$, para o Pato Donald;
+ \item $\delta_{\text{H}}(\bX) = m$, para Huguinho;
+ \item $\delta_{\text{Z}}(\bX) = M$, para Zezinho;
+ \item $\delta_{\text{L}}(\bX) = (M+m)/2$, para Luisinho;
+\end{enumerate}
+
+Para lhe ajudar na tarefa de julgar estes estimadores, Tio Patinhas enviou o seguinte conjunto de fatos úteis: para $\rs \sim \operatorname{Uniforme}(a, b)$, temos
+\begin{align*}
+&E[X_1] = \frac{a + b}{2},\\
+& \vr(X_1) = \frac{(b-a)^2}{12},\\
+&E[m] = a + \frac{1}{n+1}(b-a),\\
+&E[M] = b - \frac{1}{n+1}(b-a),\\
+&\vr(m) = \vr(M) = \frac{n}{(n+1)^2(n+2)}(b-a)^2,\\
+&\operatorname{Cov}\left(m, M\right) = \frac{(b-a)^2}{(n+1)^2(n+2)},\\
+&\operatorname{Corr}\left(m, M\right) = \frac{1}{n}.
+\end{align*}
+
+Os patos ainda não sabem Inferência Estatística muito bem, portanto tenha paciência com eles.
+
+\begin{enumerate}[label=\alph*)]
+ \item (2,5 pontos) Os estimadores de Huguinho e Zezinho são viesados.
+ Mostre aos patinhos como construir versões não-viesadas, $\delta_{\text{UH}}(\bX)$ e $\delta_{\text{UZ}}(\bX)$ ;
+ \item (2,5  pontos) Discuta se algum dos estimadores do item anterior é inadmissível;
+ \item (2,5  pontos) Mostre que $\boldsymbol{T} = (m, M)$ é suficiente conjunta para $\theta$;  
+ \item (7,5 pontos) Mostre que $\delta_{\text{L}}(\bX) = E\left[\delta_{\text{D}}(\bX) \mid \boldsymbol{T}\right]$, isto é, que o estimador de Luisinho é o melhoramento de Rao-Blackwell do estimador do Pato Donald;
+ \item (5 pontos) Ordene os estimadores $\delta_{\text{D}}(\bX)$, $\delta_{\text{UH}}(\bX)$, $\delta_{\text{UZ}}(\bX)$ e $\delta_{\text{L}}(\bX)$ em termos de erro quadrático médio.
+ Quem propôs o melhor estimador?\footnote{No caso de Huguinho e Zezinho, com a sua ajuda.} 
+\end{enumerate}
+
+\newpage
+\section*{5.Questão bônus: Boss is boss, ain't it, dad?}
+
+Considere mais uma vez o problema da questão 4.
+Desta vez, Tio Patinhas resolveu propor o próprio estimador, e quer mostrar que esse estimador pode ser melhor que qualquer um dos propostos 
+anteriormente.
+Para isso, propõe utilizar um estimador da forma
+$$
+\delta_{\text{P}}(\bX) = (1-\alpha) \delta_{\text{UH}}(\bX) + \alpha \delta_{\text{UZ}}(\bX),
+$$
+com $\alpha \in (0, 1)$.
+\begin{enumerate}[label=\alph*)]
+ \item (10 pontos) Mostre que $\delta_{\text{P}}$ é não-viesado e compute seu erro quadrático médio;
+ 
+ \textit{Dica}: Lembre-se de que para $a,b \in \mathbb{R}$,
+ $$\vr\left(aX + bY\right) = a^2\vr(X) + b^2\vr(Y) + 2ab\operatorname{Cov}(X, Y).$$
+ \item (10 pontos) Encontre $\alpha_{\text{op}}$ que faz com que $\delta_{\text{P}}$ tenha variância mínima.
+ O estimador $\delta_{\text{P}}^{\text{op}}(\bX) = (1-\alpha_{\text{op}}) \delta_{\text{UH}}(\bX) + \alpha_{\text{op}} \delta_{\text{UZ}}(\bX)$ domina todos aqueles derivados na questão 4? Justifique.
+\end{enumerate}
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+\end{document}          
