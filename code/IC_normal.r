@@ -19,7 +19,8 @@ ta_no_intervalo <- function(intervalo){
 }
 #######
 
-data.sets <- matrix(rnorm(n = n*M, mean = truemu, sd = truesd), ncol = n, nrow = M)
+data.sets <- matrix(rnorm(n = n*M, mean = truemu, sd = truesd),
+                    ncol = n, nrow = M)
 
 
 Xbars <- apply(data.sets, 1, mean)

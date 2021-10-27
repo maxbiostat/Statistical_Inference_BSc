@@ -27,4 +27,5 @@ type_II_prob <- function(n){
 ns <- c(1, 25, 100)
 data.frame(n = ns, beta = type_II_prob(ns), logc = exp(ns*(cprime-.5)))
 
-curve(type_II_prob, 1, 100, xlab = "Tamanho de amostra (n)", ylab = expression(beta(delta)))
+curve(type_II_prob, 1, 100,
+      xlab = "Tamanho de amostra (n)", ylab = expression(beta(delta)))

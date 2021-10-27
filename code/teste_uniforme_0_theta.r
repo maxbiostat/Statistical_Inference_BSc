@@ -10,7 +10,10 @@ poder <- function(theta){
 }
 poder <- Vectorize(poder)
 
-curve(poder, 1, 5, xlab = expression(theta), ylab = expression(pi(theta*"|"*delta)), lwd = 2)
+curve(poder, 1, 5, xlab = expression(theta),
+      ylab = expression(pi(theta*"|"*delta)), lwd = 2)
 curve(poder, 2.9, 4, lwd = 6, col = 2, add = TRUE)
+abline(v = c(3, 4), lwd = 2, lty = 2)
 
-# curve(poder, 2.9, 4, xlab = expression(theta), ylab = expression(pi(theta*"|"*delta)), lwd = 2)
+curve(poder, 3, 4, xlab = expression(theta),
+ ylab = expression(pi(theta*"|"*delta)), lwd = 2)

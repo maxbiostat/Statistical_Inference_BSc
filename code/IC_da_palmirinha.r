@@ -1,9 +1,10 @@
 xbar <- 8.307849
 s2bar <- 7.930452 ## 1/n * Delta^2; Delta^2 = sum((x-xbar)^2)
-n <- 10
+n <- 1000
 
-gama <- .99
-cc <- qt(p = (1  + gama)/2, df = n-1) ## inv_cdf_T_{n-1}((1 + gamma)/2)
+gama <- .95
+cc <- qt(p = (1  + gama)/2,
+         df = n-1) ## inv_cdf_T_{n-1}((1 + gamma)/2)
 sigma.prime <- sqrt(n*s2bar/(n-1))
 d <- cc * sigma.prime/sqrt(n)
 
@@ -40,12 +41,16 @@ mu0 <- 7
 poder_pamonha <- function(mu){
   x <- sqrt(n) * (mu0 + cc - mu)/truesd
   y <- sqrt(n) * (mu0 - cc - mu)/truesd
-  res <- pnorm(x, mean = 0, sd = 1, lower.tail = FALSE) + pnorm(y, mean = 0, sd = 1)
+  res <- pnorm(x, mean = 0, sd = 1,
+               lower.tail = FALSE) +
+    pnorm(y, mean = 0, sd = 1)
   return(res)
 }
 poder_pamonha <- Vectorize(poder_pamonha)
 
-curve(poder_pamonha, 0, 14, xlab = expression(mu), ylab = expression(pi(mu*"|"*delta)), lwd = 3)
+curve(poder_pamonha, 0, 14,
+      xlab = expression(mu),
+      ylab = expression(pi(mu*"|"*delta)), lwd = 3)
 abline(v = mu0, lty = 2, lwd = 2)
 
 ### Testando hipóteses (APG)
@@ -57,8 +62,14 @@ abline(v = mu0, lty = 2, lwd = 2)
 # X ~n(mu0, sigma^2)
 U <- (sqrt(n) * (xbar-mu0))/sigma.prime
 ## Se H0 = vdd então U ~ T(n-1)
-(p.valor <- pt(q = U, df = n-1)) ## T^{-1}(U; n-1)
+( p.valor <- pt(q = U, df = n-1) ) ## T^{-1}(U; n-1)
 
 ## install.packages("BSDA")
-BSDA::tsum.test(mean.x = xbar, s.x = sigma.prime, n.x = n,  mu = mu0, alternative = "less")
-BSDA::tsum.test(mean.x = xbar, s.x = sigma.prime, n.x = n,  mu = mu0)  
+BSDA::tsum.test(mean.x = xbar,
+                s.x = sigma.prime,
+                n.x = n,  mu = mu0,
+                alternative = "less")
+
+BSDA::tsum.test(mean.x = xbar,
+                s.x = sigma.prime,
+                n.x = n,  mu = mu0)  
