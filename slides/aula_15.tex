@@ -93,7 +93,7 @@ Em certas situações, podemos utilizar a função de verossimilhança para quan
  Suponha que $\rs$ são uma amostra aleatória de uma distribuição Bernoulli com parâmetro $p$.
  Assim, temos $Y = \sum_{i=1}^n X_i$ e $Y~\operatorname{Binomial}(n, p)$.
  Considere testar a hipótese $H_0 :  p  = p_0, H_1:  p  \neq p0$.  
- Depois de observamos $Y = y$, a função de verossimilhança é
+ Depois de observarmos $Y = y$, a função de verossimilhança é
  \[ f(\bx \mid p) = \pr(Y = y\mid p) = \binom{n}{y} p^y (1-p)^{n-y}. \]
  Como neste exemplo $\Omega_0 = \{p_0\}$ e $\Omega_1 = (0, 1)\setminus\{p_0\}$,
  \begin{equation*}
@@ -113,7 +113,7 @@ O supremo no denominador é atingido no EMV, $\hat{p} = y/n$, de modo que
  \label{thm:Wilks}
   Suponha que temos um espaço de parâmetros com $k$ coordenadas, $\theta = (\theta_1, \theta_2, \ldots, \theta_k)$ e desejamos testar a hipótese (simples) da forma
    \begin{align*}
-   H_0 &:  \theta_j = \theta_0^{j}, \\
+   H_0 &:  \theta_j = \theta_0^{j}, j = 1, 2, \ldots, k, \\
    H_1 &:  \theta_j \neq \theta_0^{j}, j = 1, 2, \ldots, k. 
   \end{align*}
   Então, sob condições de regularidade, temos que, à medida que $n \to \infty$,
