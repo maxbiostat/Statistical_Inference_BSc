@@ -173,7 +173,7 @@ Em ambos os casos, podemos fazer o teste ``rejeite $H_0$ se $|U|\geq T^{-1}(1-\a
 Podemos também entender o teste t como um teste de razão de verossimilhanças.
 Em particular, temos para um teste t unicaudal, 
 \begin{align*}
- \Lambda(\bx) &= \frac{\sup_{(\mu, \sigma^2):\mu > \mu_0} f_n(\bx \mid \mu, \sigma^2) }{\sup_{(\mu, \sigma^2)} f_n(\bx \mid \mu, \sigma^2)}, \\
+ \Lambda(\bx) &= \frac{\sup_{(\mu, \sigma^2):\mu \geq \mu_0} f_n(\bx \mid \mu, \sigma^2) }{\sup_{(\mu, \sigma^2)} f_n(\bx \mid \mu, \sigma^2)}, \\
  &=  \begin{cases}
      \left(\frac{\hat{\sigma^2}}{\hat{\sigma_0^2}}\right)^{n/2} \: \text{se} \: \sm> \mu_0,\\
      1,\:\text{caso contrário},
