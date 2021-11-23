@@ -5,7 +5,7 @@ Programa [aqui](https://docs.google.com/spreadsheets/d/1UaPKiUkaNGpZif0PwjFVxhZS
 
 Notas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
 
-Notas feitas por @wellington36 [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Abstract_of_Titica.pdf). 
+Notas feitas por @wellington36 [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
 
 ### Leituras adicionais
 
