@@ -1,14 +1,13 @@
-boiling.pt <- read.csv(file = "dados_ponto_fervura.csv") ## Table 11.5, DeGroot (4th ed.)
-
+## Table 11.5, DeGroot (4th ed.)
+boiling.pt <- read.csv(file = "dados_ponto_fervura.csv") 
 head(boiling.pt)
-plot(pressao ~ pt_fervura, boiling.pt)
 
+## Ajustando o modelo
 linmod <- lm(pressao ~ pt_fervura, data = boiling.pt)
-
 summary(linmod)
 
-### plotting code taken  from https://rstudio-pubs-static.s3.amazonaws.com/71339_d0b8346f41314979bc394448c5d60d86.html
-temp_var <- predict(linmod, interval="prediction")
+### plotting code taken from https://rstudio-pubs-static.s3.amazonaws.com/71339_d0b8346f41314979bc394448c5d60d86.html
+temp_var <- predict(linmod, interval = "prediction")
 new_df <- cbind(boiling.pt, temp_var)
 
 library(ggplot2)
@@ -26,4 +25,3 @@ p1 <- p0 +
   theme_bw(base_size = 16)
 
 p1
-
