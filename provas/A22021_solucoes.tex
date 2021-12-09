@@ -148,10 +148,10 @@ Agora vamos atacar d): para começar sabemos que a função de verossimilhança 
    0,\:\text{caso contrário}.
                          \end{cases}
 \end{equation*}
-Desta forma, queremos mostrar que para $\theta_1, \theta_2 \in (0, \infty)$ com $\theta_1 < \theta_2$ a razão $f_n(\bx \mid \theta_1)/ f_n(\bx \mid \theta_2)$ depende da amostra apenas através de $M$ e é função monotônica desta estatística.
+Desta forma, queremos mostrar que para $\theta_1, \theta_2 \in (0, \infty)$ com $\theta_1 < \theta_2$ a razão $f_n(\bx \mid \theta_2)/ f_n(\bx \mid \theta_1)$ depende da amostra apenas através de $M$ e é função monotônica desta estatística.
 De fato
 \begin{align*}
- \frac{f_n(\bx \mid \theta_1)}{ f_n(\bx \mid \theta_2)} = \left[\frac{\theta_2}{\theta_1}\right]^n\mathbb{I}(M \leq \theta_1).
+ \frac{f_n(\bx \mid \theta_2)}{ f_n(\bx \mid \theta_1)} = \left[\frac{\theta_2}{\theta_1}\right]^n\mathbb{I}(M \leq \theta_1).
 \end{align*}
 Agora vamos descobrir se o teste proposto é UMP.
 Vamos começar explicando para o Zezinho que um teste UMP $\delta$ é aquele que, para um tamanho $\alpha_0$, satisfaz 
