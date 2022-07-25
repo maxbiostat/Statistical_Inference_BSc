@@ -1,9 +1,9 @@
 # Statistical Inference (BSc)
 Course materials for Statistical Inference ("Inferência Estatística")
 
-Programa [aqui](https://docs.google.com/spreadsheets/d/1UaPKiUkaNGpZif0PwjFVxhZSF72GCaJiEyMvDzap2Vg/edit#gid=0).
+Programa (provisório) [aqui](https://docs.google.com/spreadsheets/d/1hXvrf1YdXj9c_hQCytV3-ka9J2flK8u-DDAuqkg59tQ/edit?usp=sharing).
 
-Notas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
+Slides [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
 
 Notas feitas por @wellington36 [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
 
