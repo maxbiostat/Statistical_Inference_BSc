@@ -78,6 +78,7 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 
 **Versões anteriores**
 - [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2)
+- [2021](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2021-2)
 
 **Agradecimentos**
 
