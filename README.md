@@ -5,7 +5,7 @@ Programa (provisório) [aqui](https://docs.google.com/spreadsheets/d/1hXvrf1YdXj
 
 Slides [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
 
-Notas feitas por @wellington36 [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
+Notas (independentes) feitas por [@wellington36](https://github.com/wellington36) estão [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
 
 ### Leituras adicionais
 
