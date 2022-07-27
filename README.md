@@ -69,6 +69,7 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 
 
 **Miscelânea**
+- O Canal [A Ciência da Estatística](https://www.youtube.com/c/ACi%C3%AAnciadaEstat%C3%ADstica) do Professor [Alexandre Patriota](https://www.ime.usp.br/~patriota/) é um excelente recurso para aprender mais. Ver, por exemplo, [este](https://www.youtube.com/watch?v=knmMunEzdZo) vídeo sobre a aplicação de variáveis aleatórias Bernoulli a um problema em atuária. 
 
 - [Este](https://stat.uiowa.edu/sites/stat.uiowa.edu/files/cae/Lo_Expectation.pdf) artigo apresenta o resultado `E[X] = int_0^inf Pr(X > x)dx`, chamado em inglês de "tail formula for the expectation".
 - Sobre a "diferenciação sob o sinal da integral", ou regra de Leibniz, [este](https://medium.com/cantors-paradise/richard-feynmans-integral-trick-e7afae85e25c) post mostra bem o poder da técnica, muito embora não dê um tratamento completo. Para isso, o [artigo](https://en.wikipedia.org/wiki/Leibniz_integral_rule) da Wikipedia serve bem.
