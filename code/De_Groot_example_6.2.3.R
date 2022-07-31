@@ -2,20 +2,35 @@
 ### S = sum(X_i)
 ### p = Pr(4n/10 < S < 6n/ 10)
 ## We want n such that p > 0.7
-
-calcula_p <- function(n){
-  prob <- pbinom(q = round(0.6*n), size = n, p = .5) - pbinom(q = round(0.4*n)-1, size = n, p = .5)
+## Chebychev approx
+computa_n_Chebychev <- function(p, theta = 0.5, a = .4){
+  ans <- ceiling(
+    1/(
+      4 * (1-p) * (a-theta)^2
+    )
+  )
+  return(ans)
+}
+calcula_p_exata <- function(n, theta = 0.5, a = .4){
+  prob <- 
+    pbinom(q = round((1-a)*n), size = n, p = theta) -
+    pbinom(q = round(a*n)-1, size = n, p = theta)
   return(prob)
 }
-n <- 10
-p <- calcula_p(n)
+aa <- .4
+tt <- .5
+n.chute <- 2 
+p.chute <- calcula_p_exata(n.chute, theta =  tt, a = aa)
 alvo <- 0.7
-erro <- (p-alvo)^2
-while(erro > .001){
-  n <- n + 1
-  p <- calcula_p(n)
-  erro <- (p-alvo)^2
-  if(n > 10000) break
+cat("Tamanho de amostra é:", n.chute, " Alvo é: ", alvo, " p é:", p.chute, "\n")
+fn_erro <- function(n){
+  (calcula_p_exata(n = n, theta = tt, a = aa)-alvo)^2
 }
-n
-p
+if(p.chute < alvo){
+  M <- 10000
+  ns <- 2:M
+  erros <- sapply(ns, fn_erro)
+  print( n.opt <- ns[which.min(erros)] )
+  calcula_p_exata(n.opt, theta = tt, a = aa)
+}
+computa_n_Chebychev(p = alvo, theta = tt, a = aa)
