@@ -12,6 +12,7 @@ Este é um curso de 60 (sessenta) horas sobre Inferência Estatística.
 \textbf{Princípios:}
 \begin{itemize}
   \item[$\triangle$] Em uma palavra:~\underline{Liberdade};
+  \item[$\triangle$] Em uma palavra:~\underline{Liberdade};
   \item[$\triangle$] Construção conjunta do conhecimento;
   \item[$\triangle$] Pontualidade na entrega das tarefas;
   \item[$\triangle$] Participação em aula;
@@ -54,8 +55,10 @@ Então
  \pr(X \geq t) \leq \frac{E[X^n]}{t^n}.
 \end{equation}
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:} Assumindo que $X$ é absolutamente contínua, escrever $E[X]$ explicitamente e usar linearidade e monotonicidade da integral.
 Para $n = 1$ e $X$ discreta, ver DeGroot, página 349, Teorema 6.2.1 $\qed$
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Desigualdade de Chebychev\footnote{Em homenagem a Pafnuty Lvovich Chebyshev (1821--1894).}}
@@ -69,8 +72,10 @@ Então
  \pr(|Y-\mu| \geq t) \leq \frac{\vr(Y)}{t^2}.
 \end{equation}
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:} Notar que $E[(Y-\mu)^2] = \sigma^2$ e aplicar Markov.
 Ver DeGroot, página 349, Teorema 6.2.2 $\qed$
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{A média amostral}
@@ -88,9 +93,11 @@ Considere uma~\textbf{amostra aleatória} $\rs$, $n \in \mathbb{N}$ de variávei
 Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas, com média $\mu$ e variância $\sigma^2$.
 Temos que (i) $E[\bar{X}_n] = \mu$ e (ii) $\vr(\bar{X}_n) = \frac{\sigma^2}{n}$.
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:} Para (i), usar a linearidade da esperança e o fato de as variáveis serem identicamente distribuídas -- note a falta de menção à independência.
 Para (ii), usar a soma das variâncias de variáveis idependentes, além do fato de serem identicamente distribuídas.
 Ver DeGroot, página 350, Teorema 6.2.3.
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[allowframebreaks,fragile]{Exemplo: determinando o tamanho de amostra}
@@ -102,6 +109,7 @@ Considere $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$.
 Quantos lançamentos devemos fazer para que 
 $$ \pr(0.4 \leq \bar{X}_n \leq 0.6) \geq 0.7\: ?$$
 \end{pergunta}
+\framebreak
 \textbf{Resolução:} Primeiro, faça $S_n = \sum_{i=1}^n X_i$ e deduza que $E[S_n] = np = n/2$ e $\vr(S_n) = n p(1-p) = n/4$.
 Agora:
 $$ \pr(0.4 \leq \bar{X}_n \leq 0.6) = \pr\left(\frac{4n}{10} \leq S_n  \leq \frac{6n}{10} \right).$$
@@ -170,11 +178,13 @@ Sejam  $\rs$ variáveis aleatórias independentes e identicamente distribuídas,
  Então
  $$ \bar{X}_n \xrightarrow{\text{p}} \mu.$$
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:}
 Usando o teorema~\ref{thm:iid_properties} e a desigualdade de Chebychev, temos
 $$ \pr\left( |\bar{X}_n - \mu| < \epsilon\right) \geq  1 - \frac{\sigma^2}{n\epsilon^2},$$
 e, portanto,
 $$ \lim_{n\to\infty} \pr\left( |\bar{X}_n - \mu| < \epsilon\right) = 1. \: \qed$$
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{LGN: exemplo}
@@ -236,6 +246,7 @@ Defina
 $$  p:=  \pr\left(\left| \bar{X}_n - \frac{1}{2}\right| \leq 0.1\right).$$
 Quanto vale $p$?
 \end{pergunta}
+\uncover<+(1)>{
 \textbf{Resolução}: 
 Lembremos que a variável padronizada $Z = \sqrt{n}(\bar{X}_n-E[X])/\sqrt{\vr(X)}$ terá distribuição aproximadamente normal padrão.
 Se $X\sim \operatorname{uniforme}(0, 1)$, sabemos que $E[X] = 1/2$ e $\vr(X) = 1/12$.
@@ -243,7 +254,8 @@ Nos aproveitando do fato de que $\sqrt{n}$ e $\sigma$ coincidem nesse exemplo, e
 $$\pr\left(\left| \bar{X}_n - \frac{1}{2}\right| \leq 0.1\right) =  \pr\left(12\left| \bar{X}_n - \frac{1}{2}\right| \leq 0.1\times 12\right) = \pr(|Z| < 1.2),$$
 de modo que $p \approx \Phi(1.2)-\Phi(-1.2) = 0.7698607$.
 O valor exato, que não discutiremos como obter, é $p = 0.7667213$.
-% \footnote{Chebychev diz que $p \geq 1 - 1/(144 \times 0.1^2) \approx 0.31$, o que está longe do valor exato.}
+Chebychev diz que $p \geq 1 - 1/(144 \times 0.1^2) \approx 0.31$, o que está longe do valor exato.
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{O que aprendemos?}
