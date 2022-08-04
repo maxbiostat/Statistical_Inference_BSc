@@ -23,6 +23,7 @@ Já este [artigo](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/m
 
 - `*` [Artigo](https://projecteuclid.org/download/pdf_1/euclid.aos/1035844977) de Peter McCullagh sobre o que é um modelo estatístico (avançado).
 - Material do [curso](https://github.com/maxbiostat/stats_modelling) de Modelagem Estatística. 
+- `*` Em [Finite Exchangeable Sequences](https://www.jstor.org/stable/pdf/2242823.pdf), Persi Diaconis e David Freedman mostram que se a geração de um conjunto finito de variáveis aleatórias pode ser representada como um experimento envolvendo urnas, este conjunto será permutável (_exchangeable_) -- avançado.  
 
 **Aula 3 - Inferência bayesiana:**
 
