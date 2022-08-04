@@ -55,6 +55,8 @@ A nota contém ainda vários resultados interessantes sobre teoria assintótica.
 
 - O artigo referenciado na seção 8.7.6 de DeGroot e tópico da questão bônus da A12020 é [este](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/content/pdf/10.1007/BF02868569.pdf&casa_token=06U6kaM0_dkAAAAA:zGbdUZ6Zr0CBkpomi8nqnu_zL2PN907WvgfWZlTZxNx90z3L3BpVIZAbJELosJhCzPrdY-iDbOFBltpq) aqui. 
 
+- [Aqui](http://eblackcu.net/portal/archive/files/blackwell-article-jstor_f4b0f250fc.pdf) um artigo sobre a vida e obra de David Blackwell (1919-2010). 
+
 **Aula 12 - Distribuição da média e variância amostrais**
 
 - O [Teorema de Basu](https://en.wikipedia.org/wiki/Basu%27s_theorem)  tem como caso particular a independência da média e variância amostrais para o caso Normal.
