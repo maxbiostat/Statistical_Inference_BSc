@@ -9,6 +9,10 @@ Notas (independentes) feitas por [@wellington36](https://github.com/wellington36
 
 Tópicos marcados com um `*` são extra e em geral designam material mais avançado.
 
+### News
+
+- O trabalho I já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_I.pdf). O prazo de entrega é **22/08/2022**.
+
 ### Leituras adicionais
 
 **Aula 1 - Revisão de probabilidade:**
