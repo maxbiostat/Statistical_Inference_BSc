@@ -1,5 +1,6 @@
 # Statistical Inference (BSc)
-Course materials for Statistical Inference ("Inferência Estatística")
+
+Material para o curso de [Inferência Estatística](https://emap.fgv.br/disciplina/inferencia-estatistica-0) oferecido como disciplina obrigatória das graduações em [Matemática Aplicada](https://emap.fgv.br/curso/matematica-aplicada) e [Ciência de Dados e Inteligência Artificial](https://emap.fgv.br/curso/ciencia-de-dados-e-inteligencia-artificial) da [Escola de Matemática Aplicada](https://emap.fgv.br/) da Fundação Getulio Vargas (FGV EMAp). 
 
 Programa (provisório) [aqui](https://docs.google.com/spreadsheets/d/1hXvrf1YdXj9c_hQCytV3-ka9J2flK8u-DDAuqkg59tQ/edit?usp=sharing).
 
@@ -8,6 +9,11 @@ Slides [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/maste
 Notas (independentes) feitas por [@wellington36](https://github.com/wellington36) estão [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
 
 Tópicos marcados com um `*` são extra e em geral designam material mais avançado.
+
+### Bibliografia
+
+- Principal: [DG] DeGroot MH, Schervish MJ. Probability and statistics. Pearson Education; 2012.
+- Apoio: [CB] Casella, G., & Berger, R. L. (2002). Statistical Inference. Pacific Grove, CA: Duxbury.
 
 ### News
 
