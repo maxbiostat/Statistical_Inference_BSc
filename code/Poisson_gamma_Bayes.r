@@ -13,6 +13,7 @@ M <- 1E4
 theta.prior.draws <- rgamma(n = M,
                             shape = alpha0,
                             rate = beta0)
+
 X.prior.draws <- rpois(n = M, lambda = theta.prior.draws)
 hist(X.prior.draws, probability = TRUE)  
 mean(X.prior.draws)
@@ -51,6 +52,7 @@ legend(
 theta.posterior.draws <- rgamma(n = M,
                             shape = alpha1,
                             rate = beta1)
+
 X.posterior.draws <- rpois(n = M, lambda = theta.posterior.draws)
 hist(X.posterior.draws, probability = TRUE)  
 mean(X.posterior.draws)
