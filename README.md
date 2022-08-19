@@ -17,7 +17,7 @@ Tópicos marcados com um `*` são extra e em geral designam material mais avanç
 
 ### News
 
-- O trabalho I já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_I.pdf). O prazo de entrega é **22/08/2022**.
+- O trabalho I já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_I.pdf). O prazo de entrega é **24/08/2022**.
 
 ### Leituras adicionais
 
