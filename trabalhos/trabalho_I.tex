@@ -40,10 +40,12 @@ Suponha que observamos uma amostra aleatória $X_1, \ldots, X_n$ com distribuiç
 \begin{enumerate}
  \item Escreva a distribuição conjunta condicional dos dados sob a nova parametrização;
  \item A partir da densidade do item anterior, deduza que a distribuição~\textit{a priori} conjugada conjunta para $\phi = (\mu, \tau)$ é da forma:
- \begin{align}
+\begin{equation} \label{eq:prior}  
+ \begin{aligned} 
   \tau &\sim \operatorname{Gama}(\alpha_0, \beta_0),\\
   \mu \mid \tau &\sim \operatorname{Normal_2}(m_0, \lambda_0\tau),
- \end{align}
+ \end{aligned}
+\end{equation} 
 onde $\operatorname{Normal_2}$ se refere à distribuição normal parametrizada em termos de média e precisão.
 \item A partir dos itens anteriores, derive a distribuição~\textit{a posteriori} conjunta de $\mu$ e $\tau$ e a distribuição condicional de $\mu$ dado $\tau$, assim como a distribuição marginal~\textit{a posteriori} de $\tau$;
 \item Interprete as expressões obtidas no item anterior; o que as formas funcionais obtidas revelam sobre a interação entre os hiperparâmetros e os dados?
@@ -63,7 +65,8 @@ Palmirinha tem um quadro em seu escritório, que diz
 
 Agora, 
 \begin{enumerate}
- \item Com os dados anotados por Valciclei, é possível computar a distribuição~\textit{a posteriori} de $\mu$ e $\tau$? Justifique.
+	\item Elicite uma distribuição a priori conjugada consistente com as suspeitas de Palmirinha. Para isso, interprete-as como valores esperados a priori dos parâmetros\footnote{As leis de esperança e de variância totais podem ser adequadas; veja \cite[Seção 9.6]{Blitzstein2019-qi}.}  -- isto é, $\mathbb{E}[\mu] = 10$, $\mathrm{Var}(\mu) = 4$ e $\mathbb{E}[\sqrt{\tau} \mu] = 2$ -- e compute os hiperparâmetros $\beta_{0}$, $m_{0}$ e $\lambda_{0}$ da Equação~\eqref{eq:prior}. Suponha também que $\alpha_{0} = 2$.
+	\item Com os dados anotados por Valciclei, é possível computar a distribuição~\textit{a posteriori} de $\mu$ e $\tau$? Justifique.
  \item Em caso afirmativo, ajude Palmirinha a encontrar $a, b \in \mathbb{R}$, $a < b$ de modo que $\operatorname{Pr}(\mu \in (a, b) \mid \boldsymbol{x}) = 0.95$.
 \end{enumerate}
 
