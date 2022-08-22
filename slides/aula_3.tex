@@ -100,7 +100,7 @@ Como representamos esta informação?
 \begin{defn}[Distribuição~\textit{a priori}]
 \label{def:prior}
  Se tratamos o parâmetro $\theta$ como uma variável aleatória, então a distribuição~\textit{a priori}, que também chamaremos simplesmente de priori, é a distribuição que damos a $\theta$~\textbf{antes} de observarmos as outras variáveis aleatórias de interesse.
- Em geral, vamos denotar a função de densidade/massa de probabilidade da priori por $\xi(\theta)$.
+ Em geral, vamos denotar a função de densidade/massa de probabilidade da priori por $\pi(\theta)$.
 \end{defn}
 \textbf{Exemplos:}
 \begin{itemize}
@@ -123,10 +123,10 @@ Como representamos esta informação?
 \begin{theo}[Distribuição~\textit{a posteriori}: derivação]
  \label{thm:posterior_distribution}
  Considere a amostra aleatória $\rs$ de uma distribuição com f.d.p./f.m.p. $f(x\mid\theta)$.
- Se a distribuição~\textit{a priori} é $\xi(\theta)$, temos
+ Se a distribuição~\textit{a priori} é $\pi(\theta)$, temos
  \begin{equation}
   \label{eq:posterior}
-    \xi(\theta \mid \boldsymbol x) = \frac{\xi(\theta)\prod_{i=1}^n f(x_i \mid \theta)}{g_n(\boldsymbol x)}, \: \theta \in \Omega.  
+    \xi(\theta \mid \boldsymbol x) = \frac{\pi(\theta)\prod_{i=1}^n f(x_i \mid \theta)}{g_n(\boldsymbol x)}, \: \theta \in \Omega.  
  \end{equation}
  Chamamos $g_n(\boldsymbol x)$ de distribuição~\textit{marginal} de $\rs$.
 \end{theo}
@@ -138,7 +138,7 @@ Continuando com o Exemplo~\ref{ex:duracao_componentes}, fica claro que
  \[f (\boldsymbol x  \mid \theta) = \prod_{i=1}^n f(x_i \mid \theta) = \theta^n\exp(-S\theta), \]
 onde $S = \sum_{i = 1}^n x_n$.
 Desta forma, temos 
-\[ f (\boldsymbol x  \mid \theta)\xi(\theta) = \theta^{n}\exp(-(S + 2)\theta).\]
+\[ f (\boldsymbol x  \mid \theta)\pi(\theta) = \theta^{n}\exp(-(S + 2)\theta).\]
 Para obter $g_n(\boldsymbol{x})$, computamos 
 \[ g_n(\boldsymbol{x}) = \int_0^\infty t^{n}\exp(-(S + 2)t) \,dt = \frac{\Gamma( n + 1) }{ (S + 2)^{n + 1}}. \]
 Concluímos que 
@@ -158,9 +158,9 @@ ou seja, $\theta \mid \boldsymbol{x} \sim \operatorname{Gama}(n + 1, \sum_{i = 1
 \begin{frame}{A função de verossimilhança}
  Note que o denominador em~(\ref{eq:posterior}) não depende do parâmetro, $\theta$.
  Deste modo, podemos escrever
- \[ \xi(\theta \mid \boldsymbol{x}) \propto f(\boldsymbol{x} \mid \theta)\xi(\theta), \]
+ \[ \xi(\theta \mid \boldsymbol{x}) \propto f(\boldsymbol{x} \mid \theta)\pi(\theta), \]
  querendo dizer que os dois lados de $\propto$ são iguais a não ser talvez por uma constante que independe de $\theta$.
- Por vezes podemos escrever também $\xi(\theta \mid \boldsymbol{x}) \propto_\theta f(\boldsymbol{x} \mid \theta)\xi(\theta)$.
+ Por vezes podemos escrever também $\xi(\theta \mid \boldsymbol{x}) \propto_\theta f(\boldsymbol{x} \mid \theta)\pi(\theta)$.
  \begin{defn}[Função de verossimilhança]
  \label{def:likelihood_function}
   Quando encaramos a f.d.p./f.m.p. $f(x_1, x_2, \ldots, x_n \mid \theta)$ como uma função do parâmetro $\theta$, chamamos esta função de~\textbf{função de verossimilhança}, e podemos denotá-la como $L(\theta ; \boldsymbol{x})$ ou, quando a notação não criar ambiguidade, simplesmente $L(\theta)$.
@@ -168,9 +168,9 @@ ou seja, $\theta \mid \boldsymbol{x} \sim \operatorname{Gama}(n + 1, \sum_{i = 1
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Aprendizado bayesiano sequencial}
-Ainda sobre o Exemplo~\ref{ex:duracao_componentes}, considere a primeira observação $x_1$ e a distribuição~\textit{a posteriori} baseada apenas nesta observação: $\xi_1(\theta \mid x_1) \propto f(x_1 \mid \theta)\xi(\theta)$.
+Ainda sobre o Exemplo~\ref{ex:duracao_componentes}, considere a primeira observação $x_1$ e a distribuição~\textit{a posteriori} baseada apenas nesta observação: $\xi_1(\theta \mid x_1) \propto f(x_1 \mid \theta)\pi(\theta)$.
 Se assumirmos que $\rs$ são condicionalmente independentes dado $\theta$, podemos escrever 
-\[\xi(\theta \mid x_1, x_2) \propto f(x_1, x_2 \mid \theta)\xi(\theta) = f(x_1 \mid \theta)f(x_2 \mid \theta)\xi(\theta) = f(x_2 \mid \theta)\xi_1(\theta \mid x_1). \]
+\[\xi(\theta \mid x_1, x_2) \propto f(x_1, x_2 \mid \theta)\pi(\theta) = f(x_1 \mid \theta)f(x_2 \mid \theta)\pi(\theta) = f(x_2 \mid \theta)\xi_1(\theta \mid x_1). \]
     \begin{figure}[!ht]
     \label{fig:posterior_componentes_sequencial}
     \begin{center}
@@ -189,7 +189,7 @@ Chamamos a distribuição condicional em~(\ref{eq:posterior_prediction}) de~\tex
 Em contraste, temos a~\textbf{distribuição preditiva~\textit{a priori}}:
  \begin{equation}
   \label{eq:prior_prediction}
-  p(x_{n+1}) = \int_{\Omega} f(x_{n+1} \mid \theta)\xi(\theta)\, d\theta,
+  p(x_{n+1}) = \int_{\Omega} f(x_{n+1} \mid \theta)\pi(\theta)\, d\theta,
  \end{equation}
 que é útil na aplicação de modelos bayesianos na prática, mas não será explorada aqui.
 \end{frame}
@@ -201,7 +201,7 @@ que é útil na aplicação de modelos bayesianos na prática, mas não será ex
  
  ``Parâmetros como variáveis aleatórias ou constantes fixas e não-observáveis.''
  
- \item[\faHourglassStart] Distribuição~\textit{a priori}, $\xi(\theta)$;
+ \item[\faHourglassStart] Distribuição~\textit{a priori}, $\pi(\theta)$;
  
  ``Nosso grau de crença~\underline{antes} de observamos dados.''
  
@@ -209,7 +209,7 @@ que é útil na aplicação de modelos bayesianos na prática, mas não será ex
 
  ``Codifica (toda) a informação sobre o modelo contida nos dados.''
  
- \item[\faHourglassEnd] Distribuição~\textit{a posteriori}, $\xi(\theta \mid \boldsymbol x) \propto L(\theta)\xi(\theta)$;
+ \item[\faHourglassEnd] Distribuição~\textit{a posteriori}, $\xi(\theta \mid \boldsymbol x) \propto L(\theta)\pi(\theta)$;
  
  ``Nossa crença atualizada a partir da informação contida em $L(\theta)$.''
  \end{itemize}

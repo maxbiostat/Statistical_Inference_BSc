@@ -147,10 +147,12 @@ Por exemplo, se $\rs$ são Bernoulli com parâmetro $p$,  podemos estar interess
  Considere uma função $\phi : \Omega \to \mathbb{R}$.
  Se $\hat{\theta}$ é um EMV para $\theta$, então $\phi(\hat{\theta})$ é um EMV para $\omega = \phi(\theta)$.
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:} Defina a~\textit{verossimilhança induzida}:
 \[ L^\ast(\omega) := \sup_{\left\{ \theta: \phi(\theta) = \omega \right\}} L(\theta), \]
 e note que o supremo desta função sobre $\Omega$ é precisamente o EMV.
 Ver Casella \& Berger, Teorema 7.2.10 (pág. 320) ou DeGroot, Teorema 7.6.2 (pág 427).
+}
 \textbf{Exemplo:} O EMV para o quadrado da média de uma normal, $\mu^2$, é $\bar{X}_n^2$.
 \end{frame}
 
@@ -172,9 +174,11 @@ Denote $E_{\theta_0}[g] := \int_{\mathcal{X}} g(x, \theta_0) f(\boldsymbol{x} \m
    Então,
   $$\hat{\theta}_{\text{EMV}} \xrightarrow{} \theta.$$
 \end{theo}
+\uncover<+(1)>{
 \textbf{Prova:} (rascunho) mostrar que, para todo $\theta \in \Omega$,
 \[ \frac{1}{n} \sum_{i=1}^n \log f(X_i \mid \theta) \xrightarrow{} E_{\theta_0}\left[ \log f(\boldsymbol{X} \mid \theta) \right], \]
 e aplicar a desigualdade de Jensen.
+}
 \end{frame}
 
 \begin{frame}{O que aprendemos?}
