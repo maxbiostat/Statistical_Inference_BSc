@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+
+
+% Title Page
+\title{Trabalho II: o algoritmo EM.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: 28 de Setembro de 2022.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \end{itemize}
+
+
+\section*{Introdução}
+
+O estimador de máxima verossimilhança (EMV) possui uma gama de propriedades atraentes, como consistência, invariância e normalidade asintótica.
+Em muitas situações práticas, no entanto, este estimador é difícil de obter, especialmente quando parte dos dados está faltando (``\textit{missing data}'').
+Por exemplo, podemos estar interessados em estudar a relação entre peso e altura, mas na nossa amostra temos os pesos de alguns indivíduos e alturas de outros.
+
+O algoritmo EM (``Expectation Maximisation'') é um método iterativo para aproximar o EMV em situações com dados faltantes.
+Começamos com um valor inicial $\theta^{(0)}$ e depois para ir do passo $j$ para o passo $j + 1$, escrevemos a~\textit{verossimilhança dos dados completos}, que é a log-verossimilhança dos dados se os tivéssemos observado completos.
+
+O passo ``E'' (``esperança'') do algoritmo consiste em computar a distribuição condicional das observações faltantes dadas as observações existentes se o parametro tivesse o valor $\theta^{(j)}$,  e tomar a esperança destes dados faltantes tratando $\theta$ como fixo -- e os dados faltantes como variáveis aleatórias.
+Já o passo ``M'' (``marginalização'') envolve escolher $\theta^{(j+1)}$ que maximize a distribuição condicional obtida no passo E. 
+
+\section*{Questões}
+\begin{enumerate}
+ \item Defina claramente todos os passos do algoritmo EM (faça um glossário de termos se precisar);
+ \item \textbf{Um exemplo motivador:} Suponha que temos duas moedas, Moeda $1$ e Moeda $2$ de modo que $\operatorname{Pr}(\text{Cara} \mid \text{Moeda} = 1) = p_1$ e $\operatorname{Pr}(\text{Cara} \mid \text{Moeda} = 2) = p_2$; 
+ Suponha agora que fazemos o seguinte experimento:
+ \begin{itemize}
+  \item[(i)] Selecionamos uma moeda aleatóriamente com probabilidade $1/2$;
+  \item[(ii)] Lançamos a moeda selecionada $m$ vezes;
+  \item[(iii)] Repetimos (i) e (ii) $n$ vezes.
+ \end{itemize}
+ Podemos representar os dados advindos deste experimento como 
+\begin{center}
+\begin{tabular}{ c c c c c}
+ $X_{11}$ & $\ldots$ & $X_{1m}$ & & $M_1$  \\ 
+ $X_{21}$ & $\ldots$ & $X_{2m}$ & & $M_2$  \\
+ $\vdots$ & $\ldots$ & $\vdots$ & & $\vdots$  \\
+ $X_{n1}$ & $\ldots$ & $X_{nm}$ & & $M_n$ ¨
+\end{tabular}
+\end{center}
+ 
+ onde os $X_{ij}$ são variáveis Bernoulli que guardam o resultados do lançamento da moeda  e $M_i \in \{ 1, 2\}$ é a variável aleatória que guarda qual moeda foi selecionada na $i$-ésima rodada do experimento.
+ 
+ \textbf{Desenvolva} um esquema EM para obter o EMV para $\theta = (p_1, p_2)$ quando desconhecemos os valores de $M_i$, isto é, quando não sabemos que moeda foi escolhida em cada uma das $n$ rodadas.
+ 
+ \item Mostre que a sequência $\theta^{(j)}$ é monotônica e não descrescente com respeito à verossimilhança, isto é,
+ \[ L\left(\theta^{(j + 1)}\right) \geq L\left(\theta^{(j)}\right) \]
+ Dica (fortemente aconselhado): ver exercício 7.31 de Casella \& Berger (2002). 
+ \item Discuta a importância do método EM: quando ele é aplicável? Vale sempre a pena? O que o item anterior demonstra sobre o método?
+\end{enumerate}
+
+
+%\bibliographystyle{apalike}
+%\bibliography{refs}
+
+\end{document}          
