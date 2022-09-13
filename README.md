@@ -19,7 +19,7 @@ Tópicos marcados com um `*` são extra e em geral designam material mais avanç
 
 - O trabalho II já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_II.pdf). O prazo de entrega é **28/09/2022**.
 
-- Exercícios de revisão para a A1 podem ser encontrados [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/exercicios/exerc%C3%ADcios_revis%C3%A3o_A1.pdf)
+- Exercícios de revisão para a A1 podem ser encontrados [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/exercicios/exerc%C3%ADcios_revis%C3%A3o_A1.pdf).
 
 ### Leituras adicionais
 
