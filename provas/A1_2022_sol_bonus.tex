@@ -1,0 +1,54 @@
+\textcolor{red}{\textbf{Conceitos trabalhados}: Estimador de Bayes.}\\ \textcolor{purple}{\textbf{Nível de dificuldade}: médio.}\\
+\textcolor{blue}{
+\textbf{Resolução:}
+De maneira similar ao que fizemos na questão 2), vamos escrever o risco explicitamente:
+\begin{align*}
+    R(\delta, \theta) &= E_{\theta \mid \bx}\left[ \exp\left\{c(\delta-\theta)\right\} - c(\delta-\theta) -1\right],\\
+     &= \exp(c\delta)E_{\theta \mid \bx}\left[\exp\{-c\theta\}\right] - c\delta-cE_{\theta \mid \bx}\left[\theta\right] -1.
+\end{align*}
+Para facilitar a notação, vamos escrever
+\begin{align*}
+    \omega & := E_{\theta \mid \bx}\left[\exp\{-c\theta\}\right],\\
+    \mu_{\bx} &:=  E_{\theta \mid \bx}\left[\theta\right],
+\end{align*}
+de modo que 
+\begin{equation*}
+    R(\delta, \theta) = \exp(c\delta)\omega - c\delta-c\mu_{\bx} -1.
+\end{equation*}
+Agora vamos verificar que a LINEX é convexa, e, no processo, encontrar o estimador de Bayes.
+\begin{align}
+\label{eq:1stderiv}
+    \frac{\partial }{\partial \delta} R(\delta, \theta) &= c(\omega\exp(c\delta)-1),\\
+    \frac{\partial^2}{\partial \delta^2} R(\delta, \theta) &= c^2\omega\exp(c\delta).
+\end{align}
+Concluímos que igualar (\ref{eq:1stderiv}) a zero vai nos dar um ponto de mínimo, visto que a derivada segunda é maior que zero.
+Deste modo, 
+\begin{align*}
+    &c(\omega\exp(c\delta)-1) = 0 \implies \omega\exp(c\delta) = 1,\\
+    &\implies \delta^\star = -\frac{\log\left(\omega\right)}{c},
+\end{align*}
+como queríamos demonstrar.
+Agora, vamos especializar este resultado para o caso normal com uma priori imprópria sobre $\mu$.
+Para começar, 
+\begin{align*}
+    \xi(\mu \mid \bx) &\propto f_n(\bx \mid x),\\
+    &\propto \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (x_i-\mu)^2\right),\\
+    &\propto \exp\left(-\frac{n}{2\sigma^2} (\mu-\bar{x}_n)^2\right),
+\end{align*}
+onde a última expressão segue de identidade conhecida e discutida em sala.
+Agora, notamos que a posteriori $\xi(\mu \mid \bx)$ é a densidade de uma distribuição normal com média $\bar{x}_n$ e variância $\sigma^2/n$.
+Agora, sabemos que o estimador LINEX é
+\begin{align*}
+    \delta_{\textrm{LINEX}} = -\frac{1}{c} \log\left( E_{\theta \mid \bx}\left[\exp\{-c\mu\}\right]\right).
+\end{align*}
+Seguindo a dica e fazendo $k = -c$, $m = \bar{x}_n$ e $v = \sigma^2/n$, temos
+\begin{align*}
+        \delta_{\textrm{LINEX}} &= -\frac{1}{c} \log\left(\exp\left\{\frac{c^2\frac{\sigma^2}{n} - 2c\bar{x}_n}{2}\right\}\right),\\
+        &=  -\frac{1}{c} \left\{\frac{c^2\frac{\sigma^2}{n} - 2c\bar{x}_n}{2}\right\},
+\end{align*}
+de onde segue a resposta de b).
+Note que $\delta_{\textrm{LINEX}}$ é inadmissível sob perda quadrática, tendo viés $b(\mu) = -c\sigma^2/(2n)$, independente do valor de $\mu$ e indo para zero quando $n\to \infty$.
+$\blacksquare$\\
+\textbf{Comentário:} Nesta questão nós aplicamos os princípios da teoria da Teoria da Decisão que dão suporte à inferência bayesiana.
+Empregamos uma perda cuja assimetria é possível controlar através de um parâmetro $c$ e descobrimos que o estimador resultante é viesado, mas esse é o preço a se pagar por um estimador que é ótimo sob qualquer nível de assimetria induzido pela perda LINEX.
+}

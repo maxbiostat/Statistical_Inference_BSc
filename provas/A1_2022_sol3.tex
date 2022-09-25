@@ -1,0 +1,46 @@
+\textcolor{red}{\textbf{Conceitos trabalhados}: Teorema da fatorização; estimador de máxima verossimilhança; invariância; suficiência.}\\ \textcolor{purple}{\textbf{Nível de dificuldade}: médio.}\\
+\textcolor{blue}{
+\textbf{Resolução:}
+Vamos resolver a) escrevendo a verossimilhança e depois aplicando o Teorema da Fatorização.
+Assim, como nossa amostra é aleatória
+\begin{align*}
+    f_n(\bx \mid a, b) &= \prod_{i=1}^n f(x_i; a, b),\\
+    & = \left(\frac{\Gamma(a + b)}{\Gamma(a)\Gamma(b)}\right)^n  \left(\prod_{i=1}^n x_i\right)^{a-1} \left(\prod_{i=1}^n 1-x_i\right)^{b-1},\\
+    &\propto \left(\frac{\Gamma(a + b)}{\Gamma(a)}\right)^n\left(\prod_{i=1}^n x_i\right)^{a} ,
+\end{align*}
+de onde conseguimos facilmente identificar $T(\bX) = \prod_{i=1}^n X_i$ como estatística suficiente para $a$ quando $b$ é conhecida.
+Para b) queremos o EMV para $\mu = E_\theta[X] = a/(a+b)$ quando $b=1$, isto é $\mu = a/(a+1)$.
+A primeira providência é escrever 
+\begin{align*}
+    L_n(a) &\propto \left(\frac{\Gamma(a + 1)}{\Gamma(a)}\right)^n\left(\prod_{i=1}^n x_i\right)^{a},\\
+    &= a^n \left(\prod_{i=1}^n x_i\right)^{a}.
+\end{align*}
+Temos algumas opções para computar esta quantidade por máxima verossimilhança: podemos reparametrizar a distribuição Beta em termos da sua esperança $\mu$ e maximizar a verossimilhança resultante ou podemos obter $\hat{a}_{\textrm{EMV}}$ e usar a invariância do EMV para escrever $\hat{\mu}_{\textrm{EMV}} = \hat{a}_{\textrm{EMV}}/(\hat{a}_{\textrm{EMV}} +1)$.
+Aqui vamos fazer os dois caminhos, mas primeiro o mais fácil.
+Tomando o log da verossimilhança e diferenciando, temos
+\begin{equation*}
+    \frac{\partial}{\partial a}\log L_n(a) = \frac{n}{a} + \sum_{i=1}^n \log(x_i),
+\end{equation*}
+de modo que podemos escrever\footnote{Note que $ \frac{\partial^2}{\partial a^2}\log L_n(a) = -\frac{n}{a^2} < 0$.}
+\begin{equation*}
+    \hat{a}_{\textrm{EMV}} = - \frac{n}{\sum_{i=1}^n \log(X_i)}.
+\end{equation*}
+Agora, vamos ver como fica verossimilhança reparametrizada:
+\begin{align*}
+           L_n(\mu) &= \left(\frac{\mu}{1-\mu}\right)^n \left(\prod_{i=1}^n x_i\right)^{\left(\frac{\mu}{1-\mu}\right)}.
+\end{align*}
+Assim,
+\begin{equation*}
+    \frac{\partial}{\partial \mu}\log L_n(\mu) = -\dfrac{\left(n-\sum_{i=1}^n \log(x_i)\right)\mu-n}{\left(1-\mu\right)^2\mu}.
+\end{equation*}
+Como o denominador é positivo, para que $\frac{\partial}{\partial \mu}\log L_n(\mu) = 0$, é preciso que 
+\begin{align*}
+    -\left(n-\sum_{i=1}^n \log(x_i)\right)\mu-n = 0,\\
+    \implies \hat{\mu}_{\textrm{EMV}} = -\frac{n}{n-\sum_{i=1}^n \log(x_i)}.
+\end{align*}
+o que de fato coincide com o que já calculamos -- confira se quiser.
+$\blacksquare$\\
+\textbf{Comentário:}
+Esta questão se baseia no exercício 7 da seção 7.7 de DeGroot (recomendado!).
+Aplicações do princípio da invariância do EMV foram vistos em sala e, por exemplo, no exercício 12 da seção 7.8, também recomendado.
+}
