@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+
+
+% Title Page
+\title{Trabalho II: o método Delta.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: 22 de Outubro de 2022.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \end{itemize}
+
+
+\section*{Introdução}
+
+Algumas vezes estamos interessados em estimar funções de variáveis aleatórias, em particular funções da média amostral.
+O método Delta permite, sob certas condições, aproximar a distribuição assintótica de funções de variáveis aleatórias.
+Este resultado é extremamente útil em Estatística porque permite obter aproximações sob condições bastante gerais, muitas vezes quando estimadores explícitos não estão disponíveis em forma fechada.
+
+\section*{Questões}
+\begin{enumerate}
+ \item Enuncie e prove o método Delta;
+ \item Discuta sob quais condições o método funciona e porque;
+ \item \textbf{Definição 1: transformações estabilizadoras da variância}.
+ Suponha que $E[X_i] = \theta$ é o parâmetro de interesse. 
+ O Teorema central do limite diz que
+ \begin{equation}
+  \sqrt{n}\left(\bar{X}_n - \theta \right) \xrightarrow{d} \textrm{Normal}\left(0, \sigma^2(\theta)\right),
+ \end{equation}
+ou seja, a variância da distribuição limite é função de $\theta$.
+Idealmente, gostaríamos\footnote{Por razões que ficarão claras mais à frente no curso.
+Se sua curiosidade não puder esperar, pesquise ``estatística ancilar'' ou ``ancillar statistics''.} que essa distribuição não dependesse de $\theta$.
+Podemos utilizar o método Delta para resolver esse problema.
+Em particular, você demonstrou acima que
+\begin{equation}
+ \sqrt{n}\left(g(\bar{X}_n) - g(\theta) \right) \xrightarrow{d} \textrm{Normal}\left(0, \sigma^2(\theta)g^\prime(\theta)^2\right).
+\end{equation}
+O que desejamos então é escolher $g$ de modo que $g^\prime(\theta)\sigma(\theta) = a$ para todo $\theta$.
+Dizemos que $g$ é uma~\textbf{transformação estabilizadora da variância}.
+
+\textbf{Aplicação:} Sejam $X_1, X_2, \ldots, X_n$ uma amostra i.i.d. de uma distribuição normal com média $\mu = 0$ e variância $\sigma^2$,~\textbf{desconhecida}.
+Defina $Z_i = X_i^2$ e $\tau^2 = \operatorname{Var}(Z_i)$.
+\begin{itemize}
+ \item[(i)] Mostre que $\tau^2 = 2\sigma^4$.
+ \item[(ii)] É possível mostrar que 
+ \begin{equation}
+ \sqrt{n}\left(\bar{Z}_n - \sigma^2 \right) \xrightarrow{d} \textrm{Normal}\left(0, 2\sigma^4\right).
+\end{equation}
+Proponha uma transformação estabilizadora da variância para este problema\footnote{Note que, como não conhecemos $\sigma^2$, $g$ não pode depender de $\sigma^2$.}
+\textit{Dica}: Encontre $g$ tal que 
+ \begin{equation*}
+ \sqrt{n}\left(g(\bar{Z}_n) - g(\sigma^2) \right) \xrightarrow{d} \textrm{Normal}\left(0, 2\right).
+\end{equation*}
+\end{itemize}
+\end{enumerate}
+
+% \bibliographystyle{apalike}
+% \bibliography{refs}
+
+\end{document}          
