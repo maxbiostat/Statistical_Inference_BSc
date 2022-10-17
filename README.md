@@ -17,7 +17,8 @@ Tópicos marcados com um `*` são extra e em geral designam material mais avanç
 
 ### News
 
-- O trabalho III já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_III.pdf). O prazo de entrega é **26/10/2022**.
+- O trabalho III já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_III.pdf). O prazo de entrega é **28/10/2022**.
+- O exercício de fixação da semana (17/10/2022) já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/exercicios/CMT_1_2022.pdf).
 
 - Soluções propostas para as questões da A1 podem ser encontradas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/A12022_solucoes.pdf).
 
