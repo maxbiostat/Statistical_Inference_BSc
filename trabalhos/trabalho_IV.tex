@@ -1,0 +1,98 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+% Title Page
+\title{Trabalho IV: Testes uniformemente mais poderosos.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: Junto com a A2.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \end{itemize}
+
+
+\section*{Introdução}
+
+Vimos que os testes de hipótese fornecem uma abordagem matematicamente sólida para traduzir hipóteses científicas sobre o processo gerador dos dados em decisões sobre os dados -- isto é, traduzir afirmações sobre particões do espaço de parâmetros, $\Omega$, em afirmações testáveis sobre o espaço amostral $\mathcal{X}^n$.
+
+Um teste $\delta(\bX)$ é uma decisão (binária) de rejeitar ou não uma hipótese nula ($H_0$) sobre $\theta \in \Omega$ com base em uma amostra $\bX$.
+A capacidade de um teste de rejeitar $H_0$ quando ela é falsa é medida pela função poder, $\pi(\theta |\delta)$.
+Nem todos os testes, no entanto, são criados iguais.
+Em certas situações, é possível mostrar que um procedimento $\delta_A$ é~\textit{uniformemente} mais poderoso que outro procedimento $\delta_B$ para testar a mesma hipótese.
+
+Neste trabalho, vamos definir e aplicar o conceito de~\textbf{teste uniformemente mais poderoso}.
+
+\section*{Questões}
+Dica: ler o capítulo 9.3 de DeGroot.
+\begin{enumerate}
+ \item Defina precisamente o que é um teste uniformemente mais poderoso (UMP) para uma hipótese;
+ \item Defina precisamente o que é uma razão de verossimilhanças monotônica (RVM);
+ \item Considere uma hipótese nula  da forma $H_0: \theta \leq \theta_0$, $\theta_0 \in \Omega$.
+ Suponha que vale o Teorema da Fatorização e a distribuição de $\bX$ tem razão de verossimilhanças monotônica.
+ Mostre que se existem $c$ e $\alpha_0$ tais que
+ \begin{equation}
+  \pr\left(r(\bX) \geq c \mid \theta = \theta_0\right) = \alpha_0,
+ \end{equation}
+então o procedimento $\delta^\ast$ que rejeita $H_0$ se $r(\bX) \geq c$ é UMP para $H_0$ ao nível $\alpha_0$;
+
+\item \textbf{Qual é dessa moeda aí?}
+
+Suponha que você encontra o Duas-Caras na rua e ele não vai com a sua... cara. 
+Ele decide jogar a sua famosa moeda para o alto para decidir se te dá um cascudo.
+Se der cara ($C$), você toma um cascudo.
+Você, que sabe bem Estatística, pede que ele pelo menos jogue a moeda umas $n=10$ vezes antes de tomar a decisão derradeira.
+
+Surpreendentemente, ele concorda. 
+Lança a moeda e obtém
+$$ \text{KCKCKCCKKK} $$
+
+Você agora deve decidir se foge, se arriscando a tomar dois cascudos ao invés de um, ou se fica e  possivelmente não toma cascudo nenhum.
+Se $p$ é a probabilidade de dar cara, estamos interessados em testar a hipótese
+  \begin{align*}
+   H_0 &:  p \leq \frac{1}{2},\\
+   H_1 &:p > \frac{1}{2}.
+  \end{align*}
+
+\begin{enumerate}
+ \item Escreva a razão de verossimilhanças para esta situação;
+ \item Nesta situação, é do seu interesse encontrar um teste UMP.
+ Faça isso e aplique o teste desenvolvido aos dados que conseguiu arrancar do Duas-Caras.
+\end{enumerate}
+\item (Bônus) Mostre que, no item anterior, não é possível atingir qualquer nível $\alpha_0$, isto é, que $\alpha_0$ toma um número finito de valores.
+Proponha uma solução para que seja possível atingir qualquer nível em $(0, 1)$. (Dica: Ler a seção 9.2 de DeGroot).
+\end{enumerate}
+
+% \bibliographystyle{apalike}
+% \bibliography{refs}
+
+\end{document}          
