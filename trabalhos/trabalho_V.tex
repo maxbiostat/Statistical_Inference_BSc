@@ -1,0 +1,89 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage[portuguese]{babel}
+
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\rpl}{\mathbb{R}_+}
+% Title Page
+\title{Trabalho V: Desenho amostral para controlar as probabilidades de erro de testes de hipótese.}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+
+\begin{document}
+\maketitle
+
+\textbf{Data de Entrega: 30 de Novembro de 2022.}
+
+\section*{Orientações}
+\begin{itemize}
+ \item Enuncie e prove (ou indique onde se pode encontrar a demonstração) de~\underline{todos} os resultados não triviais necessários aos argumentos apresentados;
+ \item Lembre-se de adicionar corretamente as referências bibliográficas que utilizar e referenciá-las no texto;
+ \item Equações e outras expressões matemáticas também recebem pontuação;
+ \item Você pode utilizar figuras, tabelas e diagramas para melhor ilustrar suas respostas;
+ \item Indique com precisão os números de versão para quaisquer software ou linguagem de programação que venha a utilizar para responder às questões\footnote{Não precisa detalhar o que foi usado para preparar o documento com a respostas. Recomendo a utilização do ambiente LaTeX, mas fique à vontade para utilizar outras ferramentas.};
+ \end{itemize}
+
+
+\paragraph{Notação:} Como convenção adotamos $\mathbb{R} = (-\infty, \infty)$, $\rpl = (0, \infty)$ e $\mathbb{N} = \{1, 2, \ldots \}$.
+
+\paragraph{Motivação: Entre os vários fatores a serem considerados na construção de um teste estatístico, a capacidade de detectar um efeito caso ele esteja presente é um das mais importantes.
+Em algumas situações é possível determinar o tamanho de amostra necessário para controlar as probabilidades de erro do teste em questão.
+E é exatamente isso que faremos neste exercício.
+}
+
+\section*{É pra medir \textit{quantos} mesmo, chefe ?!}
+
+Suponha que os seus dados vêm de uma distribuição normal com parâmetros $\mu$ e $\sigma^2$.
+Você tem acesso à média amostral, $\bar{X}_n = n^{-1} \sum_{i=1}^n X_i$ e à variância amostral, $S_2 = (n-1)^{-1} \sum_{i=1}^n (X_i - \bar{X}_n)^2$.
+Você recebeu a tarefa de desenhar um teste estatístico para testar as hipóteses
+\begin{align*}
+    H_0 &:  \mu = \mu_0,\\
+    H_1 &: \mu \neq \mu_0.
+\end{align*}
+\begin{enumerate}
+    \item Suponha que $\sigma^2$ é \underline{conhecida} e considere o teste
+    \begin{equation*}
+        \delta_c = \begin{cases}
+            \textrm{Rejeitar} \: H_0 \: \textrm{quando} \: |\bar{X}_n - \mu_0|/\sigma \geq c,\\
+            \textrm{Falhar em rejeitar} \: H_0 \: \textrm{caso contrário}.
+        \end{cases}
+    \end{equation*}
+    Determine o valor de $c$ para que o tamanho de $\delta_c$ seja $\alpha = 0.01$.
+    \item Vamos agora supor $\sigma^2$ \underline{desconhecida}.
+    Defina $\hat{\sigma}^\prime = \sqrt{S_2}$ e considere o teste     \begin{equation*}
+        \delta_k^\prime = \begin{cases}
+            \textrm{Rejeitar} \: H_0 \: \textrm{quando} \: |\sqrt{n}(\bar{X}_n - \mu_0)/\hat{\sigma}^\prime|  \geq k,\\
+            \textrm{Falhar em rejeitar} \: H_0 \: \textrm{caso contrário}.
+        \end{cases}
+       \end{equation*}
+         Determine o valor de $k$ para que o tamanho de $\delta_k^\prime$ seja $\alpha = 0.01$.
+    \item Para cada um dos testes acima ($\delta_c$ e $\delta^\prime_k$), determine o tamanho amostral ($n$) tal que o teste tenha poder de $0.95$ em $\mu + \sigma$, isto é $\pi(\mu + \sigma | \delta_c) = 0.95$ e $\pi(\mu + \sigma | \delta_k) = 0.95$.
+    Compare os tamanhos amostrais necessários e discuta se são diferentes e por quê.
+\end{enumerate}
+
+% \bibliographystyle{apalike}
+% \bibliography{refs}
+
+\end{document}  
