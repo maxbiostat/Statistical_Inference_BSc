@@ -98,8 +98,9 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 - [Neste](https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/) post, Larry Wasserman explica que você não precisa assumir que todas as amostras vêm da mesma distribuição para ter a cobertura correta do intervalo de confiança.
 
 **Versões anteriores**
-- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2)
-- [2021](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2021-2)
+- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2);
+- [2021](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2021-2);
+- [2022](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2022-2).
 
 **Agradecimentos**
 
