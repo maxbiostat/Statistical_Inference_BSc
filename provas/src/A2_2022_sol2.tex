@@ -1,0 +1,65 @@
+\textcolor{red}{\textbf{Conceitos trabalhados}: quantidade pivotal; intervalo de confiança; equivalência entre ICs e testes.}
+\textcolor{purple}{\textbf{Nível de dificuldade}: fácil.}\\
+\textcolor{blue}{
+\textbf{Resolução:}
+Existem várias respostas possíveis para a), algumas mais úteis (para os itens subsequentes) que outras.
+Por exemplo,
+\begin{equation*}
+    W_n := \bar{X}_n - \theta 
+\end{equation*}
+é pivotal, com distribuição Normal com média $0$ e variância $\sigma^2/n$.
+Uma escolha um pouco mais sábia é 
+\begin{equation*}
+    Z_n := \sqrt{n}\frac{\left(\bar{X}_n - \theta\right)}{\sigma},
+\end{equation*}
+que tem distribuição normal-padrão.
+Para responder b), temos, mais uma vez, algumas opções: podemos construir intervalos unilaterais ou bilaterais.
+A partir de $Z_n$, podemos construir um intervalo de confiança conseguimos construir intervalos usando a normal-padrão. 
+Para um intervalo unilateral, podemos escolher $c_U = \Phi^{-1}(0.05)$ e fazer
+\begin{equation*}
+    I_1(\bX_n) = \left(-\infty, \bar{X}_n + |c_U|\frac{\sigma}{\sqrt{n}}\right),
+\end{equation*}
+ou
+\begin{equation*}
+    I_2(\bX_n) = \left(\bar{X}_n - |c_U|\frac{\sigma}{\sqrt{n}}, \infty\right).
+\end{equation*}
+Para construir um intervalo bilateral, fazemos $c_B = \Phi^{-1}(0.025)$ e então
+\begin{equation*}
+    I_3(\bX_n) = \left(\bar{X}_n - |c_B|\frac{\sigma}{\sqrt{n}}, \bar{X}_n + |c_B|\frac{\sigma}{\sqrt{n}}\right),
+\end{equation*}
+é um intervalo com a cobertura desejada.
+A resposta de c) é sim: podemos, por exemplo, usar $I_2(\bX_n)$ e desenhar um teste da forma
+\begin{equation*}
+    \delta_2 =
+    \begin{cases}
+    \textrm{Rejeitar}\: H_0, \: \textrm{se}\: \theta_0 \in I_2(\bX_n),\\
+    \textrm{Falhar em rejeitar}\: H_0 \: \textrm{caso contrário}.
+    \end{cases}
+\end{equation*}
+Este teste tem tamanho $\alpha$ e é não-viesado.
+Se não soubéssemos o valor de $\sigma^2$, poderíamos construir a quantidade pivotal
+\begin{equation*}
+    Q_n = \sqrt{n}\frac{\bar{X}_n - \theta_0}{\sqrt{\frac{\sum_{i=1}^n (X_i-\bar{X}_n)^2}{n-1}}},
+\end{equation*}
+que tem distribuição t de Student com $n-1$ graus de liberdade.
+Isso nos leva a um novo intervalo da forma
+\begin{equation*}
+    I_4(\bX_n) = \left(\bar{X}_n - |t_U|\frac{\sqrt{\frac{\sum_{i=1}^n (X_i-\bar{X}_n)^2}{n-1}}}{\sqrt{n}}, \infty\right),
+\end{equation*}
+onde $t_U$ é o quantil $\alpha$ de uma t de Student com $n-1$ graus liberdade.
+Com $I_4$ em mãos, desenhamos um teste como anteriormente:
+\begin{equation*}
+    \delta_4 =
+    \begin{cases}
+    \textrm{Rejeitar}\: H_0, \: \textrm{se}\: \theta_0 \in I_4(\bX_n),\\
+    \textrm{Falhar em rejeitar}\: H_0 \: \textrm{caso contrário}.
+    \end{cases}
+\end{equation*}
+A resposta de e) tem a ver com aceitar $H_0$ quando ela é falsa, isto é, quando $\theta > \theta_0$.
+Este é um erro do tipo II e acontece com probabilidade $1-\pi(\theta \mid \delta_4) = 0.975$.
+No mesmo ímpeto, poderiámos responder f) dizendo que é possível construir testes onde o erro do tipo II fica controlado.
+A consequência é, em geral, que a taxa de erro do tipo I (falsos positivos) tende a aumentar.
+$\blacksquare$\\
+\textbf{Comentário:} Esta questão é bem conceitual e procura testar os conhecimentos sobre testes no caso normal.
+Havia várias maneiras de responder corretamente às questões.
+}

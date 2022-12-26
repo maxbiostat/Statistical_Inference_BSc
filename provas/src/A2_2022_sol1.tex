@@ -1,0 +1,28 @@
+\textcolor{red}{\textbf{Conceitos trabalhados}: função poder; tamanho.}
+\textcolor{purple}{\textbf{Nível de dificuldade}: fácil.}\\
+\textcolor{blue}{
+\textbf{Resolução:}
+Para responder a), vamos lembrar que a função poder $\pi(\theta \mid \delta_c) = P_\theta\left(\textrm{Rejeitar}\: H_0\right)$.
+Sendo assim, temos
+\begin{align*}
+    \pi(\theta \mid \delta_c) &= P_\theta\left(S \geq c\right),\\
+    &= 1 - P_\theta(S < c),\\
+    &= 1 - F_S\left(c; n, \theta \right),
+\end{align*}
+onde $F_S\left(x; a, b\right)$ é a f.d.a. de uma distribuição Gama com forma $a$ e taxa $b$ avaliada em $x \in \mathbb{R}$. 
+Agora precisamos mostrar que $\pi(\theta \mid \delta_c)$ é não descrescente em $\theta$ de modo a responder b).
+Usando a dica, sabemos que 
+\begin{equation*}
+    \pi(\theta \mid \delta_c) = 1 - e^{-c/\theta}\sum_{j = k}^\infty \frac{1}{j!}\left(\frac{c}{\theta}\right)^j,
+\end{equation*}
+de modo que $\frac{\partial}{\partial \theta}\pi(\theta \mid \delta_c) \geq 0$.
+Outro bom argumento é esboçar o gráfico da função poder e mostrar que ela não pode decrescer.
+O tamanho de $\delta_c$ é dado por
+\begin{equation*}
+    \alpha_0 := \sup_{\theta \in \Theta_0} \pi(\theta \mid \delta_c).
+\end{equation*}
+Como a função poder é não descrescente, temos que $\alpha_0 = \pi(\theta_0 \mid \delta_c)$, respondendo c).
+Em d), temos que o teste de fato é não-viesado, pois a função poder é não descrescente em $\theta$, de modo que para todo par $\theta \in \Theta \setminus \Theta_0$ e $\theta^\prime \in \Theta_0$ temos que $\pi(\theta^\prime \mid \theta) \leq \pi(\theta \mid \theta)$.
+$\blacksquare$\\
+\textbf{Comentário:} Esta é uma questão parecida com a Q1 da A2 de 2020, mas neste caso Ivo mede os tempos entre as quedas dos poemas. Uma questão simples e conceitual para esquentar os músculos.
+}

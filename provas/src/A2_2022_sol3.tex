@@ -1,0 +1,45 @@
+\textcolor{red}{\textbf{Conceitos trabalhados}: Regressão linear; desenho experimental; quantidades derivadas.}\\ \textcolor{purple}{\textbf{Nível de dificuldade}: médio.}\\
+\textcolor{blue}{
+\textbf{Resolução:}
+Para resolver a) vamos perceber que quando substituímos a covariável original $X$ por $X^\prime = X-\bar{x}$ temos $\bar{x}^\prime = 0$ e portanto $\operatorname{Cov}\left(\hat{\beta_0}, \hat{\beta_1} \right)  = -\frac{\bar{x}^\prime \sigma^2}{s_x^2} = 0$.
+Para afirmarmos que $\hat{\beta_0}$ e $\hat{\beta_1}$ são independentes é  preciso lembrar que estes estimadores têm distribuição conjunta Normal bivariada; quando a covariância é zero, sabemos que são independentes.
+A resposta de b) pode ser deduzida ao lembrar que no caso centrado, a variância de $\hat{\beta_0}$ é $\sigma^2/n$. 
+Desta forma, precisamos apenas encontrar $n$ tal que $\sigma^2/n < v$, isto é $n > \sigma^2/v$.
+Como sabemos que os estimadores dos coeficientes são não-viesados, podemos encontrar $\hat{\theta} = a\hat{\beta_0} + b\hat{\beta_1} +c$ como nosso estimador não-viesado de $\theta$.
+O EQM de tal estimador é a sua variância:
+\begin{align*}
+ E[(\hat{\theta}-\theta)^2] &= \vr(\hat{\theta}) = a^2 \vr(\hat{\beta_0}) + b^2\vr(\hat{\beta_1}) -ab \operatorname{Cov}(\hat{\beta_0}, \hat{\beta_1}),\\
+ &=  a^2 \sigma^2 \left( \frac{1}{n} + \frac{\bar{x}^2}{s_x^2} \right) + b^2\frac{\sigma^2}{s_x^2} + ab \frac{\bar{x}\sigma^2}{s_x^2},\\
+ &= \sigma^2 \left(\frac{a^2}{n} + \frac{a^2\bar{x}^2}{s_x^2} + \frac{b^2}{s_x^2} + \frac{ab\bar{x}}{s_x^2}\right).
+\end{align*}
+Por fim, vamos responder d).
+Note que a expressão necessária aqui é a do intervalo de predição:
+\begin{equation*}
+ \hat{Y} \pm  c(n, \alpha_0)\cdot\hat{\sigma}_r^\prime \cdot \sqrt{\left[ 1+ \frac{1}{n} + \frac{\left(x_{\text{pred}}-\bar{x}\right)^2}{s_x^2} \right]},
+\end{equation*}
+onde
+\begin{equation*}
+ c(n, \alpha_0) := T^{-1}\left(1-\frac{\alpha_0}{2}; n-2\right),
+\end{equation*}
+e
+\begin{equation*}
+ \hat{\sigma}_r^\prime := \sqrt{\frac{\sum_{i=1}^n \left(Y_i - \hat{\beta_0} - \hat{\beta_1}x_i \right)^2}{n-2}}.
+\end{equation*}
+Quando $x_{\text{pred}} = \bar{x}$ a expressão se reduz um pouco e podemos deduzir que a largura do intervalo é
+\begin{equation*}
+ \hat{l} = 2 \cdot c(n, \alpha_0) \cdot \hat{\sigma}_r^\prime \sqrt{\left[ 1+ \frac{1}{n}\right]}.
+\end{equation*}
+Desejamos, portanto, encontrar $n$ tal que
+\begin{align*}
+ \pr\left(\hat{l} < l\right) &\geq \gamma,\\
+ \pr\left( \hat{\sigma}_r^\prime < \frac{l}{2 \cdot c(n, \alpha_0) \cdot \sqrt{\left[ 1+ \frac{1}{n}\right]} }\right) &\geq \gamma,\\
+\end{align*}
+isto é conseguimos reduzir nossa afirmação probabilística a uma afirmação com respeito à f.d.a. (ou CDF) de $\hat{\sigma}_r^\prime$.
+Para completar nossos cálculos só precisamos nos lembrar que $n  \hat{\sigma}_r^\prime/\sigma^2$ tem distribuição qui-quadrado com $n-2$ graus de liberdade (De Groot, Teorema 11.3.2) e, portanto,
+\begin{equation*}
+ \pr\left(\hat{\sigma}_r^\prime \leq a \right) = F_\chi\left(\frac{\sigma^2}{n}a; n- 2\right).
+\end{equation*}
+$\blacksquare$\\
+\textbf{Comentário:} Nesta questão, retirada \textit{ipsis litteris} da A2 2021, trabalhamos os efeitos de centrar a variável independente na distribuição dos estimadores dos coefficientes.
+Além disso, trabalhamos ideias de desenho experimental, determinando o tamanho amostral necessário para que a banda de predição na média da variável independente tenha uma certa largura com alta probabilidade.
+}

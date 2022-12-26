@@ -1,0 +1,156 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage[portuguese]{babel}
+\usepackage{newclude}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%%%%
+\newif\ifanswers
+\answerstrue % comment out to hide answers
+
+% Title Page
+\title{Segunda avaliação (A2)}
+\author{Disciplina: Inferência Estatística \\ Instrutor: Luiz Max Carvalho \\ Monitores: Jairon Nóia \& Tiago Silva}
+\date{26 de Novembro de 2022}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\fbox{\parbox{1.0\textwidth}{\textsf{
+    \begin{itemize}
+        \item O tempo para realização da prova é de 3 horas;
+        \item Leia a prova toda com calma antes de começar a responder;
+        \item Responda todas as questões sucintamente;
+        \item Marque a resposta final claramente com um quadrado, círculo ou figura geométrica de sua preferência;
+        \item A prova vale 80 pontos. A pontuação restante é contada como bônus;
+        \item Apenas tente resolver a questão bônus quando tiver resolvido todo o resto;
+        \item Você tem direito a trazer \textbf{\underline{uma} folha de ``cola''} tamanho A4 frente e verso, que deverá ser entregue junto com as respostas da prova.
+    \end{itemize}}
+}}}
+\end{center}
+
+\newpage
+
+\section*{1. O estatístico e o poeta.}
+
+        \begin{center}\textit{
+        Eu te vejo sumir por aí\\
+        Te avisei que a cidade era um vão\\
+        Dá tua mão, olha pra mim\\
+        Não faz assim, não vai lá, não\\
+        Os letreiros a te colorir\\
+        Embaraçam a minha visão\\
+        Eu te vi suspirar de aflição\\
+        E sair da sessão frouxa de rir\\
+        Já te vejo brincando gostando de ser\\
+        Tua sombra a se multiplicar\\
+        Nos teus olhos também posso ver\\
+        As vitrines te vendo passar\\
+        Na galeria, cada clarão\\
+        É como um dia depois de outro dia\\
+        Abrindo um salão\\
+        Passas em exposição\\
+        Passas sem ver teu vigia\\
+        Catando a poesia\\
+        Que entornas no chão\\
+        }
+        \end{center}
+        \textit{As Vitrines (Almanaque, 1981)} de Chico Buarque (1944-).\\            
+        
+O eu-lírico da canção, que vamos chamar aqui de Ivo, pensa em seu amado, Adão.
+Adão é poeta, e tem a estranha mania de deixar cair seus poemas ao passear pelo shopping.
+Ivo, muito solícito e perdidamente apaixonado, corre atrás do companheiro catando os papéis que
+o desastrado deixa cair.
+Sendo estatístico, Ivo sabe que pode modelar o tempo entre a queda dos poemas como uma variável aleatória exponencial com taxa $\theta$.
+Ivo quer saber se será capaz de acompanhar Adão na sua jornada sem perder nenhum poema.
+Para isso, julga que se $\theta \leq \theta_0$, ele será capaz de catar toda a poesia deixada por Adão antes de ser carregada pelo vento.
+
+Suponha que Ivo observa o processo de queda de $n$ poemas e anota o tempo entre cada queda, formando a amostra $Y_1, Y_2, \ldots, Y_n$.
+Ivo considera a estatística de teste $S = \sum_{i=1}^n Y_i$ e constrói o teste $\delta_c$ de modo que, se $S \geq c$, ele rejeita a hipótese $H_0: \theta \leq \theta_0$.
+
+\begin{enumerate}[label=\alph*)]
+ \item (10 pontos) Encontre a função poder do teste de Ivo.
+ \item (10 pontos) Mostre que a função poder do item anterior é~\textbf{não-decrescente} em $\theta$;
+ 
+ \textbf{Dica:} Se $X$ tem distribuição Gama com parâmetros $k \in \mathbb{N}$ e $\theta$, então 
+ \begin{equation*}
+     P_\theta \left(X \leq x \right) = e^{-x/\theta}\sum_{j = k}^\infty \frac{1}{j!}\left(\frac{x}{\theta}\right)^j.
+ \end{equation*}
+ \item (10 pontos) Encontre uma expressão para o tamanho $\alpha_0$ do teste $\delta_c$;
+ \item (10 pontos) O teste em questão é não-viesado? Justifique;
+\end{enumerate}
+\ifanswers
+\include*{A2_2022_sol1}
+\fi
+
+\section*{2. PO-KÉ-MON!} 
+
+Suponha que a Liga Internacional de Pokemon (LIP) tenha um sistema de \textit{pokescores} que podem assumir qualquer valor real. 
+Quanto maior o \textit{pokescore} de uma jogadora, mais alto no ranking mundial ela está.
+A liga se organiza em times de $n$ jogadores.
+
+Para entrar na liga, um time precisa ter um \textit{pokescore} médio superior a $\theta_0$, isto é, a média dos pokescores de seus jogadores precisa ser maior que $\theta_0$.
+Suponha que os \textit{pokescores} dentro de um time são distribuídos de acordo com uma distribuição Normal com média $\theta$ e variância $\sigma^2$, conhecida.
+Queremos desenvolver um método para incluir times num torneio automaticamente, baseado nos \textit{pokescores} dos seus integrantes.
+
+\begin{enumerate}[label=\alph*)] 
+ \item (5 pontos) Encontre uma quantidade pivotal para $\theta$;
+ \item (5 pontos) Utilizando a quantidade do item anterior, construa um intervalo de confiança de $95\%$ para $\theta$;
+ \item (10 pontos) A partir do intervalo encontrado, é possível testar $H_0: \theta \leq \theta_0$? Como?
+ \item (10 pontos) Se $\sigma^2$ fosse desconhecida, como você modificaria o teste do item anterior?
+ \item (5 pontos) Se aplicarmos os testes em (c) e (d) para selecionar times automaticamente, seremos injustos com alguns times, isto é, vamos deixar de incluir times que de fato se encaixam na condição de seleção.
+ Com que probabilidade isso acontece?
+ \item (5 pontos) Se quisermos diminuir a probabilidade do item anterior, o que podemos fazer? Que consequências isso tem?
+\end{enumerate} 
+\ifanswers
+\include*{A2_2022_sol2}
+\fi
+
+\section*{3. Run, Joey, run!\footnote{Linear regression is a war horse of Statistics. The horse in `War Horse' (2011) is named Joey.}}
+
+O modelo linear (de regressão) é um dos cavalos de batalha da Estatística, sendo aplicado em problemas de Finanças, Medicina e Engenharia.
+Vamos agora estudar como utilizar as propriedades deste modelo para desenhar experimentos com garantias matemáticas de desempenho e obter estimadores de quantidades de interesse.
+
+\begin{enumerate}[label=\alph*)]
+ \item (10 pontos) Uma prática comum em regressão é a de \textbf{centrar} a variável independente (covariável), isto é subtrair a média; isto facilita a interpretação do intercepto e também simplifica alguns cálculos importantes.
+ Mostre que no caso com a covariável centrada, $\hat{\beta_0}$ e $\hat{\beta_1}$ são independentes;
+ \item (10 pontos) Mais uma vez considerando o caso centrado, mostre 
+ como obter o número de observações $n$ que faz com que a variância do estimador de máxima verossimilhança do intercepto seja menor que $v > 0$;
+ \item (10 pontos) Mostre como obter um estimador não-viesado da quantidade $\theta = a\beta_0 + b\beta_1 + c$, com $a, b, c \neq 0$, e encontre o seu erro quadrático médio.
+ \item (10 pontos)  Quando $x_{\text{pred}} = \bar{x}$, mostre como obter  o número de observações $n$ necessário para que o intervalo de predição de $100(1-\alpha_0)\%$ para a variável-resposta ($Y$) tenha largura menor ou igual a $l>0$ com probabilidade pelo menos $\gamma$.
+ 
+ \textit{Dicas}:(i) A expressão dependerá~\textit{também} da variância dos resíduos, $\sigma^2$ e (ii) Você não precisa calcular $n$, apenas mostrar o procedimento para obtê-lo.
+ \end{enumerate}
+
+
+\ifanswers
+\include*{A2_2022_sol3}
+\fi
+
+% \bibliographystyle{apalike}
+% \bibliography{refs}
+
+\end{document}          
