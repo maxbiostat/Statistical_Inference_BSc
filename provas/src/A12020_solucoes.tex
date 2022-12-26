@@ -1,0 +1,324 @@
+\documentclass[a4paper,10pt, notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage[portuguese]{babel}
+
+%%%%%%%%%%%%%%%%%%%% Notation stuff
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+% Title Page
+\title{Primeira avaliação (A1)}
+\author{Disciplina: Inferência Estatística \\ Professor: Luiz Max de Carvalho}
+\date{25 de Setembro de 2020}
+
+\begin{document}
+\maketitle
+
+% \textbf{Data de Entrega: 19 de Agosto de 2020.}
+
+\begin{center}
+\fbox{\fbox{\parbox{1.0\textwidth}{\textsf{
+    \begin{itemize}
+        \item Por favor, entregue um único arquivo PDF;
+        \item O tempo para realização da prova é de 3 horas, mais vinte minutos para upload do documento para o e-class;
+        \item Responda todas as questões sucintamente;
+        \item Marque a resposta final claramente com um quadrado, círculo, ou figura geométrica de sua preferência;
+        \item A prova vale 80 pontos; a pontuação restante é contada como bônus.
+        \item Apenas tente resolver a questão bônus quando tiver resolvido todo o resto.
+    \end{itemize}}
+}}}
+\end{center}
+
+\section*{Dicas}
+\begin{itemize}
+ \item Se $X$ tem distribuição Beta com parâmetros $\alpha>0$ e $\beta>0$, temos
+ \[f_X(x \mid \alpha, \beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1} (1-x)^{\beta-1}.\]
+ Além disso, se $\alpha, \beta > 1$ e $F_X(m) = 1/2$, então $m \approx \frac{\alpha-\frac{1}{3}}{\alpha + \beta - \frac{2}{3}}$;
+ \item Um processo de Poisson com taxa $\lambda$ por unidade de tempo é um processo estocástico que satisfaz:
+ \begin{itemize}
+  \item O número de chegadas num intervalo de tempo $\Delta_t$ tem distribuição Poisson com média $\lambda\Delta_t$.
+  \item Os números de chegadas em qualquer coleção de intervalos disjuntos são independentes.
+ \end{itemize}
+ \item O máximo de uma amostra aleatória $\rs$, em que cada $X_i$ tem f.d.p./f.m.p $f_X$ e c.d.f $F_X$, tem f.d.p./f.m.p $f_M(y) = nf_X(y) \left[F_X(y)\right]^{n-1}$.
+ \end{itemize}
+ 
+\newpage
+
+\section*{1. Esperando aviões.}
+
+        \begin{center}\textit{
+        Meus olhos te viram triste\\
+        Olhando pro infinito\\
+        Tentando ouvir o som do próprio grito\\
+        E o louco que ainda me resta\\
+        Só quis te levar pra festa\\
+        Você me amou de um jeito tão aflito\\
+        Que eu queria poder te dizer sem palavras\\
+        Eu queria poder te cantar sem canções\\
+        Eu queria viver morrendo em sua teia\\
+        Seu sangue correndo em minha veia\\
+        Seu cheiro morando em meus pulmões\\
+        Cada dia que passo sem sua presença\\
+        Sou um presidiário cumprindo sentença\\
+        Sou um velho diário perdido na areia\\
+        Esperando que você me leia\\
+        Sou pista vazia esperando aviões
+        }
+        \end{center}
+        (Vander Lee [1966-2016])
+        
+        
+Considere o eu-lírico da canção, que vamos chamar aqui de Joelinton.
+Apaixonado, Joelinton vai todos os dias ao aeroporto esperar por sua amada, Valcicléia.
+Todos os dias, ele sempre chega no mesmo horário, espera exatamente $t$ horas e anota num caderninho o número de aviões que pousam na pista A do aeroporto.
+Depois de $n$ dias, Joelinton, impaciente, resolve olhar suas anotações com os números $\rs$ de aviões que chegaram nos dias em que tem durado o seu martírio.
+Supondo que as chegadas dos aviões são independentes, entre si, Joelinton se pergunta sobre como estimar a taxa de chegada dos aviões, $\theta$.
+
+\begin{enumerate}[label=\alph*)]
+ \item (7,5 pontos) Compute a informação de Fisher do experimento de Joelinton;
+ \item (2,5 pontos) Encontre o estimador de máxima verossimilhança (EMV) de $\theta$;
+ \item (10 pontos) O estimador encontrado é viesado? Justifique sua resposta;
+ \item (10 pontos) O estimador encontrado é eficiente? Justifique sua resposta.
+\end{enumerate}
+\textcolor{red}{\textbf{Conceitos trabalhados}: EMV, informação de Fisher, viés, Cramér-Rao e eficiência.} \textcolor{purple}{\textbf{Nível de dificuldade}: médio.}
+
+\textcolor{blue}{
+\textbf{Resolução:}
+Sabemos que a chegada dos aviões é um processo de Poisson, e, em particular, que cada $X_i$ é distribuído Poisson com taxa $t\theta$.
+% Como as amostras são idependentes, a informação de Fisher será $nI(\theta)$, onde 
+% $$ I(\theta) = E$$
+Usando o fato de que as amostras são i.i.d, podemos escrever
+\[ f_n(\boldsymbol{x} \mid \theta) = \frac{1}{\prod_{i=1}^n x_i!} e^{-nt\theta} \left(t\theta\right)^{S}, \]
+onde $S := \sum_{i=1}^n x_i$.
+Portanto,
+\begin{align}
+ \lambda_n(\boldsymbol{x} \mid \theta) &= -\sum_{i=1}^n \log(x_i!) -nt\theta + S[\log(t) +\log(\theta)] = C -nt\theta + S\log(\theta), \\
+ \label{eq:q1_loglik_prime}
+  \lambda_n^{\prime}(\boldsymbol{x} \mid \theta) &= -nt + \frac{S}{\theta}, \\
+  \label{eq:q1_loglik_prime_prime}
+   \lambda_n^{\prime\prime}(\boldsymbol{x} \mid \theta) &= -\frac{S}{\theta^2}.
+\end{align}
+Lembrando que $E[S] = nt\theta$ (pela lei de esperanças), podemos computar
+\begin{equation}
+ \label{eq:q1_Fisher_info}
+  I_n(\theta) = -E[\lambda_n^{\prime\prime}(\boldsymbol{x} \mid \theta)] = \frac{nt}{\theta}.
+\end{equation}
+Outro caminho para resolver a) é lembrar que, para uma amostra aleatória,  $I_n(\theta) = nI(\theta)$ e fazer os cálculos para $X_1$, por exemplo.
+A resposta de b) vem ``de graça'' através de~(\ref{eq:q1_loglik_prime}); igualando a expressão a zero, temos 
+\begin{equation*}
+ \emv = \frac{S}{nt} = \frac{1}{t} \bar{X}_n.
+\end{equation*}
+Para responder c), precisamos apenas calcular 
+\[ E[ \emv] =  \frac{1}{t} E[\bar{X}_n] = \frac{1}{nt} E[S] = \theta, \]
+para concluir que o EMV é não-viesado.
+Para responder à questão d), precisamos lembrar que o limite de Cramér-Rao para a variância de um estimador não-viesado de $\theta$ é
+\begin{equation*}
+ \vr(\delta(\bX)) \geq \frac{1}{I_n(\theta)} = \frac{1}{nI(\theta)} = \frac{\theta}{nt}.
+\end{equation*}
+Vamos comparar com a variância do $\emv$:
+\begin{align*}
+ \vr(\emv) = \frac{1}{n^2t^2} \vr(S) = \frac{nt\theta}{n^2t^2} =  \frac{\theta}{nt},
+\end{align*}
+onde a penúltima igualdade vale porque as amostras são idependentes (lei de variâncias).
+Isto nos leva a concluir que o EMV de fato atinge a cota inferior e, portanto, é eficiente.
+Outra maneira de ver o mesmo resultado é utilizar a parte final do Teorema de Cramér-Rao e perceber que podemos escrever
+\begin{equation*}
+ \emv = u(\theta) \lambda_n^{\prime}(\boldsymbol{x} \mid \theta) + v(\theta),
+\end{equation*}
+em particular
+\begin{equation*}
+ \emv = \frac{\theta}{nt} \lambda_n^{\prime}(\boldsymbol{x} \mid \theta) + \theta.
+\end{equation*}
+$\blacksquare$
+}
+
+\section*{2. Inferência para a Uniforme $(0, \theta)$.}
+Suponha que dispomos de uma amostra aleatória $\rs$ de uma distribuição Uniforme no intervalo $(0, \theta)$.
+\begin{enumerate}[label=\alph*)]
+ \item (5 pontos) Encontre o estimador de máxima verossimilhança (EMV) de $\theta$;
+ \item (5 pontos) O estimador encontrado é viesado.
+ Encontre um estimador não-viesado baseado no estimador do item anterior;
+ \item (5 pontos) Encontre um estimador de momentos para $\theta$;
+ \item (15 pontos) Compare os estimadores obtidos em termos de erro quadrático médio (``MSE''), e discuta se algum deles é admissível para $n\geq 3$.
+\end{enumerate}
+\textcolor{red}{\textbf{Conceitos trabalhados}: EMV, método dos momentos,  erro quadrático médio e admissibilidade.} \textcolor{purple}{\textbf{Nível de dificuldade}: médio.}
+
+\textcolor{blue}{
+\textbf{Resolução:}
+ A f.d.p da uniforme vale
+ \begin{equation*}
+  \label{eq:uniform_closed}
+  f(x\mid \theta)=
+ \begin{cases}
+     \frac{1}{\theta}, 0 \leq x \leq \theta,\\
+     0,\:\text{caso contrário}.
+\end{cases}
+  \end{equation*}
+A f.d.p. conjunta é
+\begin{equation*}
+ \label{eq:uniform_closed_joint}
+   f_n(\boldsymbol{x} \mid \theta)=
+ \begin{cases}
+     \theta^{-n}, 0 \leq x_i \leq \theta \: (i = 1, 2, \ldots, n),\\
+     0,\:\text{caso contrário},
+\end{cases}
+\end{equation*}
+Notamos que a função de verossimilhança é decrescente em $\theta$, e portanto é maximizada em $M := \max(x_1, x_2, \ldots, x_n)$.
+Assim, repondemos a) ao concluirmos que $\emv = M$.
+Para responder b), lembramos que
+$$f_M(y) = \frac{n}{\theta} \left[\frac{y}{\theta}\right]^{n-1}, $$
+e, portanto,
+$$E[M] = \frac{n}{\theta^n} \int_{0}^\theta y y^{n-1}\,dy = \frac{n}{\theta^n}\frac{\theta^{n +1}}{n+ 1} = \frac{n}{n + 1} \theta.$$
+Outro caminho é utilizar a fórmula de cauda para a esperança, $E[M] = \int_{0}^\infty \pr(M > y)\, dy = \int_{0}^\infty \left[ 1- F_M(y)\right]\, dy$:
+\begin{align*}
+ E[M] &= \int_{0}^\infty \left[ 1- \left[\frac{y}{\theta}\right]^n \right]\, dy,\\
+ &= \int_{0}^\theta \left[ 1- \left[\frac{y}{\theta}\right]^n \right]\, dy + \cancelto{0}{\int_{\theta}^\infty \left[ 1- \left[\frac{y}{\theta}\right]^n \right]\, dy},\\
+ &= \int_{0}^\theta 1\, dy - \frac{1}{\theta^n}\int_{0}^\theta y^n\,dy\\
+ &= \theta - \frac{\theta^{n+1}}{(n+1)\theta^n} = \frac{n}{n+1}\theta.
+\end{align*}
+Desta forma, como $E[\emv] = c\theta$, podemos criar um estimador não-viesado $\hat{\theta}_{\text{u}} = \frac{1}{c}\emv$.
+A resposta para c) é simples: notamos que a esperança de $X_1$ é $\theta/2$, e, desta maneira, $\hat{\theta}_{\text{MM}} = 2\bar{X}_n$.
+Para finalizar, vamos responder à questão d) olhando o MSE de cada estimador, lembrando que $\hat{\theta}_{\text{u}}$ e $\hat{\theta}_{\text{MM}}$ são não-viesados:
+\begin{align*}
+ \text{MSE}(\emv) &= \vr(\emv) + \text{viés}^2 = \vr(M) + (1-c)^2\theta^2,\\
+ \text{MSE}(\hat{\theta}_{\text{u}}) &= \frac{\vr(\emv)}{c^2}  =\frac{\vr(M)}{c^2},\\
+  \text{MSE}(\hat{\theta}_{\text{MM}}) &= \vr(\hat{\theta}_{\text{MM}}) = \vr(2\bar{X}_n) =  \frac{4}{n^2} \sum_{i=1}^n \vr(X_i).
+\end{align*}
+Para sermos capazes de comparar os erros quadráticos médios explicitamente, precisamos calcular as quantidades $\vr(M)$ e $\vr(X_1)$.
+Primeiro, calculamos
+$$ \vr(X_1) = E[X_1^2] - \left(E[X_1]\right)^2 = \frac{1}{\theta}\int_{0}^\theta x^2 dx - \frac{\theta^2}{4} = \frac{\theta^2}{12}.$$
+Depois, computamos
+$$\vr(M) =  E[M^2] - \left(E[M]\right)^2 = \frac{n}{\theta^n}\int_{0}^\theta y^2y^{n-1}\,dy  -c^2\theta^2 = \left[\frac{n}{n +2}-c^2\right]\theta^2.$$ 
+Assim chegamos a 
+\begin{align*}
+ \text{MSE}(\emv) &= \vr(M) + (1-c)^2\theta^2 = \left[\frac{2}{(n+1)(n+2)}\right]\theta^2,\\
+ \text{MSE}(\hat{\theta}_{\text{u}}) &= \frac{\vr(M)}{c^2} = \left[\frac{1}{n(n+2)}\right]\theta^2,\\
+  \text{MSE}(\hat{\theta}_{\text{MM}}) &= \frac{4}{n^2} \sum_{i=1}^n \vr(X_i) = \frac{\theta^2}{3n},
+\end{align*}
+e assim podemos concluir que $ \text{MSE}(\hat{\theta}_{\text{u}}) \leq \text{MSE}(\emv) \leq \text{MSE}(\hat{\theta}_{\text{MM}})$.
+Concluímos que o EMV e EMM são inadmissíveis para $n\geq 3$.$\blacksquare$\\
+\textbf{Nota:} uma parte da resposta (sobre o EMM) faz parte do exercício 3 (recomendado!) da seção 7.9 de DeGroot.
+}
+
+\section*{3. Crescimentos indesejados.}
+
+Um efeito colateral comum de esteróides anabolizantes é o ginecoma, crescimento do tecido mamário em homens.
+Uma grande rede de academias brasileira avalia condição física de seus usuários que utilizam estes anabolizantes, e monitora este sintoma específicamente.
+Vamos supor que a probabilidade de gerar este efeito colateral é comum em todos os homens e a amostra de indivíduos é aleatória.
+Denote $Z_1, Z_2, ...$ variáveis aleatórias que registram se o usuário desenvolveu ginecoma $Z_i = 1$ ou não $Z_i=0$.
+Utilizamos a distribuição Bernoulli para modelar este processo, onde a \textbf{probabilidade de não desenvolver o sintoma é $\theta$}.
+Seja 
+    \[
+    X_1 = \min\{n:Z_n=1\},
+    \] o número indivíduos avaliados para encontrar o primeiro caso.
+Logo, $\pr(X=k;\theta) = \theta^{k-1}(1-\theta)$, $k=1,2,...$.
+Esta é a \textit{distribuição geométrica}, $\mathcal{G}(\theta)$, e possui $E[X_1] = 1/(1-\theta)$ e $\vr(X_1) = \theta/(1-\theta)^2$.
+
+\begin{enumerate}[label=\alph*)]
+ \item (3 pontos)  Mostre que $X_1$ é uma estatística suficiente para $\theta$;
+ \item (4 pontos) Encontre o estimador de máxima verossimilhança para $\theta/(1-\theta)$ baseado em $X_1$;
+ \item (3 pontos) Derive a família de distribuições~\textit{a priori} conjugadas para este problema;
+ \item (10 pontos) Encontre uma aproximação para o estimador de Bayes sob perda absoluta;
+\end{enumerate}
+
+\textcolor{red}{\textbf{Conceitos trabalhados}: suficiência, invariância do EMV, conjugação, estimador de Bayes.}
+\textcolor{purple}{\textbf{Nível de dificuldade}: fácil.}
+
+\textcolor{blue}{
+\textbf{Resolução:}
+Para resolver a), basta escrever a verossimilhança:
+\begin{equation}
+ \label{eq:likelihood_geometric}
+ f_n(\bx \mid \theta) = \theta^{x-1}(1-\theta),
+\end{equation}
+e notar que conseguimos usar o Teorema da fatorização
+\[ f_n(\bx \mid \theta) = u(\bx) v[r(\bx), \theta], \]
+fazendo $u(\bx) = 1$ e $v[r(\bx), \theta] = \theta^{x-1}(1-\theta)$.
+Concluímos que $r(\bx) = x-1$ e, como $x = r(\bx) + 1$, $X_1 = x$ tem de ser estatística suficiente também.
+Para resolver b), vamos notar que o EMV é invariante a transformações, e, desta forma, basta encontrar $\emv$.
+Para tanto, vamos escrever
+\[l(\theta) := \log f_n(\bx \mid \theta) = (x-1)\log(\theta) + \log(1-\theta).\]
+Daí
+\begin{equation*}
+ l^\prime(\theta) = \frac{x-1}{\theta} - \frac{1}{1-\theta},
+\end{equation*}
+e assim\footnote{O correto seria checar que temos de fato um ponto de máximo, mas a vida é curta.} $l^\prime(\theta) = 0 \implies \emv = \frac{x-1}{x}$. 
+O EMV para $\omega = \theta/(1-\theta)$ é $\hat{\omega} = \emv/(1-\emv) = x-1$.
+A resposta de c) é encontrada após breve inspeção de (\ref{eq:likelihood_geometric}); a priori conjugada precisa ter a forma $\xi(\theta) \propto \theta^{a}(1-\theta)^b$ para que a posteriori, $\xi(\theta \mid \bx)$ tenha a mesma forma funcional.
+A distribuição Beta, descrita nas dicas acima, é a resposta correta, portanto.
+Finalmente, para resolver d), vamos escrever a posteriori:
+\begin{align*}
+ \xi(\theta \mid \bx) &\propto f_n(\bx \mid \theta)\xi(\theta),\\
+ &\propto \theta^{x-1 + \alpha - 1}(1-\theta)^{\beta}.
+\end{align*}
+Daqui chegamos à conclusão de que a distribuição~\textit{a posteriori} de $\theta$ é uma distribuição Beta com parâmetros $\alpha^\prime = \alpha + x - 1$ e $\beta^\prime = \beta + 1$.
+Utilizando a outra parte da dica, temos que o estimador de Bayes sob perda absoluta é a mediana~\textit{a posteriori}:
+\begin{equation}
+ \hat{\theta}_{\text{Bayes}} = \frac{3\alpha^\prime -1}{3(\alpha^\prime + \beta^\prime) -2} = \frac{3(\alpha + x) - 4}{3(\alpha + \beta + x) - 2}. 
+\end{equation}
+$\blacksquare$
+}
+
+\section*{Questão Bônus: Inconceivable!} 
+
+\textit{``You keep using that word. I do not think it means what you think it means''} -- Inigo Montoya em ``The Princess Bride'' (1987).
+
+Suponha que temos uma amostra aleatória $\bX = \{ \rs \}$ de uma distribuição Normal com média $\mu$ e variância $\sigma^2$, ambas desconhecidas.
+Suponha queremos estimar $\sigma^2$ e considere estimadores da forma
+\begin{equation}
+ \delta_c(\bX) = c\sum_{i=1}^n \left(X_i - \bar{X}_n\right)^2,
+\end{equation}
+$c>0$.
+
+\begin{enumerate}[label=\alph*)]
+ \item (5 pontos) Encontre o erro quadrático médio (``MSE'') desta classe de estimadores, em função de $c$. 
+ \item (2,5 pontos) Encontre $c^\star$ de modo que $\delta_{c^\star}(\bX)$ seja admissível.
+ \item (2,5 pontos) $\delta_{c^\star}(\bX)$ é não-viesado? Justifique sua resposta.
+\end{enumerate}
+
+\textcolor{red}{\textbf{Conceitos trabalhados}: distribuição Qui-quadrado, admissibilidade.} \textcolor{purple}{\textbf{Nível de dificuldade}: difícil.}
+
+\textcolor{blue}{
+\textbf{Resolução:}
+Este é o exemplo 8.7.6 de DeGroot (pág. 510).
+Vamos começar computando os momentos de $\delta_c(\bX)$.
+Sabemos que 
+\[ \frac{\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2}{\sigma^2} \sim \operatorname{Qui-quadrado}(n-1), \]
+portanto temos $E[\delta_c(\bX)]= (n-1)c\sigma^2$ e $\vr(\delta_c(\bX)) = 2(n-1)c^2(\sigma^2)^2$.
+Por conveniência, defina $W := \delta_c(\bX) - \sigma^2$.
+Lembrando que $E[Y^2] = \vr(Y) + (E[Y])^2$, podemos computar o MSE:
+\begin{align*}
+h(c) := \operatorname{MSE}(\delta_c(\bX)) &= E[W^2] = \vr(W) + \left(E[W]\right)^2,\\
+&= \vr(\delta_c(\bX)) + \left(E[\delta_c(\bX)] - \sigma^2\right)^2,\\
+&= 2(n-1)c^2(\sigma^2)^2 + \left[(n-1)^2c^2 - 2(n-1)c + 1\right](\sigma^2)^2 ,\\
+&= \left[a(n)c^2 - b(n)c + 1\right](\sigma^2)^2,
+\end{align*}
+com $a(n) = 2(n-1) + (n-1)^2$ e $b(n) = 2(n-1)$ o que responde a).
+Para responder b), notamos que minimizar $h(c)$ é equivalente a minimizar $g(c) = a(n)c^2 - b(n)c + 1$.
+Assim, fazemos $g^\prime(c) = 2a(n)c - b(n)$ igual a zero para encontrar
+\begin{equation*}
+ c^\star = \frac{b(n)}{2a(n)} = \frac{n-1}{n^2-1} = \frac{1}{n+1}, 
+\end{equation*}
+onde a última igualdade segue da diferença de quadrados.
+A resposta para c) é~\textbf{não}, o que pode ser justificado por cálculo direto ou pelo fato de que no estimador não-viesado de $\sigma^2$, $ c = 1/(n-1)$$\blacksquare$
+}
+
+
+\bibliographystyle{apalike}
+\bibliography{refs}
+
+\end{document}          
