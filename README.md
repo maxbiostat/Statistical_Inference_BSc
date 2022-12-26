@@ -2,8 +2,6 @@
 
 Material para o curso de [Inferência Estatística](https://emap.fgv.br/disciplina/inferencia-estatistica-0) oferecido como disciplina obrigatória das graduações em [Matemática Aplicada](https://emap.fgv.br/curso/matematica-aplicada) e [Ciência de Dados e Inteligência Artificial](https://emap.fgv.br/curso/ciencia-de-dados-e-inteligencia-artificial) da [Escola de Matemática Aplicada](https://emap.fgv.br/) da Fundação Getulio Vargas (FGV EMAp). 
 
-Programa (provisório) [aqui](https://docs.google.com/spreadsheets/d/1hXvrf1YdXj9c_hQCytV3-ka9J2flK8u-DDAuqkg59tQ/edit?usp=sharing).
-
 Slides [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/slides/inferencia.pdf).
 
 Notas (independentes) feitas por [@wellington36](https://github.com/wellington36) estão [aqui](https://github.com/wellington36/Resumos_EMAP-FGV/blob/main/4%20periodo/Inferencia_estatistica.pdf). 
@@ -15,12 +13,15 @@ Tópicos marcados com um `*` são extra e em geral designam material mais avanç
 - Principal: [DG] DeGroot MH, Schervish MJ. Probability and statistics. Pearson Education; 2012.
 - Apoio: [CB] Casella, G., & Berger, R. L. (2002). Statistical Inference. Pacific Grove, CA: Duxbury.
 
-### News
+### Provas anteriores
 
-- O trabalho III já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/trabalhos/trabalho_III.pdf). O prazo de entrega é **28/10/2022**.
-- O exercício de fixação da semana (17/10/2022) já está [disponível](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/exercicios/CMT_1_2022.pdf).
+-  [A1 2020](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A12020_solucoes.pdf);
+-  [A2 2020](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A22020_solucoes.pdf);
+-  [A1 2021](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A12021_solucoes.pdf);
+-  [A2 2021](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A22021_solucoes.pdf);
+-  [A1 2022](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A12022_solucoes.pdf);
+-  [A2 2022](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/PDF/A22022_solucoes.pdf).
 
-- Soluções propostas para as questões da A1 podem ser encontradas [aqui](https://github.com/maxbiostat/Statistical_Inference_BSc/blob/master/provas/A12022_solucoes.pdf).
 
 ### Leituras adicionais
 
@@ -97,8 +98,9 @@ Basicamente uma versão interativa da visualização que vimos em [aula](https:/
 - [Neste](https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/) post, Larry Wasserman explica que você não precisa assumir que todas as amostras vêm da mesma distribuição para ter a cobertura correta do intervalo de confiança.
 
 **Versões anteriores**
-- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2)
-- [2021](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2021-2)
+- [2020](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2020-2);
+- [2021](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2021-2);
+- [2022](https://github.com/maxbiostat/Statistical_Inference_BSc/releases/tag/2022-2).
 
 **Agradecimentos**
 
